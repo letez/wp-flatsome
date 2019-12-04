@@ -1,0 +1,17 @@
+{
+  "transport": "ftp",
+  "port": "21",
+  "hostname": "",
+  "username": "",
+  "password": "",
+  "target": "/wp-content/themes/",
+  "ignore": [
+    "/**",
+    ".git/**",
+    "less/**"
+  ],
+  "watch": ["/flatsome-child"],
+  "uploadOnSave": false,
+  "useAtomicWrites": false,
+  "deleteLocal": false
+}
