@@ -6,7 +6,9 @@
     "node": ">=0.5.0"
   },
   "scripts": {
-    "watch": "node node_modules/less-watch-compiler"
+    "watch": "node node_modules/less-watch-compiler",
+    "ignore-remote": "git update-index --assume-unchanged '.remote-sync.json'",
+    "ignore-less": "git update-index --assume-unchanged 'less/theme.less'"
   },
   "dependencies": {
     "less": "^3.9.0",
