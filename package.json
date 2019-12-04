@@ -1,0 +1,15 @@
+{
+  "name": "wp-flatsome",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.5.0"
+  },
+  "scripts": {
+    "watch": "node node_modules/less-watch-compiler"
+  },
+  "dependencies": {
+    "less": "^3.9.0",
+    "less-watch-compiler": "^1.13.0"
+  }
+}

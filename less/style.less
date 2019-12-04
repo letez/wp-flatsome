@@ -1,0 +1,114 @@
+/*
+Theme Name: [Theme Name]
+Description: [Theme Description]
+Author: Zan Lete
+Template: flatsome
+Version: 0
+*/
+
+@import url("less/_variables.less");
+@import url("less/theme.less");
+
+@import "theme.css";
+
+#wrapper {
+
+	h1, h2, h3, h4, h5, h6 {
+		zoom: 2; font-weight: 300;
+		strong { color: @primary; font-weight: bold; }
+	}
+
+	#content {
+
+	}
+
+	#footer {
+
+	}
+
+	.button:not(.icon):not(.is-form):not(.single_add_to_cart_button) {
+		padding: 0.25em 1.5em;
+	}
+
+	.gap-element { min-height: inherit; }
+
+	.icon {
+		&.wishlist-button:hover { background: @primary; }
+		.is-outline {
+			border-color: rgba(@secondary, 50%);
+			:hover { color: @light; }
+		}
+	}
+}
+
+
+.mfp-content {
+
+	#main-menu.mobile-sidebar {
+		height: 100%;
+		background: @light;
+
+		.li { padding: 1em; height: 100%; }
+		.sidebar-menu {
+			padding: 0;
+			height: 100%;
+		}
+		.nav-vertical {
+			flex-flow: wrap;
+			justify-content: space-between;
+		}
+
+		.cart-item, .header-wishlist-icon, .header-search {
+			margin-top: 80px;
+			width: 60px;
+			margin-bottom: 0px;
+			border: none;
+		}
+
+		li.html.custom {
+			position: fixed;
+		    top: 0;
+		    justify-content: center;
+			height: 60px;
+		}
+
+		li.header-social-icons { text-align: center; }
+
+		button.toggle { transform: scale(.5); }
+		li.active ul.children {
+			font-size: .8em;
+			.row-slider {
+				display: none;
+				// margin: .5em .5em 0 0;
+				// background: @light;
+				// box-shadow: 0px 0px 20px rgba(@secondary, 10%);
+
+			}
+		}
+	}
+
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Helpers
+//--------------------------------------------------------------------------------------------------
+
+.is-back { z-index: -1; }
+.is-front { z-index: 1; }
+
+.bounce {
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-name: bounce;
+	animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+@keyframes bounce {
+	0%   { transform: scale(1,1)      translateY(0); }
+	4%  { transform: scale(1.1,.9)   translateY(0); }
+	10%  { transform: scale(.9,1.1)   translateY(-30px); }
+	15%  { transform: scale(1.05,.95) translateY(0); }
+	18%  { transform: scale(1,1)      translateY(-10px); }
+	25%  { transform: scale(1,1)      translateY(0); }
+	100% { transform: scale(1,1)      translateY(0); }
+}
