@@ -8,7 +8,7 @@
   "scripts": {
     "watch": "node node_modules/less-watch-compiler",
     "ignore-remote": "git update-index --assume-unchanged '.remote-sync.json'",
-    "ignore-variables": "git update-index --assume-unchanged 'less/_variables.less'"
+    "ignore-variables": "git update-index --assume-unchanged 'less/_variables.less'",
     "ignore-theme": "git update-index --assume-unchanged 'less/theme.less'"
   },
   "dependencies": {
