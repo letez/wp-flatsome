@@ -1,9 +1,9 @@
 {
   "transport": "ftp",
   "port": "21",
-  "hostname": "ftp.zanlete.com",
-  "username": "hbt@zanlete.com",
-  "password": "loremipsum",
+  "hostname": "",
+  "username": "",
+  "password": "",
   "target": "/wp-content/themes/",
   "ignore": [
     "/**",
