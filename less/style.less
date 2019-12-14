@@ -11,8 +11,16 @@ Version: 0
 
 @import "theme.css";
 
+
+//	************************************************************************************************
+//	FLATSOME THEME
+//	************************************************************************************************
+
+div.shop-page-title, div.category-page-title, div.page-title {
+	z-index: 1;
+}
 #wrapper {
-	
+
 	h1, h2, h3 {
 		line-height: 1em;
 		zoom: 2;
@@ -21,14 +29,18 @@ Version: 0
 	h4, h5 { zoom: 1.25; }
 	h6 { zoom: 0.75; }
 
+	#top-bar {
+		.html { strong { color: @light; } }
+	}
+	#masthead {
+
+	}
 	#content {
 
 	}
-
 	#footer {
 
 	}
-
 	.button:not(.icon):not(.is-form):not(.single_add_to_cart_button) {
 		padding: 0.25em 1.5em;
 	}
@@ -43,9 +55,22 @@ Version: 0
 		}
 	}
 }
-
-
+//	************************************************************************************************
+//	SIDEBARS AND LIGHTBOXES
+//	************************************************************************************************
 .mfp-content {
+
+	#shop-sidebar {
+		font-size: 80%;
+		.sidebar-inner { padding: 1.25em; }
+		.ui-slider-handle { background: @primary; }
+		.ui-slider-range { background: rgba(@secondary, 10%); }
+		.count { font-weight: bold; color: @primary; }
+		.has-block { .col { transition: none; } overflow: hidden; }
+		.product_list_widget {
+			img { padding: .5em; background: @light; border: 1px solid rgba(@secondary, 10%); }
+		}
+	}
 
 	#main-menu.mobile-sidebar {
 		height: 100%;
@@ -82,24 +107,242 @@ Version: 0
 			font-size: .8em;
 			.row-slider {
 				display: none;
-				// margin: .5em .5em 0 0;
-				// background: @light;
-				// box-shadow: 0px 0px 20px rgba(@secondary, 10%);
-
 			}
 		}
 	}
+}
+//	************************************************************************************************
+//	FLATSOME NAVIGATIONS
+//	************************************************************************************************
+#masthead .header-nav {
+	.has-dropdown {  }
+	.nav-dropdown {
+		padding: 1em 1em;
+		height: 100%;
+		.menu-item-has-children {
+			flex-direction: column;
+			padding-right: .5em;
+		}
+		.nav-column {
+			display: flex;
+			flex-direction: column;
+			height: 90%;
+			justify-content: space-evenly;
+			> li:last-child {
+				display: flex;
+				align-items: flex-end;
+				height: 100%;
+			}
+		}
+		.image-column {
+			// border: 1px solid red;
+			margin-leftt: 2em!important;
+		};
+	}
+}
+#footer .footer-nav {
+	p { font-weight: 400; }
+	ul { list-style: none; }
+	li {
+		margin: 0;
+		padding: 1em 0em;
+		border-bottom: 1px solid rgba(@secondary, 10%);
+		a {
+			opacity: .8;
+			color: @secondary;
+			&:hover { color: @primary; opacity: 1; }
+		}
+	}
+	font-size: 82.5%;
+	text-transform: uppercase;
+	.col-inner {
+		display: flex;
+	    flex-direction: column;
+	    justify-content: space-between;
+	    height: 100%;
+		& > div.has-block {
+			display: flex;
+			align-items: flex-end;
+		}
+	}
+}
+//	************************************************************************************************
+//	FLATSOME BANNERS
+//	************************************************************************************************
+// In Navigation Banners
+#masthead .header-nav .banner, #footer .banner-grid, .mfp-content .banner {
+	.button { transform: scale(.75); }
+}
+//	************************************************************************************************
+//	FLATSOME SLIDERS
+//	************************************************************************************************
+// In Navigation, Sidebars & Footer Sliders
+#masthead .header-nav .slider, #footer .slider, .mfp-content .slider {
+	.flickity-viewport {
+		margin-bottom: 0px;
+	}
+	.flickity-button, .flickity-page-dots {
+		transform: scale(.5)!important;
+	}
+	.flickity-page-dots {
+		// bordr: 1px solid red!important;
+		li { margin: 0em .3em; width: 1em; height: 1em; }
+	}
+	.badge-container { margin: 20px 0 0 10px; zoom: 0.5; font-weight: bolder; }
+	button:hover .arrow { fill: @light; }
 
+	&.row-slider {
+		button:hover .arrow { fill: @secondary;  }
+		.wishlist-button:hover .icon-heart { color: @light; }
+	}
+}
+//	************************************************************************************************
+//	WOOCOMMERCE AND FLATSOME
+//	************************************************************************************************
+//	SHOP - Nav Dropdown Cart
+li.cart-item.has-dropdown {
+	.cart_list {
+		.mini_cart_item {
+			display: flex;
+			flex-wrap: wrap;
+			&:not(:first-of-type) {
+				img { top: 1.25em; }
+				padding-top: 1.25em;
+			}
+			padding-bottom: 1.25em;
+			border-color: rgba(@secondary, 10%);
+			a { transition: @ease @time; }
+			.remove { border: none; }
+		}
+	}
+}
+//	SHOP - Category Filters
+div.category-filtering {
+
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+
+	.filter-button { white-space: nowrap; margin-right: 1em; }
+	> div { width: 100%; }
+	.widget {
+		display: flex;
+		align-items: flex-end;
+		font-size: 80%;
+		margin-bottom: -0.5em;
+
+		.widgettitle { display: none; }
+		// ul { display: flex; margin-bottom: -0.5em; }
+		li a {
+			transition: @ease @time;
+			padding: 0.6em 1.1em 0.7em 0.8em;
+			background: rgba(@light, 3%);
+			border-color: rgba(@secondary, 5%);
+			&:before {
+				transition: @ease @time;
+				content: "\00d7";
+				background: @primary;
+				border-radius: 100px;
+				padding: .25em 0.45em;
+				line-height: 1em;
+				color: @light;
+				font-weight: bold;
+			}
+		}
+	}
+	@media only screen  and (max-device-width : 420px) {
+		flex-direction: column;
+		align-items: center;
+		.filter-button { margin: 0; }
+		> div { width: inherit; margin-top: 1em; }
+		li a:before { opacity: 1; }
+	}
+}
+// WooCommerce Row and Col
+.woocommerce.row {
+	@media only screen  and (min-device-width : 960px) {
+		.col:first-of-type { padding-right: calc(2* @layout-density); }
+		.col:last-of-type { padding-left: calc(2* @layout-density);  border-color: rgba(@secondary, 10%); }
+	}
+}
+.woocommerce-checkout {
+	@media only screen  and (min-device-width : 960px) {
+		.col:last-of-type { padding-left: calc(2* @layout-density); }
+	}
+}
+//	Shop Table General
+.woocommerce {
+	table {
+		thead {
+			th, td { padding-top: @layout-density; padding-bottom: @layout-density;  }
+		}
+		tbody, tfoot {
+			th, > td, td[class*="product-"] { padding-top: @element-density; padding-bottom: @element-density; }
+			.actions { padding-top: calc(2 * @element-density); }
+		}
+	}
+}
+//	Proceed To Checkout
+.wc-proceed-to-checkout {
+	padding-top: @element-density; padding-bottom: @element-density;
 }
 
+// PAYPAL
+.cart-item.has-dropdown {
+	.angelleye_smart_button_mini { margin-top: 1em; }
+}
+.woocommerce-checkout {
+	.has-border {
+		background: rgba(@secondary, 3%);
+		border: 1px solid rgba(@secondary, 10%);
+		button.button { min-width: 100%; }
+		@media only screen  and (max-device-width : 420px) {
+			padding: 1em;
+		}
+	}
+}
+#order_review {
+	table {
+		font-size: 1em;
+		margin-bottom: 2em;
+		thead th { padding-bottom: 1.5em; }
+		td.product-name, td.product-total { font-size: 70%; }
+	}
+}
+#payment {
+	.wc_payment_method {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 100%;
 
-//--------------------------------------------------------------------------------------------------
-// Helpers
-//--------------------------------------------------------------------------------------------------
-
+		.payment_box {
+			> p { margin-bottom: 1.5em; }
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			margin: 1em 0 0 0;
+		}
+		label {
+		    white-space: nowrap;
+			img { transform: scale(.7) ;}
+		}
+		.input-radio, label { margin-bottom: 0!important; }
+		@media only screen  and (max-device-width : 420px) {
+			label img { display: none; }
+		}
+	}
+	.angelleye_smart_button_checkout_bottom { margin-bottom: 1em; }
+}
+	.angelleye_smart_button_bottom { transition: none!important; * { z-index: 0; transition: none!important; } }
+//	************************************************************************************************
+//	HELPERS
+//	************************************************************************************************
 .is-back { z-index: -1; }
 .is-front { z-index: 1; }
-
+//	************************************************************************************************
+//	ANIMATIONS
+//	************************************************************************************************
 .bounce {
 	animation-duration: 4s;
 	animation-iteration-count: infinite;
