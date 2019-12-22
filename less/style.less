@@ -11,7 +11,6 @@ Version: 0
 
 @import "theme.css";
 
-
 //	************************************************************************************************
 //	FLATSOME THEME
 //	************************************************************************************************
@@ -27,7 +26,7 @@ div.shop-page-title, div.category-page-title, div.page-title {
 		strong { color: @primary; font-weight: bold; }
 	}
 	h4, h5 { zoom: 1.25; }
-	h6 { zoom: 0.75; }
+	h6 { zoom: 1; }
 
 	#top-bar {
 		.html { strong { color: @light; } }
@@ -258,6 +257,61 @@ div.category-filtering {
 		li a:before { opacity: 1; }
 	}
 }
+// PRODUCT LISTING (Shop, Sliders, Banners)
+div[class*="product"].box {
+	z-index: 0;
+	&.box-vertical {
+		display: flex;
+		.box-text {
+			display: flex;
+			flex-direction: column;
+			.box-excerpt { height: 100%; }
+		}
+	}
+	.box-text { padding: inherit 0 inherit 0; }
+	.title-wrapper:not(:empty) {
+		padding: calc(@element-density / 2 ) 0;
+	}
+	.price-wrapper {
+		padding: 0 0 calc(@element-density / 2 ) 0;
+	}
+
+	&.box-shade.dark {
+		p  { color: @primary!important; }
+	}
+}
+.sticky-add-to-cart {
+	display: flex;
+	justify-content: space-between;
+	.single_add_to_cart_button { margin-bottom: 0; width: 100%; }
+
+	&.sticky-add-to-cart--active {
+		background-color: @light;
+		justify-content: center;
+		.single_add_to_cart_button { width: auto; }
+	}
+}
+.product-gallery-slider {
+	background-color: initial!important;
+	.flickity-viewport{
+		mix-blend-mode: multiply;
+		// -webkit-mask-image: radial-gradient(circle at 50% 50%, black , transparent 70%);
+	}
+	.flickity-button svg {
+		border-color: rgba(@secondary, 30%);
+		& .arrow { fill: rgba(@secondary, 30%); }
+	}
+	& > svg { fill: @secondary; }
+}
+.product-thumbnails {
+	.col:not(.is-selected) {
+		a { background: none; }
+		a:hover { border: none; }
+	}
+	.col.is-selected {
+		a  { border: none; background: none; }
+	}
+}
 // WooCommerce Row and Col
 .woocommerce.row {
 	@media only screen  and (min-device-width : 960px) {
@@ -286,8 +340,7 @@ div.category-filtering {
 .wc-proceed-to-checkout {
 	padding-top: @element-density; padding-bottom: @element-density;
 }
-
-// PAYPAL
+// PayPal
 .cart-item.has-dropdown {
 	.angelleye_smart_button_mini { margin-top: 1em; }
 }
@@ -334,12 +387,79 @@ div.category-filtering {
 	}
 	.angelleye_smart_button_checkout_bottom { margin-bottom: 1em; }
 }
-	.angelleye_smart_button_bottom { transition: none!important; * { z-index: 0; transition: none!important; } }
+.angelleye_smart_button_bottom { transition: none!important; * { z-index: 0; transition: none!important; } }
+// Product Review Section
+div#reviews {
+	#review_form {
+		.review-form-inner {
+			h3 { font-size: 80%; }
+			a[class*="star-"] {
+				background: initial;
+				border-color: rgba(@secondary, 20%);
+				&:after { color: rgba(@secondary, 20%); transition: @ease @time; }
+				&:hover { &:after { color: @secondary; } }
+				&.active:after { color: @secondary; }
+			}
+			padding: @element-density;
+			border: none;
+		}
+		form, form input { margin-bottom: 0; padding-bottom: 0; }
+		background: rgba(@secondary, 10%);
+	}
+	@media only screen  and (max-device-width : 420px) {
+		form input { width: 100%; }
+		p.stars { margin-left: .3em; }
+		p.stars a { font-size: 80%; }
+	}
+}
+// Product Tabbed Content
+div.tabbed-content {
+	.tab-panels { border: none; padding: 2* @element-density 0 0; border-top: 1px solid rgba(@secondary, 10%); }
+	a { background: rgba(@secondary, 2%); border-color: rgba(@secondary, 10%); }
+}
+// Minimal Form Styles
+div.form-minimal {
+	input.minus {
+		border-top-right-radius: initial!important;
+		border-bottom-right-radius: initial!important;
+	}
+	input.plus { border-top-left-radius: initial!important; border-bottom-left-radius: initial!important; }
+	input.button, input.text, select { border-color: @secondary; color: @secondary; }
+	.woocommerce-variation-price  { border-color: rgba(@secondary, 20%);  }
+
+	.variations {
+		// td:first-of-type { width: 30%; }
+		label { white-space: nowrap; margin-right: @element-density; }
+	}
+
+	.button.is-form:hover { background: @secondary; color: @primary; box-shadow: 0; }
+}
+// Fly-By Animated Add To Cart, Checkout Buttons
+.wc-proceed-to-checkout, .place-order, .sticky-add-to-cart, .widget_shopping_cart_content {
+	button, .checkout, .checkout-button {
+		z-index: 1;
+		overflow: hidden;
+		&:hover {
+			transition: @ease @time * 3.5;
+			color: @primary;
+			&:after {
+				content: "";
+				position: absolute;
+				transform: skewX(-40deg);
+				animation-duration: @time * 3.5;
+				animation-name: btn-flyby;
+				animation-timing-function: easeInOutBack;
+			}
+		}
+	}
+}
 //	************************************************************************************************
 //	HELPERS
 //	************************************************************************************************
-.is-back { z-index: -1; }
+.is-back { z-index: 0; overflow: hidden; }
 .is-front { z-index: 1; }
+.radius-3 { .col-inner { border-radius: 3px; }}
+.flex-top { align-items: start; }
 //	************************************************************************************************
 //	ANIMATIONS
 //	************************************************************************************************
@@ -357,4 +477,19 @@ div.category-filtering {
 	18%  { transform: scale(1,1)      translateY(-10px); }
 	25%  { transform: scale(1,1)      translateY(0); }
 	100% { transform: scale(1,1)      translateY(0); }
+}
+@keyframes bounceSmall {
+    0%   { transform: scale(1,1)      translateY(0); }
+	10%  { transform: scale(1.1,.9)   translateY(0); }
+	30%  { transform: scale(.9,1.1)   translateY(-20px); }
+	50%  { transform: scale(1.05,.95) translateY(0); }
+	57%  { transform: scale(1,1)      translateY(-2px); }
+	64%  { transform: scale(1,1)      translateY(0); }
+	100% { transform: scale(1,1)      translateY(0); }
+}
+
+@keyframes btn-flyby {
+	0%   { width: 0%; height: 200%; top: -50%; left: -20%; opacity: .5; filter: blur(5px); background: rgba(shade(@primary, 40%), 100%);}
+	50% { width: 200%; height: 200%; top: -50%; left: 0%;  opacity: 1; filter: blur(25px); background: rgba(@primary, 50%);}
+	100% { width: 0%; height: 200%; top: -50%; left: 120%; opacity: .5; filter: blur(5px); background: rgba(shade(@primary, 40%), 100%); }
 }
