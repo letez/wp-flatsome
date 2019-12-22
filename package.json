@@ -9,7 +9,8 @@
     "watch": "node node_modules/less-watch-compiler",
     "ignore-remote": "git update-index --assume-unchanged '.remote-sync.json'",
     "ignore-variables": "git update-index --assume-unchanged 'less/_variables.less'",
-    "ignore-theme": "git update-index --assume-unchanged 'less/theme.less'"
+    "ignore-theme": "git update-index --assume-unchanged 'less/theme.less'",
+    "git-ignore": "git update-index --assume-unchanged 'less/theme.less'; git update-index --assume-unchanged 'flatsome-child/theme.php'"
   },
   "dependencies": {
     "less": "^3.9.0",
