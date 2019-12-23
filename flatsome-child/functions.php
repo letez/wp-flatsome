@@ -1,6 +1,8 @@
 <?php
-// MAIN.JS
+// MAIN.JS, VUEjs, VUE-Loader
 function main_js() {
+	wp_enqueue_script('vue', 'https://unpkg.com/vue');
+	wp_enqueue_script('vue-loader', 'https://unpkg.com/http-vue-loader');
 	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/main.js');
 }
 add_action('wp_footer','main_js');
