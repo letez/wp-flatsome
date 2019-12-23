@@ -7,7 +7,7 @@
   },
   "scripts": {
     "watch": "node node_modules/less-watch-compiler",
-    "git-ignore": "git update-index --assume-unchanged '.remote-sync.json'; git update-index --assume-unchanged 'less/_variables.less'; git update-index --assume-unchanged 'less/theme.less'; git update-index --assume-unchanged 'less/theme.less'; git update-index --assume-unchanged 'flatsome-child/theme.php'; git update-index --assume-unchanged 'flatsome-child/components/component.vue'"
+    "git-ignore": "git update-index --assume-unchanged '.remote-sync.json'; git update-index --assume-unchanged 'less/_variables.less'; git update-index --assume-unchanged 'less/theme.less'; git update-index --assume-unchanged 'less/theme.less'; git update-index --assume-unchanged 'flatsome-child/theme.php'; git update-index --assume-unchanged 'flatsome-child/main.js'; git update-index --assume-unchanged 'flatsome-child/components/component.vue'"
   },
   "dependencies": {
     "less": "^3.9.0",
