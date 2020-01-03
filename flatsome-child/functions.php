@@ -1,8 +1,9 @@
 <?php
 // MAIN.JS, VUEjs, VUE-Loader
 function main_js() {
-	wp_enqueue_script('vue', 'https://unpkg.com/vue');
-	wp_enqueue_script('vue-loader', 'https://unpkg.com/http-vue-loader');
+	wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');
+	wp_enqueue_script('vue-loader', 'https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js');
+	wp_enqueue_script('axios', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js');
 	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/main.js');
 }
 add_action('wp_footer','main_js');

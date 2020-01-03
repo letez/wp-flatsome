@@ -11,6 +11,7 @@ Version: 0
 
 @import "theme.css";
 
+
 //	************************************************************************************************
 //	FLATSOME THEME
 //	************************************************************************************************
@@ -57,7 +58,13 @@ div.shop-page-title, div.category-page-title, div.page-title {
 //	************************************************************************************************
 //	SIDEBARS AND LIGHTBOXES
 //	************************************************************************************************
+div.mfp-ready.mfp-bg {
+	opacity: .95!important;
+}
 .mfp-content {
+
+	height: 100%;
+	display: inline-flex;
 
 	#shop-sidebar {
 		font-size: 80%;
@@ -73,7 +80,18 @@ div.shop-page-title, div.category-page-title, div.page-title {
 
 	#main-menu.mobile-sidebar {
 		height: 100%;
-		background: @light;
+		// background: @light;
+
+		.no-scrollbar {
+			li a { color: @primary; }
+			.nav-vertical {
+				height: 100%;
+				align-content: center;
+				// height: 100%;
+				// li { padding: 0; margin: 0; }
+				// border: 1px solid red;
+			}
+		}
 
 		.li { padding: 1em; height: 100%; }
 		.sidebar-menu {
@@ -82,26 +100,32 @@ div.shop-page-title, div.category-page-title, div.page-title {
 		}
 		.nav-vertical {
 			flex-flow: wrap;
-			justify-content: space-between;
+			justify-content: space-evenly;
 		}
 
-		.cart-item, .header-wishlist-icon, .header-search {
-			margin-top: 80px;
+		.cart-item, .header-wishlist-icon, .header-search, li.html.custom  {
+			margin-bottom: @layout-density;
 			width: 60px;
 			margin-bottom: 0px;
 			border: none;
 		}
 
 		li.html.custom {
-			position: fixed;
-		    top: 0;
-		    justify-content: center;
-			height: 60px;
+			min-width: 145px;
 		}
 
-		li.header-social-icons { text-align: center; }
+		li.header-social-icons {
+			position: sticky;
+			bottom: 0;
+			text-align: center;
+			margin-top: @layout-density;
+			div {
+				display: flex;
+			    justify-content: space-around;
+			}
+		}
 
-		button.toggle { transform: scale(.5); }
+		button.toggle { font-weight: 300;  color: @primary; }
 		li.active ul.children {
 			font-size: .8em;
 			.row-slider {
@@ -109,6 +133,12 @@ div.shop-page-title, div.category-page-title, div.page-title {
 			}
 		}
 	}
+}
+#shop-sidebar {
+	.widget-title { color: @secondary; }
+	.widget { margin-bottom: @element-density; }
+	li:not(.active) > a { opacity: .5; transition: @ease @time; &:hover{ opacity: 1; } }
+	li.active > a { opacity: 1; }
 }
 //	************************************************************************************************
 //	FLATSOME NAVIGATIONS
@@ -126,7 +156,7 @@ div.shop-page-title, div.category-page-title, div.page-title {
 			display: flex;
 			flex-direction: column;
 			height: 90%;
-			justify-content: space-evenly;
+			justify-content: flex-start;
 			> li:last-child {
 				display: flex;
 				align-items: flex-end;
