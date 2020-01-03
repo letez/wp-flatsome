@@ -63,8 +63,8 @@ div.mfp-ready.mfp-bg {
 }
 .mfp-content {
 
-	height: 100%;
-	display: inline-flex;
+	// height: 100%;
+	// display: inline-flex;
 
 	#shop-sidebar {
 		font-size: 80%;
@@ -79,13 +79,16 @@ div.mfp-ready.mfp-bg {
 	}
 
 	#main-menu.mobile-sidebar {
-		height: 100%;
+		// height: 100%;
 		// background: @light;
 
-		.no-scrollbar {
-			li a { color: @primary; }
+		.no-scrollbar.sidebar-menu {
+			&.text-center {
+				li a { color: @primary; }
+			}
+
 			.nav-vertical {
-				height: 100%;
+				// height: 100%;
 				align-content: center;
 				// height: 100%;
 				// li { padding: 0; margin: 0; }
@@ -96,7 +99,7 @@ div.mfp-ready.mfp-bg {
 		.li { padding: 1em; height: 100%; }
 		.sidebar-menu {
 			padding: 0;
-			height: 100%;
+			// height: 100%;
 		}
 		.nav-vertical {
 			flex-flow: wrap;
@@ -109,19 +112,21 @@ div.mfp-ready.mfp-bg {
 			margin-bottom: 0px;
 			border: none;
 		}
-
+		li { border: none; }
 		li.html.custom {
-			min-width: 145px;
+			display: flex;
+			justify-content: center;
+			min-width: 100%;
+			img { width: 50%; }
 		}
 
 		li.header-social-icons {
-			position: sticky;
-			bottom: 0;
+			border: none;
 			text-align: center;
 			margin-top: @layout-density;
 			div {
 				display: flex;
-			    justify-content: space-around;
+			    justify-content: space-evenly;
 			}
 		}
 
