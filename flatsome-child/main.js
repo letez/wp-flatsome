@@ -13,7 +13,11 @@
 
 (function($) {
 	$("section.fold-top").css({
-		'min-height': window.innerHeight - $("section.fold-bottom").height() + 'px'
+		'min-height': window.innerHeight - $("section.fold-bottom").height() + 'px',
+		'max-height': window.innerHeight - $("section.fold-bottom").height() + 'px'
+	});
+	$("section.fold-top .slider").css({
+		'height': window.innerHeight - $("section.fold-bottom").height() + 'px'
 	});
 	if (/Mobi/.test(navigator.userAgent)) {
 
