@@ -1,19 +1,19 @@
 ( function() {
-
 	let component_path = '/../wp-content/themes/flatsome-child/components/';
 
 	new Vue({
 		el: document.querySelector('#app'),
+		mounted () {},
         components: {
-			'my-component-name': window.httpVueLoader(component_path + 'component.vue')
+			'customizer': window.httpVueLoader(component_path + 'customizer.vue')
 	  }
 	});
 })
 (Vue);
 
 (function($) {
-	$("section.fold-master").css({
-		'min-height': window.innerHeight - $("section.fold-slider").height() + 'px'
+	$("section.fold-top").css({
+		'min-height': window.innerHeight - $("section.fold-bottom").height() + 'px'
 	});
 	if (/Mobi/.test(navigator.userAgent)) {
 
