@@ -1,21 +1,32 @@
 ( function() {
-
 	let component_path = '/../wp-content/themes/flatsome-child/components/';
 
 	new Vue({
 		el: document.querySelector('#app'),
+		mounted () {},
         components: {
-			'my-component-name': window.httpVueLoader(component_path + 'component.vue')
+			'customizer': window.httpVueLoader(component_path + 'customizer.vue')
 	  }
 	});
 })
 (Vue);
 
 (function($) {
-	$("section.fold-master").css({
-		'min-height': window.innerHeight - $("section.fold-slider").height() + 'px'
-	});
-	if (/Mobi/.test(navigator.userAgent)) {
+	// Above Fold Section Heights - Slider support
+	if($("section.fold-top").find("div.slider").length !== 0) {
+		$("section.fold-top div.flickity-viewport").ready( () => {
+			(/Mobi/.test(navigator.userAgent)) ? let = mobileAddressBar = 55 : let = mobileAddressBar = 0;
+			$("section.fold-top div.flickity-viewport").css({
+				'max-height': $(window).height() - $("section.fold-bottom").height() + 'px'
+			})
+		});
+	} else {
+		$("section.fold-top").css({
+			'height': $(window).height() - $("section.fold-bottom").height() + 'px'
+		})
+	}
+
+ 	if (/Mobi/.test(navigator.userAgent)) {
 
 	}
 })( jQuery );
