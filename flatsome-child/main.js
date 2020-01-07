@@ -12,14 +12,21 @@
 (Vue);
 
 (function($) {
-	$("section.fold-top").css({
-		'min-height': window.innerHeight - $("section.fold-bottom").height() + 'px',
-		'max-height': window.innerHeight - $("section.fold-bottom").height() + 'px'
-	});
-	$("section.fold-top .slider").css({
-		'height': window.innerHeight - $("section.fold-bottom").height() + 'px'
-	});
-	if (/Mobi/.test(navigator.userAgent)) {
+	// Above Fold Section Heights - Slider support
+	if($("section.fold-top").find("div.slider").length !== 0) {
+		$("section.fold-top div.flickity-viewport").ready( () => {
+			(/Mobi/.test(navigator.userAgent)) ? let = mobileAddressBar = 55 : let = mobileAddressBar = 0;
+			$("section.fold-top div.flickity-viewport").css({
+				'max-height': $(window).height() - $("section.fold-bottom").height() + 'px'
+			})
+		});
+	} else {
+		$("section.fold-top").css({
+			'height': $(window).height() - $("section.fold-bottom").height() + 'px'
+		})
+	}
+
+ 	if (/Mobi/.test(navigator.userAgent)) {
 
 	}
 })( jQuery );
