@@ -32,6 +32,7 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 	margin: 0!important;
 	z-index: 0;
 	font-size: 100%!important;
+	border-radius: @theme-radius!important;
 }
 //	************************************************************************************************
 //	STYLE FORMS
@@ -40,14 +41,14 @@ input[type='email'], input[type='date'], input[type='search']:not(.ux-search-sub
 input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
 .select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection {
 	&:not(.orderby) {
-		padding: calc(@theme-density / 1.66) calc(@theme-density / 3);
+		padding: calc(@theme-density / 1.73) calc(@theme-density / 3);
 	}
 	&.orderby {
 		height: calc(@theme-density * 1.26);
 		padding: 0 calc(@theme-density / 1.66)
 	}
 
-	margin-bottom: calc(@theme-density / 2)!important;
+	// margin-bottom: calc(@theme-density / 2)!important;
 
 	& when (@theme-form = normal) {
 		background: linear-gradient(0deg, rgba(@dark,0.030) 0%, rgba(@dark,0.015) 20%, rgba(@light, 0) 100%);
@@ -71,24 +72,27 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
 .fl-wrap {
-	label { opacity: .25!important;}
+	label { opacity: .25!important; margin-top: calc(@theme-density / 6); }
 	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
 	.select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection {
 		&:not(.orderby):not(.fl-select) {
-			padding: calc(@theme-density / 1.15) calc(@theme-density / 3) calc(@theme-density / 1.66) calc(@theme-density / 3);
-		}
-		&.fl-select {
-			height: calc(@theme-density * 1.54);
+			padding: calc(@theme-density / 1.05) calc(@theme-density / 3) calc(@theme-density / 1.75) calc(@theme-density / 3);
 			margin-bottom: calc(@theme-density / 1.4)!important;
 		}
+		&.fl-select {
+			height: calc(@theme-density * 1.5);
+			margin-bottom: calc(@theme-density / 1.4)!important;
+			padding-top: calc(@theme-density / 1.4);
+		}
+		.fl-label { border: 1px solid red!important; }
 	}
 }
 
 form {
-	input, textarea, select, button {
-		border-radius: @theme-radius!important;
-	}
+	// input, textarea, select, button {
+	// 	border-radius: @theme-radius!important;
+	// }
 	input[type="search"][type="text"] {
 		min-height: 100%;
 		border: 2px solid red!important;
