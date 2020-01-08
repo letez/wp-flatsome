@@ -72,8 +72,8 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 //	************************************************************************************************
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
-.fl-wrap.fl-is-active {
-	&& label { opacity: .25; top: calc(@theme-density / 3.5); }
+#wrapper div.fl-wrap.fl-is-active {
+	label { opacity: .25; top: calc(@theme-density / 3.5)!important; }
 	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select {
 		&:not(.fl-select):not(textarea) {
