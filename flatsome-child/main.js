@@ -14,10 +14,17 @@
 (function($) {
 	// Above Fold Section Heights - Slider support
 	if($("section.fold-top").find("div.slider").length !== 0) {
+
 		$("section.fold-top div.flickity-viewport").ready( () => {
-			(/Mobi/.test(navigator.userAgent)) ? let = mobileAddressBar = 55 : let = mobileAddressBar = 0;
+			// (/Mobi/.test(navigator.userAgent)) ? mobileAddressBar = 55 : mobileAddressBar = 0;
+			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
+			$("section.fold-top").css({
+				'padding-top': topBarHeight + 'px'
+			})
 			$("section.fold-top div.flickity-viewport").css({
-				'max-height': $(window).height() - $("section.fold-bottom").height() + 'px'
+				'max-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+			}).find('div.banner').css({
+				'max-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
 		});
 	} else {

@@ -20,7 +20,7 @@ div.shop-page-title, div.category-page-title, div.page-title {
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
-.select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection {
+.select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection, .select2-results__options {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none!important;
@@ -29,26 +29,29 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 	&:-webkit-autofill:hover,
 	&:-webkit-autofill:focus,
 	:-webkit-autofill:active { -webkit-box-shadow: 0 0 0 @theme-density @light inset !important; }
-	margin: 0!important;
+	margin: 0;
 	z-index: 0;
-	font-size: 100%!important;
-	border-radius: @theme-radius!important;
+	font-size: 100%;
+	border-radius: @theme-radius;
 }
 //	************************************************************************************************
 //	STYLE FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
-.select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection {
-	&:not(.orderby) {
+.select2-selection {
+	&:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
 		padding: calc(@theme-density / 1.73) calc(@theme-density / 3);
 	}
-	&.orderby {
+	&.orderby, &.select2-selection, &[class=""] {
+		margin: 0;
 		height: calc(@theme-density * 1.26);
-		padding: 0 calc(@theme-density / 1.66)
+		padding: 0 calc(@theme-density / 1.66);
+		&.select2-selection {
+			padding: 0;
+			.select2-selection__rendered { padding: calc(@theme-density / 8) calc(@theme-density / 2.5); }
+		}
 	}
-
-	// margin-bottom: calc(@theme-density / 2)!important;
 
 	& when (@theme-form = normal) {
 		background: linear-gradient(0deg, rgba(@dark,0.030) 0%, rgba(@dark,0.015) 20%, rgba(@light, 0) 100%);
@@ -65,38 +68,75 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 	& when (@theme-form = minimal) {
 		border-bottom: 2px solid rgba(@dark, 10%);
 	}
-
-	// border-radius: 1px;
 }
 //	************************************************************************************************
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
-.fl-wrap {
-	label { opacity: .25!important; margin-top: calc(@theme-density / 6); }
+.fl-wrap.fl-is-active {
+	&& label { opacity: .25; top: calc(@theme-density / 3.5); }
 	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
-	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
-	.select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection {
-		&:not(.orderby):not(.fl-select) {
-			padding: calc(@theme-density / 1.05) calc(@theme-density / 3) calc(@theme-density / 1.75) calc(@theme-density / 3);
-			margin-bottom: calc(@theme-density / 1.4)!important;
+	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select {
+		&:not(.fl-select):not(textarea) {
+			padding: calc(@theme-density / 1.25) calc(@theme-density / 3) calc(@theme-density / 2.25) calc(@theme-density / 3.25);
+			margin-bottom: calc(@theme-density / 4)!important;
 		}
 		&.fl-select {
-			height: calc(@theme-density * 1.5);
-			margin-bottom: calc(@theme-density / 1.4)!important;
-			padding-top: calc(@theme-density / 1.4);
+			padding-top: 0; padding-bottom: 0;
+			padding-top: calc(@theme-density / 3);
+			height: calc(@theme-density * 1.4);
+			margin-bottom: calc(@theme-density / 2)!important;
 		}
-		.fl-label { border: 1px solid red!important; }
 	}
 }
+//	************************************************************************************************
+//	STYLE SELECT2
+//	************************************************************************************************
+span.select2-container {
+	margin: 0;
+	color: @dark;
+	ul { li { margin: 0; font-size: 80%; } }
+	& when (@theme-form = normal) {
 
-form {
-	// input, textarea, select, button {
-	// 	border-radius: @theme-radius!important;
-	// }
-	input[type="search"][type="text"] {
-		min-height: 100%;
-		border: 2px solid red!important;
 	}
+	& when (@theme-form = flat) {
+		.select2-selection { border: 1px solid rgba(@dark, 10%); background: rgba(@dark, 3%); }
+		.select2-dropdown  { border: 1px solid rgba(@dark, 10%); background: @light; }
+		.select2-search { border: none; background: rgba(@dark, 3%); .select2-search__field { border: none; background: rgba(@dark, 5%); } }
+		.select2-results__option[data-selected="true"] { background: rgba(@dark, 10%); font-weight: bold; }
+		.select2-results__option--highlighted[data-selected] { background: rgba(@dark, 3%); color: @dark; }
+	}
+	& when (@theme-form = clean) {
+		.select2-selection, .select2-dropdown { border: 1px solid rgba(@dark, 10%); }
+		.select2-search { border: 1px solid rgba(@dark, 10%); .select2-search__field { border: none; } }
+		.select2-results__option[data-selected="true"] { background: rgba(@dark, 10%); font-weight: bold; }
+		.select2-results__option--highlighted[data-selected] { background: rgba(@dark, 5%);  color: @dark; }
+	}
+	& when (@theme-form = minimal) {
+		// border-bottom: 2px solid rgba(@dark, 10%);
+	}
+}
+//	************************************************************************************************
+//	FORM BUTTONS
+//	************************************************************************************************
+#wrapper form input[type="button"] {
+	& when (@theme-form = normal) {
+		border: 1px solid rgba(@dark, 20%);
+	}
+	& when (@theme-form = flat) {
+		border: 1px solid rgba(@dark, 10%);
+	}
+	& when (@theme-form = clean) {
+		border: 1px solid rgba(@dark, 10%);
+	}
+	& when (@theme-form = minimal) {
+		border-bottom: 2px solid rgba(@dark, 10%);
+	}
+}
+//	************************************************************************************************
+//	FORM GENERAL
+//	************************************************************************************************
+form {
+	abbr.required { color: @alert; }
 	& .flex-col {
 		input:first-of-type { border-top-right-radius: 0!important; border-bottom-right-radius: 0!important; }
 		button:last-of-type { border-top-left-radius: 0!important; border-bottom-left-radius: 0!important; }
