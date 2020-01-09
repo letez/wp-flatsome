@@ -5,7 +5,12 @@ Author: Zan Lete
 Template: flatsome
 Version: 0
 */
-
+//	************************************************************************************************
+//	HIDDEN ELEMENTS
+//	************************************************************************************************
+#wrapper {
+	.wishlist-popup { display: none; }
+}
 //	************************************************************************************************
 //	FONTS
 //	************************************************************************************************
@@ -26,7 +31,7 @@ Version: 0
     // -ms-hyphens: auto;
     // hyphens: auto;
 
-	h1, h2, h3, { strong { color: @secondary; } }
+	h1, h2, h3, { strong { color: @primary; } }
 	h3#ship-to-different-address { font-size: 1em; margin: 0; padding: 0;}
 	div.col-inner p { margin-bottom: @margin-normal; }
 }
@@ -75,9 +80,9 @@ Version: 0
 //	************************************************************************************************
 //	BUTTONS
 //	************************************************************************************************
-.button, button, input[type='submit'], input[type='submit'].button,  input[type='button'], input[type='button'].button, input[type='button'].button
+.button, button, input[type='submit'], input[type='submit'].button, input[type='button'], input[type='button'].button, input[type='button'].button
 input[type='reset'], input[type='reset'].button {
-	&:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not([class*="flickity"]) {
+	&:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not(.wishlist-button):not([class*="flickity"]):not([class*="edit-"]):not([class*="add_to"]) {
 		padding: @padding-small @padding-normal;
 		border-radius: @theme-radius;
 	}
@@ -495,7 +500,7 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 		.image-column { margin-left: 2em!important; white-space: normal; };
 	}
 }
-#footer .footer-nav {
+#wrapper .footer-nav {
 	p { font-weight: 400; }
 	ul { list-style: none; padding-bottom: @theme-density / 1.25; }
 	li {
@@ -513,35 +518,25 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 //	************************************************************************************************
 //	FLATSOME ACCORDION
 //	************************************************************************************************
-.accordion {
+#wrapper div.accordion {
 	a, button, i { transition: initial; }
-	& .accordion-title { transition: @ease @time; padding: calc(@theme-density / 1.35) calc(@theme-density * 1.25); border-color: rgba(@dark, 10%);
-		// font-size: 80%!important;
-	}
+	& .accordion-title { transition: @ease @time; padding: @padding-normal @padding-large; border-color: rgba(@dark, 10%); }
 	.active { background-color: initial; }
-	.toggle { top: calc(@theme-density / 1.55);
-		i {
-			// font-size: 1.25em;
-		}
-	}
-	.active .toggle { top: 1.1em; }
-	.accordion-inner { padding: 1em 0em; }
+	.toggle { top: 1.25em; }
+	// .active .toggle { top: 1.1em; }
+	.accordion-inner { padding: @padding-small 0 @padding-large 0; }
 	.accordion-title:hover { color: @primary; }
 }
 //	************************************************************************************************
 //	FLATSOME BANNERS
 //	************************************************************************************************
-// In Navigation Banners
-// .banner {
-#masthead .banner, #footer .banner, .mfp-content .banner, section.footer {
-	// .text-box { font-size: initial; }
-	// .button { transform: scale(.75); }
+#wrapper div.banner {
+	div.text-box { font-size: initial; }
 }
 //	************************************************************************************************
 //	FLATSOME SLIDERS
 //	************************************************************************************************
-// In Navigation, Sidebars & Footer Sliders
-div.slider {
+#wrapper div.slider {
 	div.flickity-slider {
 		& > div { }
 	}
@@ -579,7 +574,7 @@ div.slider {
 		div.box-text:last-child { margin-bottom: calc(@theme-density * 1.25) };
 	}
 	div.col { padding-bottom: 0!important; margin-bottom: 0;}
-	div.box-text { margin: 0; padding: 0; }
+	// div.box-text { margin: 0; padding: 0; }
 }
 //	************************************************************************************************
 //	LIGHTBOX
@@ -587,15 +582,36 @@ div.slider {
 .lightbox-content {
 	background: none;
 }
-
+//	************************************************************************************************
+//	PRODUCT BOX
+//	************************************************************************************************
+.lightbox-content {
+	background: none;
+}
 
 //	************************************************************************************************
 //	WOOCOMMERCE AND FLATSOME
 //	************************************************************************************************
 
 //	************************************************************************************************
-//	PRODUCT
+//	FLATSOME PRODUCT CATEGORIES
 //	************************************************************************************************
+#wrapper div.box-category {
+	.box-text {
+		padding: @padding-small;
+		h5 { font-size: 2em; }
+		p { font-size: .7em; }
+	}
+}
+
+#wrapper div.box[class*="product"]  {
+	.box-text {
+		padding: @padding-normal;
+		.category { margin-bottom: 0;}
+		.product-title { padding-bottom: @padding-normal; }
+		.price-wrapper {}
+	}
+}
 
 // Product Add To Cart
 #wrapper {
@@ -788,10 +804,10 @@ div[class*="product"].box, div[class*="category"].box  {
 	// .price-wrapper {
 	// 	padding: 0 0 calc(@theme-density / 4 ) 0;
 	// }
-
-	&.box-shade.dark {
-		p  { color: @primary!important; }
-	}
+	//
+	// &.box-shade.dark {
+	// 	p  { color: @primary!important; }
+	// }
 }
 .sticky-add-to-cart {
 	display: flex;
