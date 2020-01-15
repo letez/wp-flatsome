@@ -653,11 +653,12 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 //	PRODUCT PAGE - ADD TO CART SECTION
 //	************************************************************************************************
 #wrapper {
-	div.add-to-cart-container {
-		input[type="button"].minus { margin-right: -@theme-radius; text-align: center; width: @padding-large / 1.5; }
-		input[type="button"].plus { margin-left: -@theme-radius; text-align: center; width: @padding-large / 1.5; }
-		input[type="number"].qty { z-index: 1; min-height: 100%; max-height: 100%; margin: 0; }
 
+	input[type="button"].minus { margin-right: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%); }
+	input[type="button"].plus { margin-left: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%); }
+	input[type="number"].qty { z-index: 1; min-height: 100%; max-height: 100%; margin: 0; background: @light; }
+
+	div.add-to-cart-container {
 		table.variations {
 			a.reset_variations { bottom: 90%; opacity: .8; }
 			td:first-of-type { width: 40%; padding-right: @padding-small; text-align: left;}
@@ -723,7 +724,12 @@ div#reviews {
 
 	h3 { padding-bottom: @padding-small; }
 	& .woocommerce-cart-form {
-		// border: 1px solid red;
+		.product-name a { transition: @ease @time; &:hover { color: @secondary; } }
+	}
+
+	& .checkout_coupon {
+		input, button { margin: 0; }
+		button { min-width: 220px; }
 	}
 
 	& .cart-sidebar {
@@ -761,7 +767,7 @@ div#reviews {
 			// background: rgba(@dark, 3%);
 			border: 1px solid rgba(@dark, 10%);
 			p, fieldset, input { margin-bottom: 0; }
-			img { float: right; zoom: .5;}
+			img { float: right; zoom: .5; margin-top: @padding-small * 2; }
 			.payment_box {
 				margin-top: @padding-normal;
 				p { margin-bottom: @padding-normal / 2; }
@@ -841,25 +847,25 @@ div.category-filtering {
 //	SHOP FILTERS
 //	************************************************************************************************
 #wrapper [class*="woocommerce-"][role="alert"] {
-	li, div { padding: calc(@theme-density / 2.5) calc(@theme-density / 4); }
-	.message-container  {
-		border-left: @theme-density solid rgba(@dark, 40%);
-		min-width: 100%;
-		text-align: left;
-	}
-	display: block;
-    &, & > li { width: 100%; margin: 0; padding: 0; }
-	background: @light;
-	transition: @ease 1s;
-	box-shadow: 0 -20px 50px rgba(@dark, 20%), 0 0px 5px rgba(@dark, 10%);
-	position: fixed; bottom: 0px; bottom: -50%; z-index: 100;
-
-	.alert-color  { color: @alert; border-color: @alert; }
-	.success-color  { color: @success; border-color: @success; }
-
-	@media only screen  and (max-device-width : 420px) {
-		font-size: 70%;
-	}
+	// li, div { padding: calc(@theme-density / 2.5) calc(@theme-density / 4); }
+	// .message-container  {
+	// 	border-left: @theme-density solid rgba(@dark, 40%);
+	// 	min-width: 100%;
+	// 	text-align: left;
+	// }
+	// display: block;
+    // &, & > li { width: 100%; margin: 0; padding: 0; }
+	// background: @light;
+	// transition: @ease 1s;
+	// box-shadow: 0 -20px 50px rgba(@dark, 20%), 0 0px 5px rgba(@dark, 10%);
+	// position: fixed; bottom: 0px; bottom: -50%; z-index: 100;
+	//
+	// .alert-color  { color: @alert; border-color: @alert; }
+	// .success-color  { color: @success; border-color: @success; }
+	//
+	// @media only screen  and (max-device-width : 420px) {
+	// 	font-size: 70%;
+	// }
 }
 p.woocommerce-invalid {
 	input { border-color: rgba(@alert, 70%); }
@@ -928,18 +934,19 @@ div[class*="product"].box, div[class*="category"].box  {
 .sticky-add-to-cart {
 	display: flex;
 	justify-content: space-between;
-	.single_add_to_cart_button { margin-bottom: 0; width: 100%; }
+	.single_add_to_cart_button { margin-bottom: 0; width: 100%; padding: 0 @padding-normal; }
 
 	&.sticky-add-to-cart--active {
 		background: @light;
 		border: none;
 		justify-content: center;
 		.single_add_to_cart_button { width: auto; }
-		.product-title-small { color: @primary; }
+		.product-title-small { color: @primary; text-align: left; }
 		.price {
 			.amount { color: @secondary; }
 			display: flex;
 			flex-direction: column;
+			text-align: right;
 		}
 	}
 }
