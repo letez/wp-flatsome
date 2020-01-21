@@ -265,7 +265,7 @@ a.button:not(.icon), button.button, input[type="submit"] {
 //	FLATSOME BACK TO TOP
 //	************************************************************************************************
 a.button.back-to-top {
-	z-index: 100;
+	z-index: 900;
 	transition: none;
 	transition: @ease @time;
 	border-color: @secondary;
@@ -313,9 +313,9 @@ a.button.back-to-top {
 		& ul > li  a:not(.button) { padding: @padding-normal / 1.5 0; }
 
 
-		& when (@dropdown-style = light) {
-
-		}
+		// & when (@dropdown-style = light) {
+		//
+		// }
 	}
 }
 body[class*="header-light"] #wrapper header {
@@ -419,8 +419,30 @@ footer#footer, section.footer-bottom {
 //	************************************************************************************************
 //	SIDEBARS AND LIGHTBOXES
 //	************************************************************************************************
+// #wrapper {
+// }
+
 div.mfp-ready.mfp-bg { opacity: .95!important; }
+
+
 .mfp-content {
+
+	#search-lightbox {
+		.ux-search-submit {
+			border-top-right-radius: @theme-radius;
+			border-bottom-right-radius: @theme-radius;
+		}
+		.autocomplete-suggestions {
+			&::-webkit-scrollbar { width: 8px; }
+			&::-webkit-scrollbar-track { background: none; }
+			&::-webkit-scrollbar-thumb {
+				background: rgba(@light, 10%);
+				padding: 10px;
+				border-radius: 10px;
+			}
+		}
+	}
+
 	#shop-sidebar {
 		// font-size: 80%;
 		.sidebar-inner { padding: 1.25em; }
@@ -645,8 +667,8 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 	.box-text {
 		padding: @padding-normal;
 		.category { margin-bottom: 0;}
-		.product-title { padding-bottom: @padding-normal; }
-		.price-wrapper {}
+		.product-title { padding-bottom: @padding-normal; height: initial!important; padding-bottom: 0;}
+		.price-wrapper {  :empty { display: none; } }
 	}
 }
 //	************************************************************************************************
@@ -1068,17 +1090,17 @@ div[class*="product"].box, div[class*="category"].box  {
 .wc-proceed-to-checkout, .place-order, .sticky-add-to-cart, .widget_shopping_cart_content {
 	button, .checkout, .checkout-button {
 		z-index: 1;
-		overflow: hidden;
+		// overflow: hidden;
 		&:hover {
-			transition: @ease @time * 3.5;
+			transition: @ease @time;
 			color: @primary;
 			&:after {
 				content: "";
 				position: absolute;
 				transform: skewX(-40deg);
-				animation-duration: @time * 3.5;
-				animation-name: btn-flyby;
-				animation-timing-function: easeInOutBack;
+				// animation-duration: @time * 3.5;
+				// animation-name: btn-flyby;
+				// animation-timing-function: easeInOutBack;
 			}
 		}
 	}
