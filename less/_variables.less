@@ -7,13 +7,31 @@
 @alert: 						#cf5757;
 @dark:							#000000;
 @light:							#ffffff;
-
-
-
-@layout-density:				1.5em;
-@text-density:					1.25em;
-@element-density:				1.25em;
-
+//--------------------------------------------------------------------------------------------------
+// THEME SETTINGS
+//--------------------------------------------------------------------------------------------------
+@theme-style:				dark;
+@theme-density:				1em;
+@theme-contrast:			50%;
+@theme-radius:				3px;
+@dropdown-style:			flatsome; // flatsome, dark, light
+@theme-form:				clean; // normal, flat, clean, minimal
+//--------------------------------------------------------------------------------------------------
+// COMPUTED COLORS
+//--------------------------------------------------------------------------------------------------
+@base:						fade(@dark, @theme-contrast);
+@header:					@dark;
+@base-dark:					fade(@light, @theme-contrast);
+@header-dark:				@primary;
+//--------------------------------------------------------------------------------------------------
+// COMPUTED PADDINGS & MARGINS
+//--------------------------------------------------------------------------------------------------
+@padding-small:				@theme-density / 3;
+@padding-normal:			@theme-density * 1.5;
+@padding-large:				@theme-density * 3;
+@margin-small:				@theme-density / 1.75;
+@margin-normal:				@theme-density * 1.5;
+@margin-large:				@theme-density * 3;
 //--------------------------------------------------------------------------------------------------
 // TRANSITION SETTINGS
 //--------------------------------------------------------------------------------------------------
