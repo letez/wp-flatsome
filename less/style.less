@@ -85,6 +85,7 @@ input[type='reset'], input[type='reset'].button {
 	margin-bottom: @padding-normal / 2;
 	&:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not(.wishlist-button):not([class*="flickity"]):not([class*="edit-"]):not([class*="add_to"]) {
 		padding: @padding-small / 2 @padding-normal;
+		&.secondary, &.alt, &.checkout { &:hover { color: tint(@secondary, 100); } }
 	}
 	&.circle.icon {
 		padding: 0;
@@ -294,6 +295,8 @@ a.button.back-to-top {
 			border-radius: @theme-radius;
 			overflow: hidden;
 			height: 100%;
+
+			li.active > a { color: @primary; }
 		}
 		ul.nav-dropdown > li[class*="has-children"] {
 			& > a { border-bottom: none; }
