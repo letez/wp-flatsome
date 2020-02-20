@@ -93,6 +93,12 @@ input[type='reset'], input[type='reset'].button {
 	}
 }
 //	************************************************************************************************
+// SHADOWS
+//	************************************************************************************************
+#wrapper div[class*="box-shadow"] {
+	
+}
+//	************************************************************************************************
 //	ELEMENTS DEPTH
 //	************************************************************************************************
 #wrapper {
@@ -763,6 +769,27 @@ div#reviews {
 	@media only screen  and (max-device-width : 420px) {
 		form input { width: 100%; }
 		p.stars { margin-left: .3em; }
+	}
+}
+//	************************************************************************************************
+// PRODUCT ITEM
+//	************************************************************************************************
+#wrapper div.flickity-slider,
+#wrapper div.product-images,
+#wrapper div[class*="product-"] > div.col-inner {
+	div.badge-container {
+		padding: 0; margin-top: @padding-normal / 1.5;
+		.badge { height: 0; width: 0; }
+		.badge-inner {
+			font-size: inital; font-size: 100%;
+			padding: @padding-normal;
+			zoom: .5;
+			background: @secondary;
+			color: lighten(@secondary, 100%);
+			border-color: @secondary;
+			border-radius: @theme-radius;
+		}
+
 	}
 }
 //	************************************************************************************************
