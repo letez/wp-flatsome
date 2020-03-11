@@ -16,7 +16,7 @@ Version: 0
 //	FONTS
 //	************************************************************************************************
 html {
-	h1 { font-size: 4em; line-height: 1em; margin-bottom: @margin-small; }
+	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @margin-small; }
 	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @margin-small }
 	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @margin-small; }
 	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @margin-small;}
@@ -96,7 +96,21 @@ input[type='reset'], input[type='reset'].button {
 // SHADOWS
 //	************************************************************************************************
 #wrapper div[class*="box-shadow"] {
-	
+	&[class*="-1"] {
+		box-shadow: 0 1px 3px 0px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.075)
+	}
+	&[class*="-2"] {
+		box-shadow: 0 3px 6px -2px rgba(0,0,0,0.02), 0 3px 6px rgba(0,0,0,0.075);
+	}
+	&[class*="-3"] {
+		box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075);
+	}
+	&[class*="-4"] {
+		box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.015);
+	}
+	&[class*="-5"] {
+		box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15);
+	}
 }
 //	************************************************************************************************
 //	ELEMENTS DEPTH
@@ -296,14 +310,21 @@ a.button.back-to-top {
 	& ul.header-nav {
 		& > li.menu-item {
 			&.has-dropdown {  }
+			div.row.has-block {
+				display: flex;
+				flex-direction: row;
+			}
 		}
 		& li > ul.nav-dropdown {
-			padding: @padding-normal / 2;
+			padding: @padding-normal;
 			border-radius: @theme-radius;
 			overflow: hidden;
 			height: 100%;
 
 			li.active > a { color: @primary; }
+
+			li.content-column { min-width: 320px; }
+			div.row.has-block { p { white-space: normal; } }
 		}
 		ul.nav-dropdown > li[class*="has-children"] {
 			& > a { border-bottom: none; }
@@ -392,6 +413,13 @@ footer#footer, section.footer-bottom {
 	&.is-small { font-size: .85em; }
 	&.is-large { font-size: 1.15em; }
 	&.is-xlarge { font-size: 1.25em; }
+}
+//	************************************************************************************************
+// FLATSOME TITLE SECTION
+//	************************************************************************************************
+#wrapper .section-title {
+	span { text-transform: initial; padding: 0 @padding-normal; }
+	b { height: 1px; }
 }
 //	************************************************************************************************
 //	FLATSOME IMAGE BOX
@@ -974,6 +1002,22 @@ p.woocommerce-invalid {
 }
 
 
+// CONTACT FORM 7
+#wrapper div.wpcf7 {
+	.wpcf7-not-valid-tip {
+		position: absolute;
+		background: @alert;
+		color: @light;
+		width: 100%;
+		font-size: .8em;
+		font-weight: 900;
+		opacity: 1;
+		bottom: -10px;
+		box-shadow: 0px 10px 19px rgba(0,0,0,0.15), 0px 1px 1px rgba(0,0,0,0.3);
+		&::after { border-bottom-color: @alert; border-width: 5px; left: 20px; }
+	}
+}
+
 // PRODUCT LISTING (Shop, Sliders, Banners)
 div[class*="product"].col { z-index: 0; }
 div[class*="product"].box, div[class*="category"].box  {
@@ -1171,7 +1215,7 @@ div[class*="product"].box, div[class*="category"].box  {
 //	************************************************************************************************
 #wrapper div.mailerlite-form {
 	input {
-		margin: 0;
+		// margin: 1em;
 		width: 100%;
 		&[type="submit"] { background: @secondary; }
 	}
@@ -1182,8 +1226,13 @@ div[class*="product"].box, div[class*="category"].box  {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-end;
+
+			& > div:not(:first-of-type):not(:last-of-type) {
+				padding: 0 2 * @padding-small;
+			}
 			@media only screen  and (max-device-width : 420px) {
 				flex-direction: column;
+				& > div:not(:first-of-type):not(:last-of-type) { padding: 0; }
 			}
 	}
 
@@ -1218,6 +1267,11 @@ div[class*="product"].box, div[class*="category"].box  {
 	& .slider > .flickity-viewport { overflow: visible; }
 	& > .col-inner { overflow: visible; }
 }
+.has-shadow1 { & > .col-inner { box-shadow: 0 1px 3px 0px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.075); }  }
+.has-shadow2 { & > .col-inner { box-shadow: 0 3px 6px -2px rgba(0,0,0,0.02), 0 3px 6px rgba(0,0,0,0.075); } }
+.has-shadow3 { & > .col-inner { box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075); } }
+.has-shadow4 { & > .col-inner { box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.015); } }
+.has-shadow5 { & > .col-inner { box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15); } }
 .has-radius { border-radius: 3px; overflow: hidden; }
 .flex-top { align-items: start; }
 .font-light * { font-weight: 300; }
