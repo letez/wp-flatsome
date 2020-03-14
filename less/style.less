@@ -95,19 +95,19 @@ input[type='reset'], input[type='reset'].button {
 //	************************************************************************************************
 // SHADOWS
 //	************************************************************************************************
-div.row-box-shadow-1, div.row-box-shadow-1-hover {
+div.row-box-shadow-1:not(.products), div.row-box-shadow-1-hover:not(.products) {
 	box-shadow: 0 1px 3px 0px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.075)
 }
-div.row-box-shadow-2, div.row-box-shadow-2-hover {
+div.row-box-shadow-2:not(.products), div.row-box-shadow-2-hover:not(.products) {
 	box-shadow: 0 3px 6px -2px rgba(0,0,0,0.02), 0 3px 6px rgba(0,0,0,0.075);
 }
-div.row-box-shadow-3, div.row-box-shadow-3-hover {
+div.row-box-shadow-3:not(.products), div.row-box-shadow-3-hover:not(.products) {
 	box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075);
 }
-div.row-box-shadow-4 div.row-box-shadow-4-hover {
+div.row-box-shadow-4:not(.products), div.row-box-shadow-4-hover:not(.products) {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.015);
 }
-div.row-box-shadow-5, div.row-box-shadow-5-hover {
+div.row-box-shadow-5:not(.products), div.row-box-shadow-5-hover:not(.products) {
 	box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15);
 }
 //	************************************************************************************************
@@ -1001,7 +1001,7 @@ p.woocommerce-invalid {
 
 
 // CONTACT FORM 7
-#wrapper div.wpcf7 {
+#wrapper div.wpcf7, .mfp-container div.wpcf7 {
 	.wpcf7-not-valid-tip {
 		position: absolute;
 		background: @alert;
@@ -1014,6 +1014,10 @@ p.woocommerce-invalid {
 		box-shadow: 0px 10px 19px rgba(0,0,0,0.15), 0px 1px 1px rgba(0,0,0,0.3);
 		&::after { border-bottom-color: @alert; border-width: 5px; left: 20px; }
 	}
+
+	div.row, div.col { padding-bottom: 0; }
+	p { margin-bottom: 0; }
+	textarea { min-height: 70px; }
 }
 
 // PRODUCT LISTING (Shop, Sliders, Banners)
