@@ -15,7 +15,9 @@ Version: 0
 //	************************************************************************************************
 //	FONTS
 //	************************************************************************************************
+body { overflow: hidden!important; }
 html {
+
 	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @margin-small; }
 	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @margin-small }
 	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @margin-small; }
@@ -290,51 +292,73 @@ a.button:not(.icon), button.button, input[type="submit"] {
 //	************************************************************************************************
 //	FLATSOME BACK TO TOP
 //	************************************************************************************************
-a.button.back-to-top {
+#footer a.back-to-top.button.icon {
 	z-index: 900;
 	transition: none;
 	transition: @time @ease;
-	border-color: @secondary;
-	i { color: @secondary; }
+	border: 2px solid @secondary;
+	i { color: @secondary; font-weight: 900!important;}
 	&:hover {
 		background: @secondary;
 		i { color: @light; }
 	}
+	// box-shadow: 0px 0px 20px rgba(@dark, 10%);
 }
 //	************************************************************************************************
 //	FLATSOME HEADER
 //	************************************************************************************************
-#wrapper header {
+#wrapper header, header.has-sticky {
 	& ul.header-nav {
-		& > li.menu-item {
-			&.has-dropdown {  }
-			div.row.has-block {
-				display: flex;
-				flex-direction: row;
-			}
+		// ROOT Level
+		& > li {
+			a:hover { color: @secondary; }
+			&.active >  a { opacity: 1; color: @dark; }
 		}
-		& li > ul.nav-dropdown {
+		// DROPDOWN Level
+		&  > li.active ul.sub-menu.nav-dropdown {
 			padding: @padding-normal;
 			border-radius: @theme-radius;
 			overflow: hidden;
-			height: 100%;
+			min-height: inherit;
+			display: flex!important;
 
-			li.active > a { color: @primary; }
-
-			li.content-column { min-width: 320px; }
-			div.row.has-block { p { white-space: normal; } }
-		}
-		ul.nav-dropdown > li[class*="has-children"] {
-			& > a { border-bottom: none; }
-			& > ul {
-				display: table;
-			    min-height: 90%;
-			    width: 100%;
-				& > :last-child { }
-				li[class*="gs_sim"] {
-					display: table-row-group;
-					vertical-align: bottom;
+			// PARENT
+			& li.current-menu-parent  {
+				& > a {
+					pointer-events: none;
 				}
+				// CHILDRENS
+				& > ul  {
+					& .active a { font-weight: bold; }
+				}
+			}
+
+			// SHORTCODE content column
+			li.content-column {
+				min-width: 320px;
+				// UX Block
+				section  { }
+			}
+		}
+
+		&  li ul.nav-dropdown {
+
+
+			// li.active:not(.current-menu-parent) > a { opacity: 1; font-weight: bold; }
+			li.content-column { min-width: 320px; }
+			// div.row.has-block { p { white-space: normal; } }
+		}
+		& ul.sub-menu.nav-dropdown > li[class*="has-children"] {
+			// & > a { border-bottom: none; }
+			& > ul {
+				// display: table;
+			    // min-height: 90%;
+			    // width: 100%;
+				// & > :last-child { }
+				// li[class*="gs_sim"] {
+				// 	display: table-row-group;
+				// 	vertical-align: bottom;
+				// }
 			}
 		}
 		& ul > li  a:not(.button) { padding: @padding-normal / 1.5 0; }
@@ -425,7 +449,14 @@ footer#footer, section.footer-bottom {
 #wrapper div.img {
 
 }
-
+//	************************************************************************************************
+//	FLATSOME SCROLL TO
+//	************************************************************************************************
+div.scroll-to-bullets {
+	a { background-color: @secondary; box-shadow: none; width: 10px; height: 10px; border-width: 2px; }
+	a.active { border-color: @secondary; background-color: transparent; }
+	a:hover { border-color: @secondary; }
+}
 #wrapper {
 
 	#header {
@@ -1015,6 +1046,7 @@ p.woocommerce-invalid {
 		&::after { border-bottom-color: @alert; border-width: 5px; left: 20px; }
 	}
 
+	form { margin: 0; margin-bottom: -2em; }
 	div.row, div.col { padding-bottom: 0; }
 	p { margin-bottom: 0; }
 	textarea { min-height: 70px; }
@@ -1258,9 +1290,14 @@ div[class*="product"].box, div[class*="category"].box  {
 }
 // Global
 .is-back { z-index: 0; overflow: hidden; }
-.is-front { z-index: 1; }
+.is-front { z-index: 1;}
+.is-front-important { z-index: 10; }
 .is-rounded { & > .col-inner { border-radius: @theme-radius; overflow: hidden; }}
 .is-absolute { position: absolute; }
+.is-left { left: 0; }
+.is-right { right: 0; }
+.is-center { left: 50%; transform: translateX(-50%); }
+.is-bottom { margin-top: 50%; bottom: 0%; transform: translateY(100%);	 }
 .is-capitalize {
 	span { text-transform: capitalize; margin: -@padding-small @padding-normal; }
 }
@@ -1274,6 +1311,26 @@ div[class*="product"].box, div[class*="category"].box  {
 .has-shadow3 { & > .col-inner { box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075); } }
 .has-shadow4 { & > .col-inner { box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.015); } }
 .has-shadow5 { & > .col-inner { box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15); } }
+.has-border-bottom-1 { & > .col-inner { border-bottom: 1px solid; } }
+.has-border-bottom-2 { & > .col-inner { border-bottom: 2px solid; } }
+.has-border-bottom-3 { & > .col-inner { border-bottom: 3px solid; } }
+.has-border-bottom-5 { & > .col-inner { border-bottom: 5px solid; } }
+.has-border-bottom-7 { & > .col-inner { border-bottom: 7px solid; } }
+.has-border-top-1 { & > .col-inner { border-top: 1px solid; } }
+.has-border-top-2 { & > .col-inner { border-top: 2px solid; } }
+.has-border-top-3 { & > .col-inner { border-top: 3px solid; } }
+.has-border-top-5 { & > .col-inner { border-top: 5px solid; } }
+.has-border-top-7 { & > .col-inner { border-top: 7px solid; } }
+.border-dark-5 { & > .col-inner { border-color: rgba(@dark, 5%); } }
+.border-dark-10 { & > .col-inner { border-color: rgba(@dark, 10%); } }
+.border-dark-20 { & > .col-inner { border-color: rgba(@dark, 20%); } }
+.border-light-5 { & > .col-inner { border-color: rgba(@light, 5%); } }
+.border-light-10 { & > .col-inner { border-color: rgba(@light, 10%); } }
+.border-light-20 { & > .col-inner { border-color: rgba(@light, 20%); } }
+.border-primary  { & > .col-inner { border-color: @primary; } }
+.border-secondary  { & > .col-inner { border-color: @secondary; } }
+.border-success  { & > .col-inner { border-color: @success; } }
+.border-alert  { & > .col-inner { border-color: @alert; } }
 .has-radius { border-radius: 3px; overflow: hidden; }
 .flex-top { align-items: start; }
 .font-light * { font-weight: 300; }
@@ -1304,13 +1361,57 @@ div[class*="product"].box, div[class*="category"].box  {
 	64%  { transform: scale(1,1)      translateY(0); }
 	100% { transform: scale(1,1)      translateY(0); }
 }
+// Float
+.float {
+	// transform-origin: -1em -3em;
+	// position: relative;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-name: float;
+	animation-timing-function: ease-in-out;
+	// animation: float 6s infinite;
+	transform-origin: 50%;
+}
+@keyframes float {
+	50% { transform: translateY(20%); }
+}
 
+@keyfranmes fastswing {
+	0% { transform: rotateZ(-1deg); }
+	5% { transform: rotateZ(1deg); }
+	10% { transform: rotateZ(-1deg); }
+	15% { transform: rotateZ(1deg); }
+	20% { transform: rotateZ(-1deg); }
+	25% { transform: rotateZ(1deg); }
+	30% { transform: rotateZ(-1deg); }
+	35% { transform: rotateZ(1deg); }
+	40% { transform: rotateZ(-1deg); }
+	45% { transform: rotateZ(1deg); }
+	50% { transform: rotateZ(-1deg); }
+	55% { transform: rotateZ(1deg); }
+	60% { transform: rotateZ(-1deg); }
+	65% { transform: rotateZ(1deg); }
+	70% { transform: rotateZ(-1deg); }
+	75% { transform: rotateZ(1deg); }
+	80% { transform: rotateZ(-1deg); }
+	85% { transform: rotateZ(1deg); }
+	90% { transform: rotateZ(-1deg); }
+	95% { transform: rotateZ(1deg); }
+	100% { transform: rotateZ(-1deg); }
+}
+
+@keyframes floatswing {
+	0% { transform: rotate(0px);  }
+	50% { transform: rotate(-5deg) translateY(150px); }
+	100% { transform: rotate(0px); }
+}
+// Fly By
 @keyframes btn-flyby {
 	0%   { width: 0%; height: 200%; top: -50%; left: -20%; opacity: .5; filter: blur(5px); background: rgba(shade(@primary, 40%), 100%);}
 	50% { width: 200%; height: 200%; top: -50%; left: 0%;  opacity: 1; filter: blur(25px); background: rgba(@primary, 50%);}
 	100% { width: 0%; height: 200%; top: -50%; left: 120%; opacity: .5; filter: blur(5px); background: rgba(shade(@primary, 40%), 100%); }
 }
-
+// Wiggle
 .wiggle {
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
