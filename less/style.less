@@ -307,64 +307,61 @@ a.button:not(.icon), button.button, input[type="submit"] {
 //	************************************************************************************************
 //	FLATSOME HEADER
 //	************************************************************************************************
-#wrapper header, header.has-sticky {
+#wrapper header, #wrapper header.has-sticky, #wrapper header.has-transparent {
 	& ul.header-nav {
 		// ROOT Level
 		& > li {
-			a:hover { color: @secondary; }
-			&.active >  a { opacity: 1; color: @dark; }
+			// a:hover:not(.button) { color: @secondary; }
+			// &.active >  a { opacity: 1; color: @dark; }
+			& a:not(.button) { padding: @padding-normal / 1.5 0;  }
 		}
 		// DROPDOWN Level
-		&  > li.active ul.sub-menu.nav-dropdown {
-			padding: @padding-normal;
-			border-radius: @theme-radius;
-			overflow: hidden;
-			min-height: inherit;
-			display: flex!important;
-
+		& .nav-dropdown {
+			display: flex;
+		}
+		&  > li.has-dropdown {
 			// PARENT
-			& li.current-menu-parent  {
+			li.menu-item-has-children  {
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
 				& > a {
 					pointer-events: none;
+					font-weight: bold;
 				}
 				// CHILDRENS
 				& > ul  {
+				    display: flex;
+					flex-direction: column;
+					flex: 1;
 					& .active a { font-weight: bold; }
 				}
 			}
-
+			// SHORTCODE slider & image columns
+			li.slider-column, li.image-column {
+			    display: flex;
+				flex: 1;
+				align-items: flex-end;
+				& > .row { display: table; }
+			}
 			// SHORTCODE content column
 			li.content-column {
 				min-width: 320px;
 				// UX Block
-				section  { }
+				section  {   }
+			}
+
+			div.banner {
+				& div { font-size: 100%; }
 			}
 		}
-
-		&  li ul.nav-dropdown {
-
-
-			// li.active:not(.current-menu-parent) > a { opacity: 1; font-weight: bold; }
-			li.content-column { min-width: 320px; }
-			// div.row.has-block { p { white-space: normal; } }
+	}
+	div.header-main.nav-dark .nav.header-nav {
+		//ROOT Level
+		& > li {
+			& > a:hover { color: @light; }
+			&.active > a { opacity: 1; color: @light; }
 		}
-		& ul.sub-menu.nav-dropdown > li[class*="has-children"] {
-			// & > a { border-bottom: none; }
-			& > ul {
-				// display: table;
-			    // min-height: 90%;
-			    // width: 100%;
-				// & > :last-child { }
-				// li[class*="gs_sim"] {
-				// 	display: table-row-group;
-				// 	vertical-align: bottom;
-				// }
-			}
-		}
-		& ul > li  a:not(.button) { padding: @padding-normal / 1.5 0; }
-		// & when (@dropdown-style = light) {
-		//
-		// }
 	}
 }
 body[class*="header-light"] #wrapper header {
