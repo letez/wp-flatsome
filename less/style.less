@@ -317,7 +317,7 @@ a.button:not(.icon), button.button, input[type="submit"] {
 		}
 		// DROPDOWN Level
 		& .nav-dropdown {
-			display: flex;
+			display: flex!important;
 		}
 		&  > li.has-dropdown {
 			// PARENT
@@ -346,9 +346,11 @@ a.button:not(.icon), button.button, input[type="submit"] {
 			}
 			// SHORTCODE content column
 			li.content-column {
-				min-width: 320px;
+				flex: 1;
+				overflow: visible;
+				white-space: normal;
 				// UX Block
-				section  {   }
+				section  {  }
 			}
 
 			div.banner {
