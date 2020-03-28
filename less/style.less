@@ -717,11 +717,15 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 		// padding: @padding-normal;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		// justify-content: center;
 		& p { margin: @padding-small 0 @padding-normal 0; }
 		.category { margin-bottom: 0;}
 		// .product-title { padding-bottom: @padding-normal; height: initial!important; padding-bottom: 0;}
-		.price { display: flex; justify-content: center; & > span { margin: 0 @padding-small; } }
+		.price {
+			// & .amount:nth-of-type(0) { margin-left: @padding-small; }
+			// & .amount:nth-of-type(2) { margin-right: @padding-small; }
+			& .woocommerce-price-suffix { display: block; margin-top: @padding-small; }
+		}
 		.price-wrapper { margin: 0; :empty { display: none; } }
 	}
 }
