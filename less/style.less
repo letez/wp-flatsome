@@ -85,23 +85,37 @@ html {
 //	************************************************************************************************
 .button, button, input[type='submit'], input[type='submit'].button, input[type='button'], input[type='button'].button, input[type='button'].button
 input[type='reset'], input[type='reset'].button {
-	margin-bottom: @padding-normal / 2;
-	&:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not(.wishlist-button):not([class*="flickity"]):not([class*="edit-"]):not([class*="add_to"]) {
-		padding: @padding-small / 2 @padding-normal;
+	margin-bottom: @padding-small;
+	// :not([class*="add_to"])
+	&:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not(.wishlist-button):not([class*="flickity"]):not([class*="edit-"]):not(.adminbar-button) {
+		display: inline-flex!important;
+		justify-content: center;
+	    align-items: center;
+		line-height: 0;
+		&:not(.submit) { padding: @padding-small @padding-normal; }
 		&.secondary, &.alt, &.checkout { &:hover { color: tint(@secondary, 100); } }
+	}
+	&.alt {
+
 	}
 	&.circle.icon {
 		padding: 0;
 	}
 }
+
 //	************************************************************************************************
 //	ICONS
 //	************************************************************************************************
 .icon {
+	.is-outline {
+		border-color: rgba(@secondary, 50%);
+		:hover { color: @light; }
+	}
+
 	&.wishlist-button {
 		color: @primary;
 		border-color: @primary;
-		&:hover { border-color: @primary; color: @light!important; }
+		&:hover { border-color: @primary; background: @primary; color: @light!important; }
 	}
 }
 //	************************************************************************************************
@@ -160,16 +174,17 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'], input[type='text'],
 input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select, .select2-selection {
 	&:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
-		padding: @padding-small * 4 @padding-small * 2;
+		padding: @padding-small @padding-small * 1.5;
+		margin-bottom: @padding-small;
 	}
 	&.orderby, &.select2-selection, &[class=""] {
 		margin: 0;
 		height: @padding-normal * 1.85;
-		padding-left: @padding-small * 2;
+		padding-left: @padding-small * 1.5;
 		&.select2-selection {
 			border-radius: @theme-radius;
 			padding: 0;
-			.select2-selection__rendered { padding: .15em @padding-small * 2; }
+			.select2-selection__rendered { padding: .15em @padding-small * 1.5; }
 		}
 	}
 	max-height: inherit;
@@ -195,16 +210,17 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
 #wrapper div.fl-wrap.fl-is-active {
-	label { opacity: .25; left: @padding-small * 3; top: .5em!important; }
+	label { opacity: .25; left: @padding-small * 2; top: .5em!important; }
 	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select {
 		&:not(.fl-select):not(textarea) {
-			padding: @padding-large / 2.5 @padding-small * 2 @padding-small @padding-small * 2;
+			padding: @padding-large / 1.75 @padding-normal @padding-normal / 1.75 @padding-small * 1.5;
 		}
 		&.fl-select {
 			padding-top: 0; padding-bottom: 0;
 			padding-top: .75em;
 			height: @padding-large;
+			margin-bottom: @padding-normal / 1.25;
 		}
 		margin-bottom: @padding-normal / 2;
 	}
@@ -237,23 +253,6 @@ span.select2-container {
 	}
 }
 //	************************************************************************************************
-//	FORM BUTTONS
-//	************************************************************************************************
-#wrapper form input[type="button"] {
-	// & when (@theme-form = normal) {
-	// 	border: 1px solid rgba(@dark, 20%);
-	// }
-	// & when (@theme-form = flat) {
-	// 	border: 1px solid rgba(@dark, 10%);
-	// }
-	// & when (@theme-form = clean) {
-	// 	border: 1px solid rgba(@dark, 10%);
-	// }
-	// & when (@theme-form = minimal) {
-	// 	border-bottom: 2px solid rgba(@dark, 10%);
-	// }
-}
-//	************************************************************************************************
 //	FORM GENERAL
 //	************************************************************************************************
 form {
@@ -264,36 +263,6 @@ form {
 	}
 }
 //	************************************************************************************************
-//	FLATSOME BUTTONS
-//	************************************************************************************************
-a.button:not(.icon), button.button, input[type="submit"] {
-	padding: calc(@theme-density / 8) calc(@theme-density / 1.75);
-}
-// .dark {
-// 	.button:not(.icon):not(.is-form):not(.single_add_to_cart_button), button:not(.flickity-button) {
-// 		.white { }
-// 	}
-// }
-// .button:not(.icon):not(.is-form):not(.single_add_to_cart_button):not(.flickity-button), button:not(.toggle):not(.flickity-button) {
-// 	padding: 0.25em 1.5em;
-// 	&:not(.is-outline):not(.is-underline) {
-// 		color: @light;
-// 		&:hover { color: @light; }
-// 	}
-// 	&.white {
-// 		border-color: rgba(@base, 60%)!important;
-// 		color: @base!important;
-// 		&:hover {
-// 			color: @light!important;
-// 			background: @dark!important;
-// 		}
-// 		&.is-outline {
-// 			background: none;
-// 		}
-// 	}
-// }
-
-//	************************************************************************************************
 //	FLATSOME TOP BAR
 //	************************************************************************************************
 #wrapper #top-bar div.container {
@@ -303,7 +272,7 @@ a.button:not(.icon), button.button, input[type="submit"] {
 //	FLATSOME BACK TO TOP
 //	************************************************************************************************
 #footer a.back-to-top.button.icon {
-	z-index: 900;
+	z-index: 999999;
 	transition: none;
 	transition: @time @ease;
 	border: 2px solid @secondary;
@@ -339,6 +308,8 @@ a.button:not(.icon), button.button, input[type="submit"] {
 				& > a {
 					pointer-events: none;
 					font-weight: bold;
+					border-bottom: none;
+					margin-bottom: @padding-small;
 				}
 				// CHILDRENS
 				& > ul  {
@@ -375,55 +346,26 @@ a.button:not(.icon), button.button, input[type="submit"] {
 		& > li {
 			& > a:hover { color: @light; }
 			&.active > a { opacity: 1; color: @light; }
+
+			&[class*='icon'] [class*='icon'] {
+				color: rgba(@light, 70%)!important;
+				&:hover { color: @primary!important; }
+			}
 		}
 	}
+
+	// Active navigation icon color
+	li.has-icon.active a:first-of-type i, li.cart-item:not(.has-dropdown) i { color: @primary!important; }
+
+	&[class='transparent'] { border: 2px solid red; }
 }
 body[class*="header-light"] #wrapper header {
 	// border: 2px solid blue;
-}
-
-body.page-template-page-transparent-header, body.archive, body.page-template, body.single {
-	header {
-		ul.header-nav  {
-			// & .current_page_parent > a { color: @light; }
-			& > li.has-dropdown {
-				.menu-item-has-children {
-					a {  }
-					> a {  border-bottom: none; margin-bottom: calc(@theme-density / 4); }
-					// .active a { color: red!important; }
-					ul li > a {
-						:last-of-type { border-bottom: none; }
-					}
-				}
-			}
-			li.has-icon.active a:first-of-type i, li.cart-item:not(.has-dropdown) i { color: @primary!important; }
-		}
-	}
-}
-body.page-template-page-transparent-header-light {
-	header.transparent {
-		ul.header-nav  {
-			& .current_page_parent > a { color: @light; }
-			& > li.has-dropdown {
-				.menu-item-has-children {
-					a {  }
-					> a {  border-bottom: none; margin-bottom: calc(@theme-density / 4); }
-					ul li > a {
-						:last-of-type { border-bottom: none; }
-					}
-				}
-			}
-			li.has-icon.active a:first-of-type i, li.cart-item:not(.has-dropdown) i { color: @primary!important; }
-		}
-		& a > i:not(.icon-angle-down) { color: rgba(@light, 50%)!important; &:hover { color: @light!important; }}
-	}
 }
 //	************************************************************************************************
 //	FLATSOME FOOTER
 //	************************************************************************************************
 footer#footer, section.footer-bottom {
-	// .footer-small { font-size: 80%; }
-	// .footer-small .footer-nav { font-size: 90%; }
 
 	.footer-small > .col-inner {
 		display: table;
@@ -468,6 +410,8 @@ div.scroll-to-bullets {
 	a.active { border-color: @secondary; background-color: transparent; }
 	a:hover { border-color: @secondary; }
 }
+
+
 #wrapper {
 
 	#header {
@@ -504,13 +448,6 @@ div.scroll-to-bullets {
 	// }
 	.gap-element { min-height: inherit; }
 
-	.icon {
-		&.wishlist-button:hover { background: @primary; }
-		.is-outline {
-			border-color: rgba(@secondary, 50%);
-			:hover { color: @light; }
-		}
-	}
 }
 //	************************************************************************************************
 //	SIDEBARS AND LIGHTBOXES
@@ -612,6 +549,7 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 
 	div.price_slider_amount {
 		.price_label { padding-top: calc(@theme-density / 1.25); }
+		button { background: @secondary; }
 	}
 
 	form.searchform {
