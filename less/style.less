@@ -422,7 +422,8 @@ body div.mfp-ready.mfp-bg { opacity: .95; }
 //	************************************************************************************************
 //	LIGHTBOX Element
 //	************************************************************************************************
-html.has-off-canvas {
+html.has-off-canvas, html.js {
+
 	& .mfp-content {
 		font-size: 1em;
 		box-shadow: none!important;
@@ -433,8 +434,12 @@ html.has-off-canvas {
 	}
 
 	& when (@lightbox-style = shadow) {
-		.lightbox-content > div:first-of-type, .mfp-s-ready .mfp-content {
-			box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.35)!important;
+		& .mfp-inline-holder .mfp-content > div:first-of-type, & .off-canvas-left .mfp-content, & .off-canvas-right .mfp-content {
+			box-shadow: 0px 30px 40px 0px rgba(0,0,0,.35)!important;
+		}
+		&:not(.has-off-canvas) .mfp-inline-holder .mfp-content > div:first-of-type {
+			border-radius: @theme-radius;
+			overflow: hidden;
 		}
 	}
 }
@@ -472,7 +477,7 @@ body .mfp-content #shop-sidebar {
 //	************************************************************************************************
 body .mfp-content #main-menu.mobile-sidebar {
 
-	height: 100%;
+	min-height: 100%;
 
 	& ul.nav-sidebar {
 		a { font-size: initial; font-size: inherit;  }
@@ -520,11 +525,10 @@ body .mfp-content #main-menu.mobile-sidebar {
 			justify-content: space-evenly;
 		}
 	}
-	// Slidert Column
+	// Slidert and Content Column
 	li.slider-column, li.content-column {
-		display: flex;
 		&.slider-column { padding: @padding-normal @padding-small; }
-		&.content-column { }
+		&.content-column { padding-right: @padding-normal; }
 	}
 	// Button Element
 	button.toggle { color: @primary; }
