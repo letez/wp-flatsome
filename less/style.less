@@ -425,7 +425,7 @@ body div.mfp-ready.mfp-bg { opacity: .95; }
 html.has-off-canvas, html.js {
 
 	& .mfp-content {
-		font-size: 1em;
+		font-size: 100%;
 		box-shadow: none!important;
 
 		.lightbox-content > div:first-of-type {
@@ -482,6 +482,11 @@ body .mfp-content #main-menu.mobile-sidebar {
 	& ul.nav-sidebar {
 		a { font-size: initial; font-size: inherit;  }
 		& ul.sub-menu li.menu-item-has-children > a { font-size: 80%; padding: @padding-small @padding-normal @padding-normal;  }
+
+		.button {
+			color: @light;
+		}
+
 	}
 
 	.no-scrollbar.sidebar-menu {
