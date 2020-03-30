@@ -42,7 +42,7 @@ html {
 //	************************************************************************************************
 //	COL AND TABLE PADDINGS
 //	************************************************************************************************
-#wrapper {
+#wrapper, .mfp-content {
  	& div.row {
 		&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-small;  } }
 		&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: @padding-normal;  } }
@@ -139,7 +139,7 @@ div.row-box-shadow-5:not(.products), div.row-box-shadow-5-hover:not(.products) {
 //	************************************************************************************************
 //	ELEMENTS DEPTH
 //	************************************************************************************************
-#wrapper {
+#wrapper, .mfp-content {
 	div.shop-page-title, div.category-page-title, div.page-title {
 		z-index: 1;
 	}
@@ -209,7 +209,7 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 //	************************************************************************************************
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
-#wrapper div.fl-wrap.fl-is-active {
+#wrapper div.fl-wrap.fl-is-active, .mfp-content div.fl-wrap.fl-is-active {
 	label { opacity: .25; left: @padding-small * 2; top: .5em!important; }
 	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
 	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select {
@@ -367,7 +367,6 @@ body[class*="header-light"] #wrapper header {
 //	FLATSOME FOOTER
 //	************************************************************************************************
 footer#footer, section.footer-bottom {
-
 	.footer-small > .col-inner {
 		display: table;
 		height: 100%;
@@ -375,15 +374,19 @@ footer#footer, section.footer-bottom {
 	}
 }
 //	************************************************************************************************
+//	FLATSOME GAP ELEMENT
+//	************************************************************************************************
+.gap-element { min-height: inherit; }
+//	************************************************************************************************
 //	FLATSOME SOCIAL ICONS
 //	************************************************************************************************
-#wrapper div.social-icons {
+#wrapper div.social-icons, .mfp-content div.social-icons {
 	a:first-of-type { margin-left: 0;}
 }
 //	************************************************************************************************
 //	FLATSOME TEXT BOX
 //	************************************************************************************************
-#wrapper div.box-text {
+#wrapper div.box-text, .mfp-content div.box-content {
 	font-size: 1em;
 	&.is-xsmall { font-size: .75em; }
 	&.is-small { font-size: .85em; }
@@ -393,14 +396,14 @@ footer#footer, section.footer-bottom {
 //	************************************************************************************************
 // FLATSOME TITLE SECTION
 //	************************************************************************************************
-#wrapper .section-title {
+#wrapper .section-title, .mfp-content .section-title {
 	span { text-transform: initial; padding: 0 @padding-normal; }
 	b { height: 1px; }
 }
 //	************************************************************************************************
 //	FLATSOME IMAGE BOX
 //	************************************************************************************************
-#wrapper div.img {
+#wrapper div.img, .mfp-content div.img {
 
 }
 //	************************************************************************************************
@@ -411,55 +414,22 @@ div.scroll-to-bullets {
 	a.active { border-color: @secondary; background-color: transparent; }
 	a:hover { border-color: @secondary; }
 }
-
-
-#wrapper {
-
-	#header {
-
-	}
-	#main {
-		section.dark { background: @dark; }
-	}
-	#footer {
-
-	}
-	// .dark {
-	// 	.button:not(.icon):not(.is-form):not(.single_add_to_cart_button), button:not(.flickity-button) {
-	// 		.white { }
-	// 	}
-	// }
-	// .button:not(.icon):not(.is-form):not(.single_add_to_cart_button):not(.flickity-button), button:not(.toggle):not(.flickity-button) {
-	// 	padding: 0.25em 1.5em;
-	// 	&:not(.is-outline):not(.is-underline) {
-	// 		color: @light;
-	// 		&:hover { color: @light; }
-	// 	}
-	// 	&.white {
-	// 		border-color: rgba(@base, 60%)!important;
-	// 		color: @base!important;
-	// 		&:hover {
-	// 			color: @light!important;
-	// 			background: @dark!important;
-	// 		}
-	// 		&.is-outline {
-	// 			background: none;
-	// 		}
-	// 	}
-	// }
-	.gap-element { min-height: inherit; }
-
-}
 //	************************************************************************************************
 //	SIDEBARS AND LIGHTBOXES
 //	************************************************************************************************
-// #wrapper {
-// }
-
 div.mfp-ready.mfp-bg { opacity: .95!important; }
-
-
 .mfp-content {
+
+	.lightbox-content > div:first-of-type {
+		border-radius: @theme-radius;
+		overflow: hidden;
+	}
+
+	& when (@lightbox-style = shadow) {
+		.lightbox-content > div:first-of-type {
+			box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.35);
+		}
+	}
 
 	#search-lightbox {
 		.ux-search-submit {
@@ -478,8 +448,7 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 	}
 
 	#shop-sidebar {
-		// font-size: 80%;
-		.sidebar-inner { padding: 1.25em; }
+		.sidebar-inner { padding: @padding-normal; }
 		.count { font-weight: bold; color: @primary; }
 		.has-block { .col { transition: none; } overflow: hidden; }
 		.product_list_widget {
@@ -511,7 +480,7 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 			margin-bottom: 0px;
 			border: none;
 		}
-		li a { border-color: @dark; }
+		li a:not(.button) { border-color: @dark; }
 		li.html.custom {
 			display: flex;
 			justify-content: center;
@@ -582,27 +551,6 @@ div.mfp-ready.mfp-bg { opacity: .95!important; }
 		a { padding-bottom: @padding-normal / 3; }
 		span.amount { font-size: 80%; }
 	}
-}
-//	************************************************************************************************
-//	FLATSOME NAVIGATIONS
-//	************************************************************************************************
-#masthead .header-nav {
-	// .nav-dropdown {
-	// 	padding: calc(@theme-density / 2) calc(@theme-density / 2) calc(@theme-density / 3) calc(@theme-density / 2);
-	// 	height: 100%;
-	// 	li.active > a, li a:hover { color: @primary; }
-	// 	.nav-column {
-	// 		display: table;
-	// 	    min-height: 90%;
-	// 	    width: 100%;
-	// 		> li:nth-last-child(2) { margin-bottom: @theme-density / 1.25;  }
-	// 		> li:last-child {
-	// 			display: table-row-group;
-	// 			vertical-align: bottom;
-	// 		}
-	// 	}
-	// 	.image-column { margin-left: 2em!important; white-space: normal; };
-	// }
 }
 #wrapper .footer-nav {
 	font-size: initial; font-size: 72.5%;
