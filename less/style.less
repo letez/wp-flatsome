@@ -18,14 +18,14 @@ Version: 0
 body { overflow: hidden!important; }
 html {
 
-	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @margin-small; }
-	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @margin-small }
-	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @margin-small; }
-	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @margin-small;}
-	h5 { font-size: 1em; line-height: .9em; margin-bottom: @margin-small; }
+	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small; }
+	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small }
+	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @padding-small; }
+	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small;}
+	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small; }
 	h6 { font-size: .6em; line-height: .5em; margin-bottom: 0; }
 	p:not(.lead) { font-size: 1em; line-height: 1.7em; &:last-of-type:not(:only-child) { margin-bottom: 0; } }
-	p.lead { font-size: 1.5em; line-height: 1.5em; margin-bottom: @margin-large; }
+	p.lead { font-size: 1.5em; line-height: 1.5em; margin-bottom: @padding-large; }
 	p > strong { font-weight: 600; }
 
 	.product-meta p { margin-bottom: 0!important; }
@@ -37,7 +37,7 @@ html {
 
 	h1, h2, h3, { strong { color: @primary; } }
 	h3#ship-to-different-address { font-size: 1em; margin: 0; padding: 0;}
-	div.col-inner p { margin-bottom: @margin-normal; }
+	div.col-inner p { margin-bottom: @padding-normal; }
 }
 //	************************************************************************************************
 //	COL AND TABLE PADDINGS
@@ -92,8 +92,17 @@ input[type='reset'], input[type='reset'].button {
 		justify-content: center;
 	    align-items: center;
 		line-height: 0;
-		&:not(.submit) { padding: @padding-small @padding-normal; }
+		&:not(.submit) { padding: @padding-small @padding-normal * 1.5; }
 		&.secondary, &.alt, &.checkout { &:hover { color: tint(@secondary, 100); } }
+
+		&.secondary {
+			color: @dark;
+			// font-weight: bold;
+			border: @secondary;
+			&:hover {
+				color: darken(@dark, 20%);
+			}
+		}
 
 		&.is-outline {
 			&.success {
