@@ -35,8 +35,8 @@ html {
     // -ms-hyphens: auto;
     // hyphens: auto;
 
-	h1, h2, h3, { strong { color: @primary; } }
-	h3#ship-to-different-address { font-size: 1em; margin: 0; padding: 0;}
+	// h1, h2, h3, { .strong { color: @primary; } }
+	h3#ship-to-different-address { font-size: 100%; font-size: 1em; margin: 0; padding: 0;}
 	div.col-inner p { margin-bottom: @padding-normal; }
 }
 //	************************************************************************************************
@@ -92,15 +92,11 @@ input[type='reset'], input[type='reset'].button {
 		justify-content: center;
 	    align-items: center;
 		line-height: 0;
-		&:not(.submit) { padding: @padding-small @padding-normal * 1.5; }
+		&:not(.submit) { padding: @padding-small @padding-normal; }
 		&.secondary, &.alt, &.checkout { &:hover { color: tint(@secondary, 100); } }
 
 		&.secondary {
-			color: @dark;
-			// font-weight: bold;
-			border: @secondary;
 			&:hover {
-				color: darken(@dark, 20%);
 			}
 		}
 
@@ -185,7 +181,7 @@ div.row-box-shadow-5:not(.products), div.row-box-shadow-5-hover:not(.products) {
 //	RESET FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
-input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select,
+input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='submit'], textarea, select,
 .select-resize-ghost, .select2-container .select2-choice, .select2-container, .select2-selection, .select2-results__options {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
@@ -203,9 +199,10 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 //	STYLE FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'], input[type='text'],
-input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'],textarea, select, .select2-selection {
+input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='submit'], textarea, select, .select2-selection, select option {
 	&:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
-		padding: @padding-small @padding-small * 1.5;
+		height: auto;
+		padding: @padding-small / 1.25 @padding-small;
 		margin-bottom: @padding-small;
 	}
 	&.orderby, &.select2-selection, &[class=""] {
@@ -1234,6 +1231,9 @@ p.woocommerce-invalid {
 	& .banner-layers { overflow: hidden; }
 }
 .has-scale-80 { transform: scale(.8); }
+.has-opacity-5 { opacity: .05; }
+.has-opacity-10 { opacity: .1; }
+.has-opacity-20 { opacity: .2; }
 .has-shadow1 { & > .col-inner { box-shadow: 0 1px 3px 0px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.075); }  }
 .has-shadow2 { & > .col-inner { box-shadow: 0 3px 6px -2px rgba(0,0,0,0.02), 0 3px 6px rgba(0,0,0,0.075); } }
 .has-shadow3 { & > .col-inner { box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075); } }
