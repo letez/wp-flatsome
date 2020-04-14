@@ -55,7 +55,7 @@ html {
 
 		thead {
 			white-space: nowrap;
-			th { font-weight: bold; text-transform: uppercase; color: @dark; }
+			th { font-weight: bold; text-transform: uppercase; color: @dark; }ß
 			th, td { padding-bottom: 1.5em; }
 		}
 		tbody {
@@ -199,11 +199,12 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 //	STYLE FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'], input[type='text'],
-input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='submit'], textarea, select, .select2-selection, select option {
+input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='submit'], textarea, select, .select2-selection, select option, img.wpcf7-captchac {
 	&:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
 		height: auto;
-		padding: @padding-small / 1.25 @padding-small;
+		padding: @padding-small / 1.25 @padding-small * 1.25;
 		margin-bottom: @padding-small;
+		&.wpcf7-captchac { width: unset; vertical-align: middle; border: unset!important; opacity: 1; }
 	}
 	&.orderby, &.select2-selection, &[class=""] {
 		margin: 0;
