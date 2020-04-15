@@ -55,26 +55,29 @@ html {
 
 		thead {
 			white-space: nowrap;
-			th { font-weight: bold; text-transform: uppercase; color: @dark; }ß
-			th, td { padding-bottom: 1.5em; }
+			th { font-weight: bold; text-transform: uppercase; color: @dark; }
+			th, td { padding-bottom: @padding-normal / 1.5; }
 		}
 		tbody {
-			th, td { padding-top: 1.25em; padding-bottom: 1.25em; }
-			th {  }
-			td {  }
+			th, td {
+				padding-top: @padding-normal / 1.5;
+				padding-bottom: @padding-normal / 1.5;
+			}
+			th { }
+			td { }
 		}
 		tfoot {
-			th, td { padding-top: 1.25em; padding-bottom: 1.25em; }
+			th, td { padding-top: @padding-normal / 1.5; padding-bottom: @padding-normal / 1.5; }
 		}
 
-		tr th:only-of-type { width: 100%; }
+		tr th:only-of-type { width: auto; }
 		tr td:only-of-type { white-space: nowrap; text-align: right; }
 
 		tr, td {
 			width: auto;
 			&:first-of-type { text-align: left; }
 			&:last-of-type { text-align: right; }
-			&:not(.product-name):not(:last-of-type) {
+			&:not(.product-name):not(:last-of-type):not(:first-of-type) {
 				text-align: center;
 			}
 		}
@@ -89,10 +92,23 @@ html {
 // input[type='reset'], input[type='reset'].button {
 
 	&:not(.icon) {
-		padding: @padding-small / 2 @padding-normal;
+		padding: @padding-small / 2 @padding-normal * 1.5;
 		margin-bottom: @padding-small;
-		// border: 5px solid green!important;
-		// margin-bottom: @padding-normal;
+
+		&.is-outline {
+			&.success {
+				&:hover { border-color: @success; }
+			}
+			&.alert {
+				&:hover { border-color: @alert; }
+			}
+			&.dark {
+				color: @dark!important;
+				border-color: @dark;
+				opacity: .2;
+				&:hover { border-color: @dark; background: inherit; opacity: .5;}
+			}
+		}
 	}
 	&.icon {
 		.is-outline {
@@ -203,21 +219,30 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 //	STYLE FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'], input[type='text'],
-input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='button'], input[type='submit'], button[type='submit'], textarea, select, .select2-selection, select option, img.wpcf7-captchac {
+input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], input[type='button'], input[type='submit'],
+button[type='submit'], textarea, select, .select2-selection, select option, img.wpcf7-captchac {
 	// &:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
 
-	&:not(button):not([type='button']):not([type='submit']):not(.select2-selection):not(.qty):not([class=""]) {
+	// &:not(button):not([type='button']):not([type='submit']):not(.select2-selection):not(.qty):not([class=""]) {
+	&:not(button):not([type='button']):not([type='submit']):not(.select2-selection):not(.qty) {
 		padding: @padding-small @padding-small;
-		margin-bottom: @padding-small;
+		height: auto;
 		&.wpcf7-captchac { width: unset; vertical-align: middle; border: unset!important; opacity: 1; }
 	}
 	&.button, [type="button"], [type='submit'] {
-		// margin: 0; padding: 0;
-		padding: @padding-small / 2  @padding-normal!important;
-		margin-bottom: @padding-small;
-		// border: none!important;
-		// * { line-height: 0; padding: 0; margin: 0; }
+		margin: 0; padding: 0;
+		padding: @padding-small @padding-normal * 1.5;
+		white-space: nowrap;
+		line-height: inherit;
+		&.minus, &.plus {
+			padding-left: @padding-small;
+			padding-right: @padding-small;
+			height: auto;
+		}
+		&[name="apply_coupon"] { padding-left: @padding-large!important; padding-right: @padding-large!important; }
+		&.ux-search-submit { padding: @padding-small @padding-normal; }
 	}
+	&[name="coupon_code"], &[name="apply_coupon"] { margin-bottom: 0!important; }
 	// &.orderby, &.select2-selection, &[class=""] {
 	&.select2-selection, &[class=""] {
 		// margin: 0;
@@ -300,7 +325,7 @@ form {
 		input:first-of-type { border-top-right-radius: 0!important; border-bottom-right-radius: 0!important; }
 		button:last-of-type { border-top-left-radius: 0!important; border-bottom-left-radius: 0!important; }
 	}
-	& p { margin-bottom: 0!important; }
+	& p { margin-bottom: @padding-normal!important; }
 }
 //	************************************************************************************************
 //	FLATSOME TOP BAR
@@ -336,7 +361,7 @@ form {
 		& .nav-dropdown {
 			display: flex!important;
 			height: auto;
-			padding: @padding-normal * 1.5; padding-bottom:  @padding-normal;
+			padding: @padding-normal * 1.5;
 		}
 		&  > li.has-dropdown {
 			// PARENT
@@ -345,6 +370,7 @@ form {
 				flex-direction: column;
 				overflow: hidden;
 				width: 180px;
+				// padding-right: @padding-small;
 				& > a {
 					pointer-events: none;
 					font-weight: bold;
@@ -512,7 +538,7 @@ html.has-off-canvas, html.js {
 
 	& when (@lightbox-style = shadow) {
 
-		::after { box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15); }
+		::after:not(a) { box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15); }
 
 		& .mfp-inline-holder .mfp-content > div:first-of-type, & .off-canvas-left .mfp-content, & .off-canvas-right .mfp-content {
 			box-shadow: 0px 30px 40px 0px rgba(0,0,0,.35)!important;
@@ -797,14 +823,14 @@ div.box[class*="product"]  {
 //	************************************************************************************************
 #wrapper {
 
-	input[type="button"].minus { margin-right: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%);  min-height: 100%; margin-bottom: 0;  }
-	input[type="button"].plus { margin-left: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%); min-height: 100%; margin-bottom: 0; }
+	input[type="button"].minus { margin-right: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%);  margin-bottom: 0;  }
+	input[type="button"].plus { margin-left: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%); margin-bottom: 0; }
 	input[type="number"].qty { z-index: 1; min-height: 100%; max-height: 100%; margin: 0; background: @light; }
 
 	div.add-to-cart-container {
 		table.variations {
 			a.reset_variations { bottom: 90%; opacity: .8; }
-			td:first-of-type { width: 40%; padding-right: @padding-small; text-align: left;}
+			td:first-of-type { width: auto; }
 			.in-stock { color: inherit; }
 		}
 		.woocommerce-variation-description { margin-bottom: @padding-small; }
