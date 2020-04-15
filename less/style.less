@@ -91,7 +91,7 @@ html {
 .button, button, [type="submit"], [type="reset"] {
 // input[type='reset'], input[type='reset'].button {
 
-	&:not(.icon) {
+	&:not(.icon):not([class*="icon"]):not([class*="flickity"]) {
 		padding: @padding-small / 2 @padding-normal * 1.5;
 		margin-bottom: @padding-small;
 
@@ -229,7 +229,7 @@ button[type='submit'], textarea, select, .select2-selection, select option, img.
 		height: auto;
 		&.wpcf7-captchac { width: unset; vertical-align: middle; border: unset!important; opacity: 1; }
 	}
-	&.button, [type="button"], [type='submit'] {
+	&.button, [type="button"], [type='submit'], &:not([class*="icon"]) {
 		margin: 0; padding: 0;
 		padding: @padding-small @padding-normal * 1.5;
 		white-space: nowrap;
