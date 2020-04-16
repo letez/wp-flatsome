@@ -91,7 +91,6 @@ html {
 	a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"], input[type="submit"], button[type="submit"], input.button, input.icon  {
 
 		&.button:not(.icon), &[type="submit"] {
-			// border: 1px solid blue!important;
 			// margin: 0;
 			margin-bottom: 0;
 			// min-height: 100%!important;
@@ -100,13 +99,15 @@ html {
 			line-height: inherit;
 
 			&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
-
+				&:not(.is-outline) { border-width: 0; }
+				&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
 			}
-			&:not([type="submit"]) {
+			&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
 				display: inline-flex;
 				justify-content: center;
 				align-items: center;
-				// line-height: inital;
+				padding: @padding-small / 2 @padding-normal;
+				margin-bottom: @padding-small;
 			}
 		}
 		&.icon {
@@ -858,9 +859,9 @@ div.box[class*="product"]  {
 //	************************************************************************************************
 #wrapper {
 
-	input[type="button"].minus { margin-right: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%);  margin-bottom: 0;  }
-	input[type="button"].plus { margin-left: -@theme-radius; text-align: center; width: @padding-large / 1.5; border-color: rgba(@dark, 10%); margin-bottom: 0; }
-	input[type="number"].qty { z-index: 1; min-height: 100%; max-height: 100%; margin: 0; background: @light; }
+	input[type="button"].minus { margin-right: -@theme-radius; text-align: center; border-color: rgba(@dark, 10%);  margin-bottom: 0; padding: @padding-small!important; }
+	input[type="button"].plus { margin-left: -@theme-radius; text-align: center; border-color: rgba(@dark, 10%); margin-bottom: 0;  padding: @padding-small!important; }
+	input[type="number"].qty { z-index: 1; min-height: 100%; max-height: 100%; margin: 0; background: @light; padding: 0; width: auto; }
 
 	div.add-to-cart-container {
 		table.variations {
