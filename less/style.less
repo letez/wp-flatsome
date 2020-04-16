@@ -115,10 +115,10 @@ html {
 
 				&.is-outline {
 					&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
-					&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; } }
-					&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; } }
-					&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; } }
-					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; } }
+					&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
+					&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
+					&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
+					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
 					&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
 				}
 			}
