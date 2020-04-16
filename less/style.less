@@ -972,12 +972,17 @@ div#reviews {
 			padding: 0; margin: @padding-normal * 1.5 0;
 			background: rgba(@light, 1);
 
+			li:first-child {border-top-left-radius: @theme-radius;  border-top-right-radius: @theme-radius; }
+			li:last-child { border-bottom-left-radius: @theme-radius;  border-bottom-right-radius: @theme-radius; border-bottom-width: 4px; }
+			li:only-child { border-radius: @theme-radius; }
+
 			.wc_payment_method {
-				padding: @padding-normal * 1.5;
+				padding: @padding-normal;
 				border: 1px solid rgba(@dark, 10%);
-				p, fieldset, input { margin-bottom: 0!important;}
+				p, fieldset, input { margin-bottom: 0;}
+				p:first-of-type { margin-top: @padding-normal; }
 				img { float: right; zoom: .5; margin-top: @padding-small * 1.5; }
-				.payment_box { margin: @padding-normal * 1.5 0 @padding-small / 2 0; p { margin-bottom: @padding-normal; } }
+				// .payment_box { margin: @padding-normal * 1.5 0 @padding-small / 2 0; p { margin-bottom: @padding-normal; } }
 				&:first-of-type:not(:only-child) { border-bottom: none; }
 				* { border-color: rgba(@dark, 10%); }
 			}
@@ -986,7 +991,7 @@ div#reviews {
 	}
 
 	#shipping_method {
-		li { background: rgba(@light, 100%); }
+		li:not(:only-child) { background: rgba(@light, 100%); }
 	}
 
 	table.shipping__table { th, td { padding: @padding-normal * 1.5 0; }  }
@@ -1209,6 +1214,7 @@ p.woocommerce-invalid {
 	.has-border {
 		background: rgba(@dark, 2%);
 		border: 1px solid rgba(@dark, 10%);
+		border-radius: @theme-radius;
 		button.button { min-width: 100%; }
 		@media only screen  and (max-device-width : 420px) {
 			padding: 1em;
