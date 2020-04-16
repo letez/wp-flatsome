@@ -588,9 +588,17 @@ html.has-off-canvas, html.js {
 //	LIGHTBOX Search
 //	************************************************************************************************
 body .mfp-content #search-lightbox {
+	.search-field {
+		padding: @padding-small;
+		// border-width: 0;
+		line-height: 0;
+	}
 	.ux-search-submit {
 		border-top-right-radius: @theme-radius;
 		border-bottom-right-radius: @theme-radius;
+		padding: @padding-small @padding-normal;
+		line-height: 0; border-width: 0;
+
 	}
 	.autocomplete-suggestions {
 		&::-webkit-scrollbar { width: 8px; }
