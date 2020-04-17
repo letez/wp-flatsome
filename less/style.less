@@ -115,10 +115,10 @@ html {
 
 				&.is-outline {
 					&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
-					&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; } }
-					&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; } }
-					&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; } }
-					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; } }
+					&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
+					&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
+					&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
+					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
 					&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
 				}
 			}
@@ -783,8 +783,11 @@ body .mfp-content #main-menu.mobile-sidebar {
 //	FLATSOME BANNERS
 //	************************************************************************************************
 #wrapper div.banner {
+
+	&.is-full-height { height: 100%; }
 	div.text-box {
 		font-size: 100%;
+		div.img { left: 0; transform: translate(0, 0);}
 	}
 }
 //	************************************************************************************************
@@ -1324,10 +1327,10 @@ p.woocommerce-invalid {
 .is-front-important { z-index: 10; }
 .is-rounded { & > .col-inner { border-radius: @theme-radius; overflow: hidden; }}
 .is-absolute { position: absolute; }
-.is-left:not([class*="tools"]) { left: 0; }
-.is-right:not([class*="tools"]) { right: 0; }
-.is-center:not([class*="tools"]) { left: 50%; transform: translateX(-50%); }
-.is-bottom:not([class*="tools"]) { margin-top: 50%; bottom: 0%; transform: translateY(100%); }
+// .is-left:not([class*="tools"]) { left: 0; }
+// .is-right:not([class*="tools"]) { right: 0; }
+// .is-center:not([class*="tools"]) { left: 50%; transform: translateX(-50%); }
+// .is-bottom:not([class*="tools"]) { margin-top: 50%; bottom: 0%; transform: translateY(100%); }
 .is-capitalize {
 	span { text-transform: capitalize; margin: -@padding-small @padding-normal; }
 }
@@ -1340,6 +1343,7 @@ p.woocommerce-invalid {
 	overflow: hidden;
 	& .banner-layers { overflow: hidden; }
 }
+// .has-banner { margin: 0; && > div { margin: 0; padding: 0; height: inherit; }}
 .has-scale-80 { transform: scale(.8); }
 .has-opacity-5 { opacity: .05; }
 .has-opacity-10 { opacity: .1; }
