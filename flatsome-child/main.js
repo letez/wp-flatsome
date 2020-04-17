@@ -21,7 +21,7 @@
 				'padding-top': topBarHeight + 'px'
 			})
 			$("section.fold-top div.flickity-viewport").css({
-				'max-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			}).find('div.banner').css({
 				'max-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
