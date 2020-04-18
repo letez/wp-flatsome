@@ -17,9 +17,10 @@
 		$("section.fold-top div.flickity-viewport").ready( () => {
 			// (/Mobi/.test(navigator.userAgent)) ? mobileAddressBar = 55 : mobileAddressBar = 0;
 			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
+			console.log($(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px');
 			$("section.fold-top").css({
 				'padding-top': topBarHeight + 'px',
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px !important'
 			})
 			$("section.fold-top div.flickity-viewport").css({
 				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
@@ -32,14 +33,14 @@
 			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
 			$("section.fold-top").css({
 				'padding-top': topBarHeight + 'px',
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px !important'
 			}).find("div.banner").css({
 				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
 		});
 	} else {
 		$("section.fold-top").css({
-			'min-height': $(window).height() - $("section.fold-bottom").height() + 'px'
+			'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px !important'
 		})
 	};
 
