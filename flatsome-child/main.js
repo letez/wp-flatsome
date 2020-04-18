@@ -45,12 +45,12 @@
 				'padding-top': topBarHeight + 'px',
 				'height': foldTopHeight + topBarHeight + 'px'
 			}).find("div.banner").css({
-				'max-height': foldTopHeight + 'px'
+				'min-height': foldTopHeight + 'px'
 			});
 
 		});
 	} else {
-		
+
 		let topBarHeight = ($("header #top-bar").length !== 0) ? $("header #top-bar").height() : 0;
 		let foldBottomHeight =  ($("section.fold-bottom").length !== 0) ? $("section.fold-bottom").height() : 0;
 		let clientHeight = $(window).height();
