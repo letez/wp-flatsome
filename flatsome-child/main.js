@@ -22,9 +22,9 @@
 				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
 			$("section.fold-top div.flickity-viewport").css({
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			}).find('div.banner').css({
-				'max-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
 		});
 	} else if($("section.fold-top").find("div.banner").length !== 0)  {
@@ -32,15 +32,14 @@
 			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
 			$("section.fold-top").css({
 				'padding-top': topBarHeight + 'px',
-				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
-			}).find("div.banner").css({
 				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+			}).find("div.banner").css({
+				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
 			})
-			console.log($("section.fold-bottom").height());
 		});
 	} else {
 		$("section.fold-top").css({
-			'height': $(window).height() - $("section.fold-bottom").height() + 'px'
+			'min-height': $(window).height() - $("section.fold-bottom").height() + 'px'
 		})
 	};
 
