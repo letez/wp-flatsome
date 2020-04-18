@@ -12,35 +12,53 @@
 (Vue);
 
 (function($) {
-	// Above Fold Section Heights - Slider support
+	// Above the Fold Section - Slider / Banner Support (.fold-top, .fold-bottom)
 	if($("section.fold-top").find("div.slider").length !== 0) {
 		$("section.fold-top div.flickity-viewport").ready( () => {
-			// (/Mobi/.test(navigator.userAgent)) ? mobileAddressBar = 55 : mobileAddressBar = 0;
-			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
+
+			let topBarHeight = ($("header #top-bar").length !== 0) ? $("header #top-bar").height() : 0;
+			let foldBottomHeight =  ($("section.fold-bottom").length !== 0) ? $("section.fold-bottom").height() : 0;
+			let clientHeight = $(window).height();
+			let foldTopHeight = clientHeight - foldBottomHeight - topBarHeight;
+
 			$("section.fold-top").css({
 				'padding-top': topBarHeight + 'px',
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
-			})
-			$("section.fold-top div.flickity-viewport").css({
-				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'height': foldTopHeight + topBarHeight + 'px'
+			}).find(".section-content").css({
+				'max-height': foldTopHeight + 'px'
+			}).find("div.flickity-viewport").css({
+				'height': foldTopHeight + 'px'
 			}).find('div.banner').css({
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
-			})
+				'max-height': foldTopHeight + 'px'
+			});
+
 		});
 	} else if($("section.fold-top").find("div.banner").length !== 0)  {
 		$("section.fold-top div.banner-layers").ready( () => {
-			($("#top-bar").length !== 0) ? topBarHeight = $("#top-bar").height() : topBarHeight = 0;
+
+			let topBarHeight = ($("header #top-bar").length !== 0) ? $("header #top-bar").height() : 0;
+			let foldBottomHeight =  ($("section.fold-bottom").length !== 0) ? $("section.fold-bottom").height() : 0;
+			let clientHeight = $(window).height();
+			let foldTopHeight = clientHeight - foldBottomHeight - topBarHeight;
+
 			$("section.fold-top").css({
 				'padding-top': topBarHeight + 'px',
-				'min-height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
+				'height': foldTopHeight + topBarHeight + 'px'
 			}).find("div.banner").css({
-				'height': $(window).height() - $("section.fold-bottom").height() - topBarHeight + 'px'
-			})
+				'max-height': foldTopHeight + 'px'
+			});
+
 		});
 	} else {
+		
+		let topBarHeight = ($("header #top-bar").length !== 0) ? $("header #top-bar").height() : 0;
+		let foldBottomHeight =  ($("section.fold-bottom").length !== 0) ? $("section.fold-bottom").height() : 0;
+		let clientHeight = $(window).height();
+		let foldTopHeight = clientHeight - foldBottomHeight - topBarHeight;
+
 		$("section.fold-top").css({
-			'min-height': $(window).height() - $("section.fold-bottom").height() + 'px'
-		})
+			'height': foldTopHeight + topBarHeight + 'px'
+		});
 	};
 
 	// MainMenu DropDown Fix
