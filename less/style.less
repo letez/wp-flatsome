@@ -121,6 +121,10 @@ html {
 					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
 					&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
 				}
+
+				&[class*="-icon"] {
+					i { margin-top: .35em; }
+				}
 			}
 		}
 		&.icon {
