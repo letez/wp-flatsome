@@ -87,7 +87,7 @@ html {
 //	BUTTONS, ICONS & LINKS
 //	************************************************************************************************
 
-#wrapper {
+#wrapper, .mfp-content  {
 	a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"], input[type="submit"], button[type="submit"], input.button, input.icon  {
 
 		&.button:not(.icon), &[type="submit"] {
@@ -1049,7 +1049,7 @@ div.wpcf7, div.mailerlite-form {
 		input {
 			width: 100%;
 			&[type="submit"] { background: @secondary; }
-			&.error { border-color: transparent; color: @dark;  }
+			&.error { border-color: rgba(@dark, 10%); color: @dark;  }
 		}
 
 		.mailerlite-subscribe-button-container	{ width: 100%; }
