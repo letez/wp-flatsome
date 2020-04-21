@@ -49,7 +49,7 @@ html {
 		&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-large;  } }
 	}
 
-	& table {
+	& table:not(.variations) {
 		width: 100%;
 		p { padding: 0; margin: 0; }
 
@@ -226,15 +226,7 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
 #wrapper div.fl-wrap.fl-is-active, .mfp-content div.fl-wrap.fl-is-active {
-	label { opacity: .25; left: @padding-small * 1.4; top: @padding-small!important; }
-	input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'],
-	input[type='text'], input[type='tel'], input[type='url'], input[type='password'],textarea, select {
-		&:not(textarea) {
-			padding-top: @padding-normal;
-			padding-bottom: @padding-small / 2;
-			height: auto;
-		}
-	}
+	label:not([for*="comments"]) { opacity: .25; left: @padding-small * 1.35; top: @padding-small / 1.5!important; }
 }
 //	************************************************************************************************
 //	STYLE SELECT2
@@ -273,6 +265,9 @@ form {
 		button:last-of-type { border-top-left-radius: 0!important; border-bottom-left-radius: 0!important; }
 	}
 	& p { margin-bottom: @padding-normal!important; }
+	.create-account {
+		span { font-weight: bold; font-size: .9em; line-height: 0!important;}
+	}
 }
 //	************************************************************************************************
 //	FLATSOME TOP BAR
@@ -793,7 +788,7 @@ div.box[class*="product"]  {
 
 	div.add-to-cart-container {
 		table.variations {
-			a.reset_variations { bottom: 90%; opacity: .8; }
+			a.reset_variations { top: -@padding-small; opacity: .8; }
 			td:first-of-type { width: auto; }
 			.in-stock { color: inherit; }
 		}
@@ -1066,13 +1061,22 @@ p.woocommerce-invalid {
 		background: @light;
 		border: none;
 		justify-content: center;
-		.single_add_to_cart_button { width: auto; }
+		padding: @padding-small @padding-small;
+		border-top: @theme-radius / 2 solid tint(@dark, 90%);
+
+		.single_add_to_cart_button { width: auto; display: flex; align-self: stretch; }
+		.quantity  { align-self: stretch;}
 		.product-title-small { color: @primary; text-align: left; }
 		.price {
 			.amount { color: @secondary; }
 			display: flex;
 			flex-direction: column;
 			text-align: right;
+		}
+
+		@media only screen  and (max-device-width : 420px) {
+			justify-content: space-between;
+			.single_add_to_cart_button { display: flex; flex: 1; justify-content: center; }
 		}
 	}
 }
