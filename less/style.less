@@ -91,16 +91,15 @@ html {
 	a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"], input[type="submit"], button[type="submit"], input.button, input.icon  {
 
 		&.button:not(.icon), &[type="submit"] {
-			// margin: 0;
 			margin-bottom: 0;
-			// min-height: 100%!important;
 			padding: @padding-small @padding-normal;
 			height: initial;
-			line-height: inherit;
+			line-height: 0;
 
 			&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
 				&:not(.is-outline) { border-width: 0; }
 				&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
+				line-height: inherit;
 			}
 			&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
 				display: inline-flex;
@@ -128,91 +127,9 @@ html {
 			}
 		}
 		&.icon {
-			// border: 1px solid green!important;
+
 		}
-		// border: 1px solid rgba(black, .05)!important;
 	}
-}
-
-
-// .button, button, input[type='submit'], input[type='submit'].button, input[type='button'], input[type='button'].button, input[type='button'].button
-// input[type='reset'], input[type='reset'].button {
-.button, button, [type="submit"], [type="reset"] {
-// input[type='reset'], input[type='reset'].button {
-
-	// &:not(.icon):not([class*="icon"]):not([class*="flickity"]) {
-	// 	padding: @padding-small / 2 @padding-normal * 1.5;
-	// 	margin-bottom: @padding-small;
-	//
-	// 	&.is-outline {
-	// 		&.success {
-	// 			&:hover { border-color: @success; }
-	// 		}
-	// 		&.alert {
-	// 			&:hover { border-color: @alert; }
-	// 		}
-	// 		&.dark {
-	// 			color: @dark!important;
-	// 			border-color: @dark;
-	// 			opacity: .2;
-	// 			&:hover { border-color: @dark; background: inherit; opacity: .5;}
-	// 		}
-	// 	}
-	// }
-	// &.icon {
-	// 	.is-outline {
-	// 		border-color: rgba(@secondary, 50%);
-	// 		:hover { color: @light; }
-	// 	}
-	//
-	// 	&.wishlist-button {
-	// 		color: @primary;
-	// 		border-color: @primary;
-	// 		&:hover { border-color: @primary; background: @primary; color: @light!important; }
-	// 	}
-	// }
-	// :not([class*="add_to"])
-	// &:not(.icon):not(.toggle):not(.options):not(.minus):not(.plus):not(.wishlist-button):not(.mfp-close):not([class*="flickity"]):not([class*="edit-"]):not(.adminbar-button):not([ng-click*="$"]):not([index*="$"]) {
-	// 	display: inline-flex!important;
-	// 	justify-content: center;
-	//     align-items: center;
-	// 	line-height: 0;
-	// 	&:not(.submit) { padding: @padding-small @padding-normal; }
-	// 	&.secondary, &.alt, &.checkout { &:hover { color: tint(@secondary, 100); } }
-	//
-	// 	&.secondary {
-	// 		&:hover {
-	// 		}
-	// 	}
-	//
-	// 	&.is-outline {
-	// 		&.success {
-	// 			&:hover { border-color: @success; }
-	// 		}
-	// 		&.alert {
-	// 			&:hover { border-color: @alert; }
-	// 		}
-	// 		&.success {
-	// 			&:hover { border-color: @alert; }
-	// 		}
-	// 		&.dark {
-	// 			color: @dark!important;
-	// 			border-color: @dark;
-	// 			opacity: .2;
-	// 			&:hover { border-color: @dark; background: inherit; opacity: .5;}
-	// 		}
-	// 	}
-	//
-	//
-	//
-	// }
-	// &.alt {
-	//
-	// }
-	// &.circle.icon {
-	// 	padding: 0;
-	// }
-	// & i[class*="icon"] { margin-top: .35em; }
 }
 //	************************************************************************************************
 // SHADOWS
@@ -263,40 +180,14 @@ input[type='text'], input[type='checkbox'], input[type='tel'], input[type='url']
 	margin: 0;
 	z-index: 0;
 	border-radius: @theme-radius;
+	line-height: inherit;
 }
 //	************************************************************************************************
 //	STYLE FORMS
 //	************************************************************************************************
 input[type='email'], input[type='date'], input[type='search']:not(.ux-search-submit), input[type='number'], input[type='text'],
 input[type='checkbox'], input[type='tel'], input[type='url'], input[type='password'], textarea, select, .select2-selection, select option, img.wpcf7-captchac {
-	// &:not(.orderby):not(.select2-selection):not(.qty):not([class=""]) {
 
-	// &:not(button):not([type='button']):not([type='submit']):not(.select2-selection):not(.qty):not([class=""]) {
-	// &:not(button):not([type='button']):not([type='submit']):not(.select2-selection):not(.qty) {
-		padding: @padding-small @padding-small;
-		height: auto;
-		&.wpcf7-captchac { width: unset; vertical-align: middle; border: unset!important; opacity: 1; }
-	// }
-
-
-	// &.button, [type="button"], [type='submit'], &:not([class*="icon"]) {
-	// 	margin: 0; padding: 0;
-	// 	padding: @padding-small @padding-normal * 1.5;
-	// 	white-space: nowrap;
-	// 	line-height: inherit;
-	// 	&.minus, &.plus {
-	// 		padding-left: @padding-small;
-	// 		padding-right: @padding-small;
-	// 		height: auto;
-	// 	}
-	// 	&[name="apply_coupon"] { padding-left: @padding-large!important; padding-right: @padding-large!important; }
-	// 	&.ux-search-submit { padding: @padding-small @padding-normal; }
-	// }
-	// &[name="coupon_code"], &[name="apply_coupon"] { margin-bottom: 0!important; }
-
-
-
-	// &.orderby, &.select2-selection, &[class=""] {
 	&.select2-selection, &[class=""] {
 		// margin: 0;
 		// height: @padding-normal * 1.85;
@@ -308,9 +199,12 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 		// }
 	}
 
-	// margin-bottom: @padding-normal;
+	&.wpcf7-captchac { width: unset; vertical-align: middle; border: unset!important; opacity: 1; }
+
+	padding: @padding-small @padding-small;
 	margin: 0;
 	height: auto;
+
 
 	& when (@theme-form = normal) {
 		background: linear-gradient(0deg, rgba(@dark,0.030) 0%, rgba(@dark,0.015) 20%, rgba(@light, 0) 100%);
@@ -322,7 +216,7 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 		border: 1px solid rgba(@dark, 10%);
 	}
 	& when (@theme-form = clean) {
-		border: 1px solid rgba(@dark, 10%)!important;
+		border: 1px solid rgba(@dark, 10%);
 	}
 	& when (@theme-form = minimal) {
 		border-bottom: 2px solid rgba(@dark, 10%);
@@ -500,6 +394,12 @@ footer#footer, section.footer-bottom {
 //	************************************************************************************************
 #wrapper div.social-icons, .mfp-content div.social-icons {
 	a:first-of-type { margin-left: 0;}
+}
+//	************************************************************************************************
+//	FLATSOME BLOCKQUOTE
+//	************************************************************************************************
+blockquote {
+	color: tint(@dark, 50%);
 }
 //	************************************************************************************************
 //	FLATSOME TEXT BOX
