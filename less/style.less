@@ -1027,25 +1027,86 @@ p.woocommerce-invalid {
 }
 
 
-// CONTACT FORM 7
-#wrapper div.wpcf7, .mfp-container div.wpcf7 {
-	.wpcf7-not-valid-tip {
+//	************************************************************************************************
+// 	CONTACT FORM 7, MAILERLITE
+//	************************************************************************************************
+div.wpcf7, div.mailerlite-form {
+
+	&.wpcf7 {
+		.wpcf7-not-valid-tip {
+			top: 0%; right: -@padding-small;
+			&::after { border-color: transparent; border-right-color: @alert; border-width: 5px; left: 0; top: @padding-small; }
+		}
+
+		form { margin: 0; margin-bottom: -2em; }
+		div.row, div.col { padding-bottom: 0; }
+		p { margin-bottom: 0; }
+		textarea { min-height: 70px; }
+	}
+
+	&.mailerlite-form  {
+
+		input {
+			width: 100%;
+			&[type="submit"] { background: @secondary; }
+			&.error { border-color: transparent; color: @dark;  }
+		}
+
+		.mailerlite-subscribe-button-container	{ width: 100%; }
+		.mailerlite-form-inputs {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+
+			& > div {
+				padding: 0 0 0 @padding-small;
+			}
+		}
+
+		.mailerlite-form-field {
+			margin: 0;
+			width: 100%;
+			position: relative; z-index: 1;
+		}
+
+		label.error {
+			top: 0; right: 0;
+			&::after {
+				width: 0;
+				height: 0;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+			    content: "";
+				left: -5px; top: @padding-small;
+				position: absolute;
+				box-sizing: border-box;
+				border-right: 5px solid @alert;
+			}
+   		}
+
+		@media only screen  and (max-device-width : 420px) {
+			input { margin-bottom: @padding-normal / 1.25; &[type="submit"] { margin-top: @padding-normal / 1.25; } }
+			// label.error { right: 0; }
+			.mailerlite-form-inputs {
+				flex-direction: column;
+				& > div:not(:first-of-type):not(:last-of-type) { padding: 0; }
+			}
+		}
+	}
+
+	.wpcf7-not-valid-tip, label.error {
 		position: absolute;
 		background: @alert;
 		color: @light;
-		width: 100%;
-		font-size: .8em;
+		width: auto;
+		font-size: .5em;
 		font-weight: 900;
 		opacity: 1;
-		bottom: -10px;
+		line-height: 0;
+		padding: @padding-small * 2  @padding-normal;
+		border-radius: @theme-radius;
 		box-shadow: 0px 10px 19px rgba(0,0,0,0.15), 0px 1px 1px rgba(0,0,0,0.3);
-		&::after { border-bottom-color: @alert; border-width: 5px; left: 20px; }
 	}
-
-	form { margin: 0; margin-bottom: -2em; }
-	div.row, div.col { padding-bottom: 0; }
-	p { margin-bottom: 0; }
-	textarea { min-height: 70px; }
 }
 
 
@@ -1184,42 +1245,6 @@ p.woocommerce-invalid {
 				// animation-timing-function: easeInOutBack;
 			}
 		}
-	}
-}
-//	************************************************************************************************
-//	MAILER LITE
-//	************************************************************************************************
-#wrapper div.mailerlite-form {
-	input {
-		// margin: 1em;
-		width: 100%;
-		&[type="submit"] { background: @secondary; }
-	}
-
-	.mailerlite-subscribe-button-container	{ width: 100%; }
-
-	.mailerlite-form-inputs {
-			display: flex;
-			justify-content: space-between;
-			align-items: flex-end;
-
-			& > div:not(:first-of-type):not(:last-of-type) {
-				padding: 0 2 * @padding-small;
-			}
-			@media only screen  and (max-device-width : 420px) {
-				flex-direction: column;
-				& > div:not(:first-of-type):not(:last-of-type) { padding: 0; }
-			}
-	}
-
-	@media only screen  and (max-device-width : 420px) {
-		input { margin-bottom: @padding-normal / 1.25; &[type="submit"] { margin-top: @padding-normal / 1.25; } }
-	}
-
-	.mailerlite-form-field {
-		margin: 0;
-		width: 100%;
-		// margin-right: 1em;
 	}
 }
 //	************************************************************************************************
