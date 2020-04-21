@@ -9,7 +9,8 @@ Version: 0
 //	HIDDEN ELEMENTS
 //	************************************************************************************************
 #wrapper {
-	.wishlist-popup, .absolute-footer  { display: none; }
+	.wishlist-popup, .absolute-footer, a.button.show-title-form, table.wishlist_table thead  { display: none!important; }
+	// a.button.show-title-form { display: none!important; }
 	// .absolute-footer { display: none; }
 }
 //	************************************************************************************************
@@ -750,6 +751,7 @@ body .mfp-content #main-menu.mobile-sidebar {
 //	WOOCOMMERCE AND FLATSOME
 //	************************************************************************************************
 
+
 //	************************************************************************************************
 //	FLATSOME PRODUCT CATEGORIES
 //	************************************************************************************************
@@ -827,7 +829,7 @@ div#reviews {
 			border: none;
 			background: rgba(@dark, 2%);
 		}
-		form, form input { margin-bottom: 0; padding-bottom: 0; }
+		form { margin-bottom: 0; padding-bottom: 0; }
 		border: 1px solid rgba(@dark, 10%)
 	}
 	@media only screen  and (max-device-width : 420px) {
@@ -1008,6 +1010,44 @@ div.category-filtering {
 p.woocommerce-invalid {
 	input { border-color: rgba(@alert, 70%); }
 }
+//	************************************************************************************************
+//	WOOCOMMERCE MY ACCOUNT
+//	************************************************************************************************
+body[class*="my-account"] div.woocommerce {
+
+	&[class*="woocommerce"] {
+		input, button { height: 100%; }
+	}
+
+	.u-columns, .woocommerce-column {
+		& { padding-top: @padding-normal; }
+		address {
+			padding: @padding-normal @padding-large;
+			border: 1px solid rgba(@dark, 10%);
+		}
+	}
+	.dashboard-links {
+		margin-top: @padding-normal;
+		li a {
+			&:hover { background: rgba(@dark, 5%); border-color: rgba(@dark, 10%); color: @dark; }
+		}
+	}
+	mark { background: @secondary; padding: @padding-small / 2; color: tint(@secondary, 100%); font-size: .8em; font-weight: bold;}
+	section { margin-top: @padding-normal; }
+}
+//	************************************************************************************************
+//	WISHLIST
+//	************************************************************************************************
+#wrapper #yith-wcwl-form {
+	.yith_wcwl_wishlist_footer { margin-top: @padding-large; }
+	.yith-wcwl-share {
+		display: flex!important;
+		align-items: baseline;
+		span { margin: 0; padding: 0;}
+		a { margin: 0 0 0 @padding-small; }
+	}
+}
+
 //	************************************************************************************************
 //	COOKIE NOTICE
 //	************************************************************************************************
