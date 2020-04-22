@@ -720,8 +720,8 @@ body .mfp-content #main-menu.mobile-sidebar {
 		}
 	}
 	.flickity-button {
-		margin-top: 0!important;
-		svg { padding: 28%; }
+		padding: 1.25em;
+		svg { padding: 30%!important; }
 	}
 	.dot {
 		width: 10px; height: 10px;
@@ -768,6 +768,7 @@ div.box[class*="product"]  {
 		display: flex;
 		flex-direction: column;
 		& p { margin: @padding-small 0 @padding-normal 0; }
+		div:empty { display: none; }
 		.category { margin-bottom: 0;}
 		.price {
 			& .woocommerce-price-suffix { display: block; margin-top: @padding-small; opacity: 0.5; }
@@ -891,6 +892,29 @@ div#reviews {
 		&[class*="checkout-review"] > tbody { font-size: .8em; .amount { opacity: .5; } }
 		td.shipping__inner { padding-bottom: 0; table td { paddin: 0; }}
 		// tr.order-total { th, td { padding-top: 0; } }
+		tr.cart-discount {
+			background: transparent;
+			th {
+				padding: @padding-large @padding-small;
+				margin-bottom: 1px;
+				border: none!important;
+				text-align: center;
+				color: tint(@primary, 50%)!important;
+				text-shadow: 2px 4px 8px darken(@primary, 20%);
+				text-transform: uppercase;
+				font-weight: bolder;
+
+				background:
+		            -webkit-radial-gradient(-@padding-normal / 2 50%, circle, transparent @padding-normal, rgba(@dark, 100%) @padding-normal),
+		            -webkit-radial-gradient(calc(100% + @padding-normal / 2) 50%, circle, transparent @padding-normal, rgba(@dark, 100%) @padding-normal);
+
+				 background-position: top left, bottom right;
+			     -webkit-background-size: 100% 100%;
+			     background-size: 50% 100%;
+			     background-repeat: no-repeat;
+			}
+			td { padding: @padding-large 0; }
+		}
 	}
 
 	#order_review {
