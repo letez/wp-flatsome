@@ -895,25 +895,22 @@ div#reviews {
 		tr.cart-discount {
 			background: transparent;
 			th {
-				padding: @padding-large @padding-small;
-				margin-bottom: 1px;
-				border: none!important;
+				padding: @padding-large / 1.25 @padding-small;
 				text-align: center;
 				color: tint(@primary, 50%)!important;
 				text-shadow: 2px 4px 8px darken(@primary, 20%);
 				text-transform: uppercase;
-				font-weight: bolder;
 
 				background:
 		            -webkit-radial-gradient(-@padding-normal / 2 50%, circle, transparent @padding-normal, rgba(@dark, 100%) @padding-normal),
 		            -webkit-radial-gradient(calc(100% + @padding-normal / 2) 50%, circle, transparent @padding-normal, rgba(@dark, 100%) @padding-normal);
 
 				 background-position: top left, bottom right;
-			     -webkit-background-size: 100% 100%;
-			     background-size: 50% 100%;
+			     -webkit-background-size: 80% 100%;
+			     background-size: 80% 100%;
 			     background-repeat: no-repeat;
 			}
-			td { padding: @padding-large 0; }
+			td { padding: @padding-normal 0; width: 30%; }
 		}
 	}
 
