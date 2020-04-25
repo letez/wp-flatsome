@@ -8,14 +8,22 @@ function main_js() {
 }
 add_action('wp_footer','main_js');
 // WOOCOMMERCE ADDITIONAL TAB
-add_filter( 'woocommerce_product_tabs', 'bbloomer_remove_product_tabs', 98 );
-function bbloomer_remove_product_tabs( $tabs ) {
+add_filter( 'woocommerce_product_tabs', 'removeProductTabs', 98 );
+function removeProductTabs( $tabs ) {
     unset( $tabs['additional_information'] );
     return $tabs;
 }
+// WOOCOMMERCE SHOP BANNER
+add_action( 'woocommerce_before_shop_loop', 'addShopBnner', 10 );
+add_action( 'woocommerce_before_cart', 'addShopBnner', 10 );
+add_action( 'woocommerce_before_checkout_form', 'addShopBnner', 10 );
+function addShopBnner() {
+	echo do_shortcode( '[block id="shop-banner"]' );
+};
+
 // SMALL FOOTER
-add_action('wp_footer', 'small_footer');
-function small_footer(){
+add_action('wp_footer', 'addSmallFooter');
+function addSmallFooter(){
 	$page_footer = get_post_meta( get_the_ID(), '_footer', true );
 	if($page_footer == 'disabled') {
 		echo do_shortcode( '[block id="footer-small"]' );
