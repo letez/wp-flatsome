@@ -1109,7 +1109,6 @@ button.wishlist-button.icon:hover { background: @primary; border-color: @primary
 // 	CONTACT FORM 7, MAILERLITE
 //	************************************************************************************************
 div.wpcf7, div.mailerlite-form {
-
 	&.wpcf7 {
 		.wpcf7-not-valid-tip {
 			top: 0%; right: -@padding-small;
@@ -1120,6 +1119,22 @@ div.wpcf7, div.mailerlite-form {
 		div.row, div.col { padding-bottom: 0; }
 		p { margin-bottom: 0; }
 		textarea { min-height: 70px; }
+	}
+	div.wpcf7-response-output {
+		&::before { content: "x";  margin-right: @padding-small; }
+		background: rgba(@alert, 10%);
+		border: 1px solid rgba(@alert, 20%);
+		padding: @padding-normal @padding-normal;
+		border-radius: @theme-radius;
+		color: @alert;
+		font-size: .8em;
+		font-weight: bold;
+		&[class*="ok"] {
+			&::before { content: "✓"; margin-right: @padding-small; }
+			background: rgba(@success, 10%);
+			border: 1px solid rgba(@success, 20%);
+			color: @success;
+		}
 	}
 
 	&.mailerlite-form  {
