@@ -18,15 +18,14 @@ Version: 0
 //	************************************************************************************************
 body { overflow: hidden!important; }
 html {
-
-	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small; &:only-child { margin-bottom: .5em; } }
-	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  &:only-child { margin-bottom: .5em; } }
-	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @padding-small; &:only-child { margin-bottom: .5em; } }
-	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small; &:only-child { margin-bottom: .5em; } }
-	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small; &:only-child { margin-bottom: .5em; } }
-	h6 { font-size: .6em; line-height: .5em; margin-bottom: 0; &:only-child { margin-bottom: .5em; } }
-	p:not(.lead) { font-size: 1em; line-height: 1.7em; &:last-of-type:not(:only-child) { margin-bottom: 0; }  &:only-child { margin-bottom: .5em; } }
-	p.lead { font-size: 1.5em; line-height: 1.5em; margin-bottom: @padding-large; &:only-child { margin-bottom: .5em; } }
+	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small;  }
+	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  }
+	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @padding-small; }
+	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small;  }
+	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small;  }
+	h6 { font-size: .6em; line-height: .5em; margin-bottom: 0; }
+	p:not(.lead) { font-size: 1em; line-height: 1.7em; &:last-of-type:not(:only-child) { margin-bottom: 0; } }
+	p.lead { font-size: 1.5em; line-height: 1.5em; margin-bottom: @padding-large; }
 	p > strong { font-weight: 600; }
 
 	.product-meta p { margin-bottom: 0!important; }
@@ -805,7 +804,7 @@ div.box[class*="product"]  {
 		}
 		p, span {
 			// padding: @padding-small/2 0;
-			margin-bottom: @padding-normal!important;
+			// margin-bottom: @padding-normal!important;
 			color: @light;
 			&.stock { text-align: right; }
 			// border: 1px solid rgba(@dark, 10%);

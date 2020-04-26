@@ -27,7 +27,18 @@ function addShopBnner() {
 		echo do_shortcode( '[block id="shop-banner"]' );
 	}
 };
-
+// WOOCOMMERCE CUSTOM ORDER COMPLETE PAGE
+add_action( 'woocommerce_thankyou_order_received_text', 'customOrderComplete' );
+function customOrderComplete() {
+	$args = array(
+      'name' => 'order-complete',
+      'post_type' => 'blocks',
+      'post_status' => 'publish'
+    );
+	if(get_posts($args)) {
+		echo do_shortcode( '[block id="order-complete"]' );
+	} else { echo("Thank you. Your order has been received."); }
+}
 // SMALL FOOTER
 add_action('wp_footer', 'addSmallFooter');
 function addSmallFooter(){
