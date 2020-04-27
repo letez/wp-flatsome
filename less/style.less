@@ -20,7 +20,7 @@ body { overflow: hidden!important; }
 html {
 	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small;  }
 	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  }
-	h3 { font-size: 2em; line-height: 1em;  margin-bottom: @padding-small; }
+	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin-bottom: @padding-small; } }
 	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small;  }
 	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small;  }
 	h6 { font-size: .6em; line-height: .5em; margin-bottom: 0; }
@@ -806,7 +806,9 @@ div.box[class*="product"]  {
 		.woocommerce-variation {
 			font-size: .8em;
 			* { border-color: rgba(@light, 50%); }
+			& div:empty { display: none; }
 		}
+
 		p, span {
 			// padding: @padding-small/2 0;
 			// margin-bottom: @padding-normal!important;
@@ -815,6 +817,7 @@ div.box[class*="product"]  {
 			// border: 1px solid rgba(@dark, 10%);
 			// color: tint(@dark, 100%);
 			// background: rgba(@dark, 3%);
+			&.out-of-stock { background: rgba(@alert, 5%); border: 1px solid rgba(@alert, 10%); color: @alert; padding: @padding-small; text-align: center; border-radius: @theme-radius; }
 		}
 	}
 }
@@ -877,6 +880,15 @@ div#reviews {
 			font-weight: bold;
 			color: lighten(@secondary, 100%);
 		}
+	}
+	div.out-of-stock-label {
+		background: @primary;
+		color: tint(@primary, 100%);
+		padding: @padding-small;
+		zoom: .6;
+		width: 50%;
+		transform: translateX(50%);
+
 	}
 }
 //	************************************************************************************************
