@@ -42,93 +42,89 @@ html {
 //	************************************************************************************************
 //	COL AND TABLE PADDINGS
 //	************************************************************************************************
-#wrapper, .mfp-content {
- 	& div.row {
-		&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-small;  } }
-		&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: @padding-normal;  } }
-		&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-large;  } }
+& div.row {
+	&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-small;  } }
+	&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: @padding-normal;  } }
+	&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-large;  } }
+}
+
+& table:not(.variations) {
+	width: 100%;
+	p { padding: 0; margin: 0; }
+
+	thead {
+		white-space: nowrap;
+		th { font-weight: bold; text-transform: uppercase; color: @dark; }
+		th, td { padding-bottom: @padding-normal / 1.5; }
+	}
+	tbody {
+		th, td {
+			padding-top: @padding-normal / 1.5;
+			padding-bottom: @padding-normal / 1.5;
+		}
+		th { }
+		td { }
+	}
+	tfoot {
+		th, td { padding-top: @padding-normal / 1.5; padding-bottom: @padding-normal / 1.5; }
 	}
 
-	& table:not(.variations) {
-		width: 100%;
-		p { padding: 0; margin: 0; }
+	tr th:only-of-type { width: auto; }
+	tr td:only-of-type { white-space: nowrap; text-align: right; }
 
-		thead {
-			white-space: nowrap;
-			th { font-weight: bold; text-transform: uppercase; color: @dark; }
-			th, td { padding-bottom: @padding-normal / 1.5; }
-		}
-		tbody {
-			th, td {
-				padding-top: @padding-normal / 1.5;
-				padding-bottom: @padding-normal / 1.5;
-			}
-			th { }
-			td { }
-		}
-		tfoot {
-			th, td { padding-top: @padding-normal / 1.5; padding-bottom: @padding-normal / 1.5; }
-		}
-
-		tr th:only-of-type { width: auto; }
-		tr td:only-of-type { white-space: nowrap; text-align: right; }
-
-		tr, td {
-			width: auto;
-			&:first-of-type { text-align: left; }
-			&:last-of-type { text-align: right; }
-			&:not(.product-name):not(:last-of-type):not(:first-of-type) {
-				text-align: center;
-			}
+	tr, td {
+		width: auto;
+		&:first-of-type { text-align: left; }
+		&:last-of-type { text-align: right; }
+		&:not(.product-name):not(:last-of-type):not(:first-of-type) {
+			text-align: center;
 		}
 	}
 }
 //	************************************************************************************************
 //	BUTTONS, ICONS & LINKS
 //	************************************************************************************************
+a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"],
+input[type="submit"], button[type="submit"], input.button, input.icon  {
 
-#wrapper, .mfp-content  {
-	a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"], input[type="submit"], button[type="submit"], input.button, input.icon  {
+	&.button:not(.icon), &[type="submit"] {
+		margin-bottom: 0;
+		padding: @padding-small @padding-normal;
+		height: initial;
+		line-height: 0;
 
-		&.button:not(.icon), &[type="submit"] {
-			margin-bottom: 0;
-			padding: @padding-small @padding-normal;
-			height: initial;
-			line-height: 0;
+		&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
+			&:not(.is-outline) { border-width: 0; }
+			&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
+			line-height: inherit;
+		}
+		&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			padding: @padding-small / 1.5 @padding-large / 1.25;
 
-			&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
-				&:not(.is-outline) { border-width: 0; }
-				&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
-				line-height: inherit;
+			&.is-large { padding: @padding-small @padding-large * 1.25; }
+			&.is-larger { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+			&.is-xlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+			&.is-xxlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+
+			&.is-outline {
+				&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
+				&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
+				&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
+				&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
+				&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
+				&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
 			}
-			&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
-				display: inline-flex;
-				justify-content: center;
-				align-items: center;
-				padding: @padding-small / 1.5 @padding-large / 1.25;
 
-				&.is-large { padding: @padding-small @padding-large * 1.25; }
-				&.is-larger { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
-				&.is-xlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
-				&.is-xxlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
-
-				&.is-outline {
-					&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
-					&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
-					&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
-					&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
-					&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
-					&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
-				}
-
-				&[class*="-icon"] {
-					i { margin-top: .35em; }
-				}
+			&[class*="-icon"] {
+				i { margin-top: .35em; }
 			}
 		}
-		&.icon {
-
-		}
+	}
+	&.icon, &.button.icon {
+		&.is-outline { border-color: @dark; }
 	}
 }
 //	************************************************************************************************
@@ -152,10 +148,8 @@ div.row-box-shadow-5:not(.products), div.row-box-shadow-5-hover:not(.products) {
 //	************************************************************************************************
 //	ELEMENTS DEPTH
 //	************************************************************************************************
-#wrapper, .mfp-content {
-	div.shop-page-title, div.category-page-title, div.page-title {
-		z-index: 1;
-	}
+div.shop-page-title, div.category-page-title, div.page-title {
+	z-index: 1;
 }
 //	************************************************************************************************
 //	DARK ELEMENTS
@@ -225,7 +219,7 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 //	************************************************************************************************
 //	STYLE FORMS IF FLOATED
 //	************************************************************************************************
-#wrapper div.fl-wrap.fl-is-active, .mfp-content div.fl-wrap.fl-is-active {
+div.fl-wrap.fl-is-active, .mfp-content div.fl-wrap.fl-is-active {
 	label:not([for*="comments"]) { opacity: .25; left: @padding-small * 1.35; top: @padding-small / 1.5!important; }
 }
 //	************************************************************************************************
@@ -272,7 +266,7 @@ form {
 //	************************************************************************************************
 //	FLATSOME TOP BAR
 //	************************************************************************************************
-#wrapper #top-bar div.container {
+#top-bar div.container {
 	// TODO
 }
 //	************************************************************************************************
@@ -293,7 +287,7 @@ form {
 //	************************************************************************************************
 //	FLATSOME HEADER
 //	************************************************************************************************
-#wrapper header, #wrapper header.has-sticky, #wrapper header.has-transparent {
+header, header.has-sticky, header.has-transparent {
 	& ul.header-nav {
 		// ROOT Level
 		& > li {
@@ -387,7 +381,7 @@ footer#footer, section.footer-bottom {
 //	************************************************************************************************
 //	FLATSOME SOCIAL ICONS
 //	************************************************************************************************
-#wrapper div.social-icons, .mfp-content div.social-icons {
+div.social-icons {
 	a:first-of-type { margin-left: 0;}
 }
 //	************************************************************************************************
@@ -409,14 +403,14 @@ blockquote {
 //	************************************************************************************************
 // FLATSOME TITLE SECTION
 //	************************************************************************************************
-#wrapper .section-title, .mfp-content .section-title {
+.section-title {
 	span { text-transform: initial; padding: 0 @padding-normal; }
 	b { height: 1px; }
 }
 //	************************************************************************************************
 //	FLATSOME IMAGE BOX
 //	************************************************************************************************
-#wrapper div.img, .mfp-content div.img {
+div.img {
 
 }
 //	************************************************************************************************
@@ -524,17 +518,6 @@ body .mfp-content #search-lightbox {
 	}
 }
 //	************************************************************************************************
-//	LIGHTBOX Shop Sidebar
-//	************************************************************************************************
-body .mfp-content #shop-sidebar {
-	.sidebar-inner { padding: 1.25em; }
-	.count { font-weight: bold; color: @primary; }
-	.has-block { .col { transition: none; } overflow: hidden; }
-	.product_list_widget {
-		img { padding: .5em; background: @light; border: 1px solid rgba(@secondary, 10%); }
-	}
-}
-//	************************************************************************************************
 //	LIGHTBOX Mobile Menu
 //	************************************************************************************************
 body .mfp-content #main-menu.mobile-sidebar {
@@ -601,8 +584,10 @@ body .mfp-content #main-menu.mobile-sidebar {
 	button.toggle { color: @primary; }
 }
 
-
-#wrapper #shop-sidebar {
+//	************************************************************************************************
+//	WOOCOMMERCE SHOP SIDEBAR
+//	************************************************************************************************
+#shop-sidebar {
 
 	// font-size: 100%;
 
@@ -647,6 +632,10 @@ body .mfp-content #main-menu.mobile-sidebar {
 		a { padding-bottom: @padding-normal / 3; }
 		span.amount { font-size: 80%; }
 	}
+
+	@media only screen  and (max-device-width : 420px) {
+		font-size: .9em;
+	}
 }
 
 
@@ -669,20 +658,24 @@ body .mfp-content #main-menu.mobile-sidebar {
 //	************************************************************************************************
 //	FLATSOME ACCORDION
 //	************************************************************************************************
-#wrapper div.accordion {
-	a, button, i { transition: initial; }
-	& .accordion-title { transition: @time @ease; padding: @padding-normal @padding-large; border-color: rgba(@dark, 10%); }
-	.active { background-color: initial; }
-	.toggle { top: 1.25em; }
-	// .active .toggle { top: 1.1em; }
-	.accordion-inner { padding: @padding-small 0 @padding-large 0; }
-	.accordion-title:hover { color: @primary; }
+div.accordion {
+	& a, button, i { transition: initial; }
+	& .accordion-title {
+		display: flex;
+		align-items: center;
+		padding: @padding-normal 0;
+		border-color: rgba(@dark, 10%);
+		* { transition: @time @ease; }
+		button { position: relative; font-size: .6em; margin-top: -.05em 0 0 0; }
+		:hover { color: @primary; }
+	}
+	& .active { background-color: initial; font-weight: inherit;}
+	& .accordion-item:first-child  a { border-width: 0;   }
 }
 //	************************************************************************************************
 //	FLATSOME BANNERS
 //	************************************************************************************************
-#wrapper div.banner {
-
+div.banner {
 	&.is-full-height { height: 100%; }
 	div.text-box {
 		font-size: 100%;
@@ -692,15 +685,16 @@ body .mfp-content #main-menu.mobile-sidebar {
 //	************************************************************************************************
 //	FLATSOME SLIDERS
 //	************************************************************************************************
-#wrapper div.slider {
-	div.flickity-slider {
+div.slider {
+	.flickity-button, .flickity-button-icon { transition: inital; transition: @time @ease; }
+
+	& div.flickity-slider {
 		& > div { }
 	}
 	&.slider-nav-simple { }
 	&.slider-nav-reveal { }
 	&.slider-nav-circle {
-		.flickity-button, .flickity-button svg *  {
-			transition: inital;
+		.flickity-button, .flickity-button svg * {
 			&:not(:hover) { svg { border-color: @dark; path { fill: @dark; } } }
 		}
 		&.slider-nav-light .flickity-button {
@@ -754,7 +748,7 @@ body .mfp-content #main-menu.mobile-sidebar {
 //	************************************************************************************************
 //	FLATSOME PRODUCT CATEGORIES
 //	************************************************************************************************
-#wrapper div.box-category {
+div.box-category {
 	.box-text {
 		padding: @padding-small;
 		h5 { font-size: 2em; }
@@ -1041,6 +1035,14 @@ div.category-filtering {
 		.filter-button { margin: 0; }
 		> div { width: inherit; margin-top: 1em; }
 		li a:before { opacity: 1; }
+	}
+}
+//	************************************************************************************************
+//	WOOCOMMERCE ORDER BY DROPDOWN
+//	************************************************************************************************
+form.woocommerce-ordering {
+	@media only screen  and (max-device-width : 420px) {
+		width: 100%!important;
 	}
 }
 p.woocommerce-invalid {
