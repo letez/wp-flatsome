@@ -812,8 +812,8 @@ div.box[class*="product"]  {
 		p, span {
 			// padding: @padding-small/2 0;
 			// margin-bottom: @padding-normal!important;
-			color: @light;
-			&.stock { text-align: right; }
+			// color: @light;
+			// &.stock { text-align: right; }
 			// border: 1px solid rgba(@dark, 10%);
 			// color: tint(@dark, 100%);
 			// background: rgba(@dark, 3%);
@@ -882,13 +882,12 @@ div#reviews {
 		}
 	}
 	div.out-of-stock-label {
-		background: @primary;
-		color: tint(@primary, 100%);
+		background: @alert;
+		color: tint(@alert, 100%);
 		padding: @padding-small;
-		zoom: .6;
+		zoom: .8;
 		width: 50%;
-		transform: translateX(50%);
-
+		transform: translate(50%, 50%);
 	}
 }
 //	************************************************************************************************
