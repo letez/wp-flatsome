@@ -6,10 +6,11 @@ Template: flatsome
 Version: 0
 */
 //	************************************************************************************************
-//	HIDDEN ELEMENTS
+//	RESETS & HIDDEN ELEMENTS
 //	************************************************************************************************
-#wrapper {
+body div:not(#wpadminbar) {
 	.wishlist-popup, .absolute-footer, a.button.show-title-form, table.wishlist_table thead  { display: none!important; }
+	svg, svg > path { color: initial; transition: none; }
 	// a.button.show-title-form { display: none!important; }
 	// .absolute-footer { display: none; }
 }
@@ -93,10 +94,10 @@ section.dark {
 //	BUTTONS, ICONS & LINKS
 //	************************************************************************************************
 a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"],
-input[type="submit"], button[type="submit"], input.button, input.icon  {
+input[type="submit"], button[type="submit"], input.button, input.icon, button  {
 
 	&.button:not(.icon), &[type="submit"] {
-		margin-bottom: 0;
+		// margin-bottom: 0;
 		padding: @padding-small @padding-normal;
 		height: initial;
 		line-height: 0;
@@ -326,7 +327,7 @@ header, header.has-sticky, header.has-transparent {
 				}
 				// CHILDRENS
 				& > ul  {
-				    display: flex;
+				    display: flex!important;
 					flex-direction: column;
 					flex: 1;
 					& .active a { font-weight: bold; }
@@ -486,6 +487,18 @@ html.has-off-canvas, html.js {
 				// margin: 0 auto;
 			}
 		}
+	}
+
+	.product-quick-view-container {
+		background: @light;
+		.row { line-height: 0; align-items: center; }
+		.product-info { text-align: right; }
+		// .price { text-align: right; }
+		.woocommerce-variation-add-to-cart {
+			display: flex;
+			button { flex: 1; margin-bottom: 0; }
+		}
+		div:empty { display: none; }
 	}
 
 
@@ -648,24 +661,6 @@ body .mfp-content #main-menu.mobile-sidebar {
 		font-size: .9em;
 	}
 }
-
-
-#wrapper .footer-nav {
-	font-size: initial; font-size: 72.5%;
-	& p, & li > a { text-transform: uppercase; }
-	& > .col-inner {
-		display: flex;
-		flex-direction: column;
-	}
-
-	p { font-weight: 400; }
-	ul { list-style: none; margin-top: @padding-normal; }
-	li { margin: 0 0 @padding-normal / 2 0; padding-bottom: @padding-normal / 2;  border-bottom: 1px solid rgba(@dark, 10%); }
-	li > a { color: @dark; opacity: .7; transition: @time @ease; &:hover { opacity: 1; }}
-	.price { white-space: nowrap; font-size: 112.5%; }
-	.has-block{ flex: 1; align-items: flex-end; & .col-inner { margin: 0!important; }}
-}
-
 //	************************************************************************************************
 //	FLATSOME ACCORDION
 //	************************************************************************************************
@@ -696,43 +691,48 @@ div.banner {
 //	************************************************************************************************
 //	FLATSOME SLIDERS
 //	************************************************************************************************
-div.slider {
-	.flickity-button, .flickity-button-icon { transition: inital; transition: @time @ease; }
-
-	& div.flickity-slider {
-		& > div { }
+#wrapper div.slider, body.lightbox div.slider {
+	.flickity-button {
+		padding: 1.25em;
+		svg { padding: 30%; transition: @time @ease; }
 	}
-	&.slider-nav-simple { }
+	&.slider-nav-simple {
+		svg { transition: none; path { transition: @time @ease; } }
+	}
 	&.slider-nav-reveal { }
 	&.slider-nav-circle {
-		.flickity-button, .flickity-button svg * {
-			&:not(:hover) { svg { border-color: @dark; path { fill: @dark; } } }
-		}
-		&.slider-nav-light .flickity-button {
-			&:not(:hover)  { svg { border-color: @light; path { fill: @light; } } }
+		& svg {
+			&:hover {
+				background: @primary;
+			}
 		}
 	}
 	.flickity-page-dots {
-		margin-top: 20px!important;
-		li { padding: 0; }
+		// margin-top: 20px!important;
+		// li { padding: 0; }
 		li + li {  margin-left: calc(@theme-density / 8)!important; }
 	}
+
+
+	.flickity-button, .flickity-button svg {
+		&:not(:hover) { svg { border-color: rgba(@dark, 30%); path { fill: rgba(@dark, 30%); } } }
+	}
+	.dot {
+		width: 10px; height: 10px;
+		border: 2px solid @dark;
+		&.is-selected { background: @dark; }
+	}
+
 	&.slider-nav-light {
+		.flickity-button {
+			&:not(:hover)  { svg { border-color: @light; path { fill: @light; } } }
+		}
 		.dot {
 			border-color: @light;
 			&.is-selected { background: @light; }
 		}
 	}
-	.flickity-button {
-		padding: 1.25em;
-		svg { padding: 30%!important; }
-	}
-	.dot {
-		width: 10px; height: 10px;
-		border-color: @dark;
-		border-width: 2px;
-		&.is-selected { background: @dark; }
-	}
+
 	&[data-flickity-options*='"pageDots": true'] {
 		div.box-text:last-child { margin-bottom: calc(@theme-density * 1.25) };
 	}
@@ -754,7 +754,18 @@ div.slider {
 //	************************************************************************************************
 //	WOOCOMMERCE AND FLATSOME
 //	************************************************************************************************
-
+nav.woocommerce-pagination {
+	* { transition: none; }
+	.nav-pagination { margin: @padding-large 0; }
+	.nav-pagination > li { padding: 0 @padding-normal / 2; }
+	.nav-pagination > li > a {
+		&:hover { border-color: @primary; color: @primary; background: transparent; }
+		transition: @time @ease;
+		border-color: rgba(@primary, 0);
+		color: @dark;
+	}
+	.nav-pagination > li > span.current { color: @primary; background: transparent; }
+}
 
 //	************************************************************************************************
 //	FLATSOME PRODUCT CATEGORIES
@@ -782,6 +793,10 @@ div.box[class*="product"]  {
 	.box-image {
 		a { background: inherit; }
 		img { mix-blend-mode: multiply; }
+	}
+	a.quick-view {
+		color: tint(@secondary, 100%);
+		background-color: @primary;
 	}
 }
 //	************************************************************************************************
@@ -945,6 +960,17 @@ div#reviews {
 		}
 	}
 
+	form.woocommerce-cart-form .cross-sells {
+		h2 {  font-size: 2em; font-weight: initial; margin-bottom: @padding-normal; }
+		& div.product {
+			@media only screen  and (min-device-width : 420px) {
+				max-width: 33.33%; min-width: 33.33%;
+				.box-image { height: 1px; padding-bottom: @padding-large * 5;}
+				.col-inner, .box-text { padding: 0 0; font-size: initial; font-size: .95em; }
+			}
+		}
+	}
+
 	#order_review {
 		.wc_payment_methods {
 			padding: 0; margin: @padding-normal * 1.5 0;
@@ -983,12 +1009,12 @@ div#reviews {
 	}
 	form.checkout_coupon {
 		h3.widget-title { margin: @padding-normal 0; }
-		input[type="submit"] { margin-bottom: @padding-normal; }
+		input[type="submit"] { margin: @padding-normal 0; }
 	}
 	[class*="privacy"] { margin-top: @padding-normal * 1.5; }
 	a { transition: @ease @time; }
 	form.checkout h3, div.coupon h3 {
-		font-size: 2em;
+		font-size: 2em; font-weight: initial;
 		// margin-bottom: @padding-normal;
 		&[id*="different-address"] label {
 			display: flex;
@@ -1365,6 +1391,34 @@ div.wpcf7, div.mailerlite-form {
 	}
 }
 //	************************************************************************************************
+//	ALERTS AND MESSAGES
+//	************************************************************************************************
+.woocommerce-message {
+	// DONT DELETE (TODO)
+	// position: fixed;
+	// display: flex;
+	// align-items: flex-end;
+	// justify-content: flex-end;
+	//
+	// top: 0; left: 0; z-index: 200;
+	// min-width: 100vw; min-height: 100vh;
+	// pointer-events: none;
+	//
+	// .container {
+	// 	pointer-events: all;
+	// 	padding: @padding-normal; margin: @padding-large;
+	// 	background: @light;
+	// 	box-shadow: 0px 15px 30px rgba(@dark, 40%);
+	// 	border-radius: @theme-radius;
+	// 	width: auto;
+	// 	transition: @ease @time opacity;
+	// 	transition-delay: 1s;
+	// 	opacity: 0;
+	// }
+	// .alert-in { opacity: 1; }
+	// div[class*="success"] {}
+}
+//	************************************************************************************************
 //	HELPERS
 //	************************************************************************************************
 // Desktop
@@ -1538,4 +1592,3 @@ div.wpcf7, div.mailerlite-form {
 }
 
 @import url("less/_variables.less");
-@import "theme.css";

@@ -84,19 +84,4 @@
 			}
 		})
 	});
-
-
-	// WooCommerce Message Box
-	// $('[class*="woocommerce-"] [role="alert"]').css({
-	// 	'bottom': '0'
-	// }).delay(6000).queue(function (next) {
-    // 	$(this).css({
-	// 		'bottom': '-50%'
-	// 	})
-    // 	next();
-  	// });
-	// Mobile
- 	if (/Mobi/.test(navigator.userAgent)) {
-
-	}
 })( jQuery );
