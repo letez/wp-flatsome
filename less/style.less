@@ -106,6 +106,7 @@ input[type="submit"], button[type="submit"], input.button, input.icon, button  {
 			&:not(.is-outline) { border-width: 0; }
 			&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
 			line-height: inherit;
+			margin-bottom: 0;
 		}
 		&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
 			display: inline-flex;
@@ -693,8 +694,8 @@ div.banner {
 //	************************************************************************************************
 #wrapper div.slider, body.lightbox div.slider {
 	.flickity-button {
-		padding: 1.25em;
-		svg { padding: 30%; transition: @time @ease; }
+		width: calc(@padding-normal * 2.25);
+		svg { padding: .8em; min-width: 100%; transition: @time @ease; }
 	}
 	&.slider-nav-simple {
 		svg { transition: none; path { transition: @time @ease; } }
@@ -786,9 +787,10 @@ div.box[class*="product"]  {
 		div:empty { display: none; }
 		.category { margin-bottom: 0;}
 		.price {
+			white-space: nowrap;
 			& .woocommerce-price-suffix { display: block; margin-top: @padding-small; opacity: 0.5; }
 		}
-		.price-wrapper { margin: 0; :empty { display: none; } }
+		.price-wrapper { margin: 0; :empty { display: none; }  }
 	}
 	.box-image {
 		a { background: inherit; }
