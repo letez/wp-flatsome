@@ -3,7 +3,7 @@
 function enqueueScripts() {
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.css', array(), '1.1', 'all');
 }
-add_action( 'wp_enqueue_scripts', 'enqueueScripts');
+add_action( 'wp_enqueue_scripts', 'enqueueScripts', 1000);
 // MAIN.JS, VUEjs, VUE-Loader
 function main_js() {
 	wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');

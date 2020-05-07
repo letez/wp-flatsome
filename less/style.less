@@ -20,7 +20,7 @@ body div:not(#wpadminbar) {
 body { overflow: hidden!important; }
 html {
 	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small;  }
-	h2 { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  }
+	h2, h3.woocommerce-Reviews-title { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  }
 	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin-bottom: @padding-small; } }
 	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small;  }
 	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small;  }
@@ -1025,7 +1025,7 @@ div#reviews {
 		}
 	}
 	#customer_details .clear { padding-bottom: @padding-normal; }
-	#place_order { width: 100%; }
+	#place_order, a.angelleye_cancel { width: 100%; }
 }
 //	************************************************************************************************
 //	MINI CART DROPDOWN
@@ -1291,7 +1291,7 @@ div.wpcf7, div.mailerlite-form {
 //	PRODUCT GALLERY
 //	************************************************************************************************
 .product-gallery-slider {
-	background-color: initial!important;
+	background-color: initial;
 
 	.flickity-viewport{
 		mix-blend-mode: multiply;
@@ -1302,17 +1302,40 @@ div.wpcf7, div.mailerlite-form {
 		& .arrow { fill: rgba(@secondary, 30%); }
 	}
 	& > svg { fill: @secondary; }
+
+
 }
-.product-thumbnails {
-	.col:not(.is-selected) {
-		a { background: none; }
-		a:hover { border: none; }
-	}
-	.col.is-selected {
-		a  { border: none; background: none; }
+figure.product-gallery-slider {
+	[class*="__image"] img {
+		transform: scale(.85)!important;
+    	// -webkit-filter: drop-shadow(0px 40px 20px rgba(0,0,0,0.2));
+		// filter: drop-shadow(0px 40px 20px rgba(0,0,0,0.2));
 	}
 }
-.easyzoom-flyout { background: transparent; }
+
+div.product-thumbnails.thumbnails {
+	.col a { background: none; padding: @padding-small;  }
+    div.flickity-viewport {
+        max-height: 130px;
+        // .col {  width: 20%; overflow: visible; }
+    }
+    div.flickity-slider {
+        display: flex;
+        align-items: center;
+        div.col {
+            & a { overflow: visible; }
+        }
+    }
+    .flickity-button.next { right: 0%; }
+    .flickity-button.previous { left: 0%; }
+}
+.easyzoom-flyout {
+	background: transparent;
+	img {
+		// filter: none;
+		// -webkit-filter: none;
+	}
+}
 
 //	************************************************************************************************
 //	WOOCOMMERCE Tables
