@@ -1,7 +1,8 @@
 <?php
 // ENQUEUE WP SCRIPTS
 function enqueueScripts() {
-	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.css', array(), '1.1', 'all');
+	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() .'/flatsome.min.css', array(), '1.1', 'all');
+	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.min.css', array(), '1.1', 'all');
 }
 add_action( 'wp_enqueue_scripts', 'enqueueScripts', 1000);
 // MAIN.JS, VUEjs, VUE-Loader

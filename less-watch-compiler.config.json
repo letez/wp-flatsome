@@ -1,7 +1,7 @@
 {
     "allowedExtensions":[".less"],
     "enableJs": false,
-    "minified": false,
+    "minified": true,
     "sourceMap": false,
     "watchFolder": "less",
     "outputFolder": "flatsome-child"
