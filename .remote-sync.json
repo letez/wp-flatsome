@@ -8,7 +8,10 @@
   "ignore": [
     "/**",
     ".git/**",
-    "less/**"
+    "less/**",
+    "flatsome-child/style.min.css",
+    "flatsome-child/theme.css",
+    "flatsome-child/flatsome.css"    
   ],
   "watch": ["/flatsome-child"],
   "uploadOnSave": false,
