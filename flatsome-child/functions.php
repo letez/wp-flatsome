@@ -1,5 +1,11 @@
 <?php
 // ENQUEUE WP SCRIPTS
+function dequeueScript() {
+   wp_deregister_script('jquery');
+}
+add_action( 'wp_print_scripts', 'dequeueScript', 100 );
+
+// ENQUEUE WP SCRIPTS
 function enqueueScripts() {
 	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() .'/flatsome.min.css', array(), '1.1', 'all');
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.min.css', array(), '1.1', 'all');
@@ -7,7 +13,9 @@ function enqueueScripts() {
 add_action( 'wp_enqueue_scripts', 'enqueueScripts', 1000);
 // MAIN.JS, VUEjs, VUE-Loader
 function main_js() {
+	wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js"');
 	// wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');
+	// wp_enqueue_script('vue-min', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js');
 	wp_enqueue_script('vue-min', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js');
 	wp_enqueue_script('vue-loader', 'https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js');
 	wp_enqueue_script('axios', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js');
