@@ -1,37 +1,33 @@
 <?php
 // ENQUEUE WP SCRIPTS
-function dequeueScript() {
-   wp_deregister_script('jquery');
-}
-add_action( 'wp_print_scripts', 'dequeueScript', 100 );
-
-// ENQUEUE WP SCRIPTS
 function enqueueScripts() {
-	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() .'/flatsome.min.css', array(), '1.1', 'all');
+    // CSS
+    wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() .'/flatsome.min.css', array(), '1.1', 'all');
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.min.css', array(), '1.1', 'all');
+    // JAVASCRIPT
+    wp_deregister_script('jquery');
+    wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), null, true);
 }
 add_action( 'wp_enqueue_scripts', 'enqueueScripts', 1000);
+
 // MAIN.JS, VUEjs, VUE-Loader
 function main_js() {
-	wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js"');
 	// wp_enqueue_script('vue', 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js');
-	// wp_enqueue_script('vue-min', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js');
-	wp_enqueue_script('vue-min', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js');
-	wp_enqueue_script('vue-loader', 'https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js');
-	wp_enqueue_script('axios', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js');
-	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/main.js');
+	wp_enqueue_script('vue-min', 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js', array(), null, true);
+	wp_enqueue_script('vue-loader', 'https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js', array(), null, true);
+	wp_enqueue_script('axios', 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js', array(), null, true);
+	wp_enqueue_script('main-js', get_stylesheet_directory_uri() . '/main.js', array(), null, true);
 }
 add_action('wp_footer','main_js');
+
 // WOOCOMMERCE ADDITIONAL TAB
 function removeProductTabs( $tabs ) {
     unset( $tabs['additional_information'] );
     return $tabs;
 }
 add_filter( 'woocommerce_product_tabs', 'removeProductTabs', 98 );
+
 // WOOCOMMERCE SHOP BANNER
-add_action( 'woocommerce_before_shop_loop', 'addShopBnner', 10 );
-add_action( 'woocommerce_before_cart', 'addShopBnner', 10 );
-add_action( 'woocommerce_before_checkout_form', 'addShopBnner', 10 );
 function addShopBnner() {
 	$args = array(
       'name' => 'shop-banner',
@@ -41,9 +37,12 @@ function addShopBnner() {
 	if(get_posts($args)) {
 		echo do_shortcode( '[block id="shop-banner"]' );
 	}
-};
+}
+add_action( 'woocommerce_before_shop_loop', 'addShopBnner', 10 );
+add_action( 'woocommerce_before_cart', 'addShopBnner', 10 );
+add_action( 'woocommerce_before_checkout_form', 'addShopBnner', 10 );
+
 // WOOCOMMERCE CUSTOM ORDER COMPLETE PAGE
-add_action( 'woocommerce_thankyou_order_received_text', 'customOrderComplete' );
 function customOrderComplete() {
 	$args = array(
       'name' => 'order-complete',
@@ -54,14 +53,17 @@ function customOrderComplete() {
 		echo do_shortcode( '[block id="order-complete"]' );
 	} else { echo("Thank you. Your order has been received."); }
 }
+add_action( 'woocommerce_thankyou_order_received_text', 'customOrderComplete' );
+
 // SMALL FOOTER
-add_action('wp_footer', 'addSmallFooter');
 function addSmallFooter(){
 	$page_footer = get_post_meta( get_the_ID(), '_footer', true );
 	if($page_footer == 'disabled') {
 		echo do_shortcode( '[block id="footer-small"]' );
 	}
 }
+add_action('wp_footer', 'addSmallFooter');
+
 // OPEN GRAPH META TAGS
 function fbogmeta_header() {
     // if (is_single()) {
