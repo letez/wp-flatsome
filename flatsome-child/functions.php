@@ -1,12 +1,14 @@
 <?php
 // ENQUEUE WP SCRIPTS
-function enqueueScripts() {
+function enqueueScripts($hook) {
     // CSS
     wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() .'/flatsome.min.css', array(), '1.1', 'all');
 	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() .'/theme.min.css', array(), '1.1', 'all');
     // JAVASCRIPT
-    wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), null, true);
+    if(!$_GET['uxb_iframe']) {
+        wp_deregister_script('jquery');
+        wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array(), null, true);
+    }
 }
 add_action( 'wp_enqueue_scripts', 'enqueueScripts', 1000);
 

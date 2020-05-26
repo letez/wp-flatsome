@@ -677,8 +677,10 @@ div.accordion {
 //	FLATSOME BANNERS
 //	************************************************************************************************
 div.banner {
+	// & * { pointer-events: none; }
+	// & a, button { pointer-events: all; }
 	&.is-full-height { height: 100%; }
-	div.text-box {
+	& div.text-box {
 		font-size: 100%;
 		div.img { left: 0; transform: translate(0, 0);}
 	}
@@ -687,9 +689,9 @@ div.banner {
 //	FLATSOME SLIDERS
 //	************************************************************************************************
 #wrapper div.slider, body.lightbox div.slider {
-	.flickity-button {
-		width: calc(@padding-normal * 2.25);
-		svg { padding: .8em; min-width: 100%; transition: @time @ease; }
+	button.flickity-button {
+		width: @padding-normal * 3.25;
+		svg { padding: 1em; transition: @time @ease; }
 	}
 	&.slider-nav-simple {
 		svg { transition: none; path { transition: @time @ease; } }
@@ -1466,7 +1468,7 @@ div.product-thumbnails.thumbnails {
 	overflow: hidden;
 	& .banner-layers { overflow: hidden; }
 }
-// .has-banner { margin: 0; && > div { margin: 0; padding: 0; height: inherit; }}
+.has-noevents { * { pointer-events: none; } }
 .has-scale-80 { transform: scale(.8); }
 .has-opacity-5 { opacity: .05; }
 .has-opacity-10 { opacity: .1; }
@@ -1476,6 +1478,12 @@ div.product-thumbnails.thumbnails {
 .has-shadow3 { & > .col-inner { box-shadow: 0 10px 20px  rgba(0,0,0,0.02), 0 6px 6px rgba(0,0,0,0.075); } }
 .has-shadow4 { & > .col-inner { box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.015); } }
 .has-shadow5 { & > .col-inner { box-shadow: 0px 30px 40px 0px rgba(0,0,0,0.15); } }
+.has-delay05 { animation-delay: .5s; }
+.has-delay10 { animation-delay: 1s; }
+.has-delay15 { animation-delay: 1.5s; }
+.has-delay20 { animation-delay: 2s; }
+.has-delay25 { animation-delay: 2.5s; }
+.has-delay30 { animation-delay: 3s; }
 .has-border-bottom-1 { & > .col-inner { border-bottom: 1px solid; } }
 .has-border-bottom-2 { & > .col-inner { border-bottom: 2px solid; } }
 .has-border-bottom-3 { & > .col-inner { border-bottom: 3px solid; } }
