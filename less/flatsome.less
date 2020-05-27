@@ -699,29 +699,28 @@ div.banner {
 #wrapper div.slider, body.lightbox div.slider {
 	button.flickity-button {
 		width: @padding-normal * 3.25;
+		svg * { transition: none; }
 		svg { padding: 1em; transition: @time @ease; }
 	}
 	&.slider-nav-simple {
-		svg { transition: none; path { transition: @time @ease; } }
+		// svg { transition: none; path { transition: @time @ease; } }
 	}
 	&.slider-nav-reveal { }
 	&.slider-nav-circle {
-		& svg {
-			&:hover {
-				background: @primary;
-			}
+		.flickity-button {
+			&:not(:hover)  { svg { opacity: .3; } }
+			&:hover { svg { background: none; opacity: .3; } }
 		}
 	}
 	.flickity-page-dots {
 		// margin-top: 20px!important;
 		// li { padding: 0; }
-		li + li {  margin-left: calc(@theme-density / 8)!important; }
+		li + li {  margin-left: calc(@theme-density / 8); }
 	}
 
-
-	.flickity-button, .flickity-button svg {
-		&:not(:hover) { svg { border-color: rgba(@dark, 30%); path { fill: rgba(@dark, 30%); } } }
-	}
+	// .flickity-button, .flickity-button svg {
+	// 	&:not(:hover) { svg { border-color: rgba(@dark, 30%); path { fill: rgba(@dark, 30%); } } }
+	// }
 	.dot {
 		width: 10px; height: 10px;
 		border: 2px solid @dark;
@@ -729,8 +728,11 @@ div.banner {
 	}
 
 	&.slider-nav-light {
-		.flickity-button {
-			&:not(:hover)  { svg { border-color: @light; path { fill: @light; } } }
+		&.slider-nav-circle {
+			.flickity-button {
+				&:not(:hover)  { svg { border-color: @light; opacity: .3; } }
+				&:hover { svg { border-color: @light; opacity: .6; } }
+			}
 		}
 		.dot {
 			border-color: @light;
