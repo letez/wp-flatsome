@@ -66,13 +66,17 @@ function addSmallFooter(){
 }
 add_action('wp_footer', 'addSmallFooter');
 
-// OPEN GRAPH META TAGS
+// PAGE & OPEN GRAPH META TAGS
 function fbogmeta_header() {
     // if (is_single()) {
         $postsubtitrare = get_post_meta($post->ID, 'id-subtitrare', true);
         $post_subtitrare = get_post($postsubtitrare);
         $content = limit(strip_tags($post_subtitrare-> post_content),297);
         ?>
+        <title><?php bloginfo('name'); ?><?php wp_title(); ?></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="<?php bloginfo('description'); ?>"/>
+        <meta name="keywords" content="" />
         <meta property="og:title" content="<?php bloginfo('name'); ?>"/>
         <meta property="og:description" content="<?php bloginfo('description'); ?>" />
         <meta property="og:url" content="<?php the_permalink(); ?>"/>

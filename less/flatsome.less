@@ -33,6 +33,10 @@ html {
 	// h1, h2, h3, { .strong { color: @primary; } }
 	h3#ship-to-different-address { font-size: 100%; font-size: 1em; margin: 0; padding: 0;}
 	div.col-inner p { margin-bottom: @padding-normal; }
+
+	.dark {
+		h1, h2, h3, h4, h5, h6, p, span { color: @light; }
+	}
 }
 //	************************************************************************************************
 //	DARK LIGHT SECTION COLORS
@@ -680,8 +684,12 @@ div.banner {
 	// & * { pointer-events: none; }
 	// & a, button { pointer-events: all; }
 	&.is-full-height { height: 100%; }
-	& div.text-box {
+	div.text-box {
 		font-size: 100%;
+		.text {
+			p { color: @dark; }
+			&.dark p { color: @light; }
+		}
 		div.img { left: 0; transform: translate(0, 0);}
 	}
 }
