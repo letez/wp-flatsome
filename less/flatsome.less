@@ -700,7 +700,7 @@ div.banner {
 	button.flickity-button {
 		width: @padding-normal * 3.25;
 		svg * { transition: none; }
-		svg { padding: 1em; transition: @time @ease; }
+		svg { padding: 35%; transition: @time @ease; }
 	}
 	&.slider-nav-simple {
 		// svg { transition: none; path { transition: @time @ease; } }
@@ -731,7 +731,7 @@ div.banner {
 		&.slider-nav-circle {
 			.flickity-button {
 				&:not(:hover)  { svg { border-color: @light; opacity: .3; } }
-				&:hover { svg { border-color: @light; opacity: .6; } }
+				&:hover { svg { border-color: @light; opacity: .6; path { fill: @light!important; }  } }
 			}
 		}
 		.dot {
