@@ -210,6 +210,9 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 	margin: 0;
 	height: auto;
 
+	&[type='checkbox'] { }
+
+	&::placeholder, &::-webkit-input-placeholder { opacity: .3; }
 
 	& when (@theme-form = normal) {
 		background: linear-gradient(0deg, rgba(@dark,0.030) 0%, rgba(@dark,0.015) 20%, rgba(@light, 0) 100%);
@@ -222,6 +225,9 @@ input[type='checkbox'], input[type='tel'], input[type='url'], input[type='passwo
 	}
 	& when (@theme-form = clean) {
 		border: 1px solid rgba(@dark, 10%);
+		&[type="checkbox"] {
+			// outline: 1px solid rgba(@dark, 10%);
+		}
 	}
 	& when (@theme-form = minimal) {
 		border-bottom: 2px solid rgba(@dark, 10%);
@@ -437,6 +443,7 @@ div.scroll-to-bullets {
 //	************************************************************************************************
 html.has-off-canvas { overflow: hidden; }
 body div.mfp-ready.mfp-bg { opacity: .95; }
+div.mfp-container { padding: 15px; }
 //	************************************************************************************************
 //	LIGHTBOX Element
 //	************************************************************************************************
@@ -446,18 +453,18 @@ html.has-off-canvas, html.js {
 		&::-webkit-scrollbar { background: transparent; }
 
 		&.mfp-gallery  .mfp-close {
-			display: inline-flex;
-			justify-content: center;
-			border: 2px solid rgba(@dark, 100%);
-			color: @dark;
-			border-radius: 100%!important;
-			opacity: .25;
-			font-size: 100%;
-			width: 2.5em; height: 2.5em;
-			transform: translate(-20px, 20px);
-			& svg { display: none; }
-			&:hover { opacity: 1; pointer-events: pointer; }
-			&::after{ content: "×"; font-size: 16px; font-weight: 600; line-height: 0; }
+			// display: inline-flex;
+			// justify-content: center;
+			// border: 2px solid rgba(@dark, 100%);
+			// color: @dark;
+			// border-radius: 100%!important;
+			// opacity: .25;
+			// font-size: 100%;
+			// width: 2.5em; height: 2.5em;
+			// transform: translate(-20px, 20px);
+			// & svg { display: none; }
+			// &:hover { opacity: 1; pointer-events: pointer; }
+			// &::after{ content: "×"; font-size: 16px; font-weight: 600; line-height: 0; }
 		}
 
 		.mfp-arrow {
@@ -512,6 +519,20 @@ html.has-off-canvas, html.js {
 			border-radius: @theme-radius;
 			overflow: hidden;
 		}
+	}
+}
+//	************************************************************************************************
+//	LIGHTBOX Gallery
+//	************************************************************************************************
+html.js .mfp-wrap .mfp-image-holder {
+
+	display: flex;
+	align-items: center;
+
+	.mfp-img { padding: 0;}
+	.mfp-figure {}
+	@media only screen  and (max-device-width : 420px) {
+		 padding-top: 50px;
 	}
 }
 //	************************************************************************************************
@@ -1165,7 +1186,7 @@ button.wishlist-button.icon:hover { background: @primary; border-color: @primary
 //	************************************************************************************************
 // 	CONTACT FORM 7, MAILERLITE
 //	************************************************************************************************
-div.wpcf7, div.mailerlite-form {
+div.wpcf7, div.mailerlite-form, div[class*="ml-form"] {
 	&.wpcf7 {
 		.wpcf7-not-valid-tip {
 			top: 0%; right: -@padding-small;
@@ -1192,6 +1213,25 @@ div.wpcf7, div.mailerlite-form {
 			border: 1px solid rgba(@success, 20%);
 			color: @success;
 		}
+	}
+
+	&[class*="ml-form"] {
+		form { line-height: 0; margin: 0; }
+		p { margin-bottom: 0; }
+		input {
+			margin-bottom: @padding-small;
+		}
+		label {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			margin: @padding-small 0 @padding-normal 0;
+
+			input { margin-right: @padding-small; }
+			input, p { margin-bottom: 0!important; }
+		}
+		.button { width: 100%; padding: @padding-large / 1.35; }
+		.ml-form-successContent { text-align: center; h3 { color: @dark; margin-bottom: 0; }}
 	}
 
 	&.mailerlite-form  {
@@ -1452,20 +1492,22 @@ div.product-thumbnails.thumbnails {
 //	************************************************************************************************
 //	HELPERS
 //	************************************************************************************************
+// Tablet
+@media (min-width: 550px) and (max-width: 1024px) {
+
+}
 // Desktop
 @media only screen  and (min-device-width : 420px) {
-	.section-full { align-items: initial; & > div.section-content { flex: 1; & > div.row { height: 100%; & div.col { height: 100%; display: flex; & div.col-inner { display: flex; flex-direction: column; justify-content: center; } } } } }
+
 }
 // Global
-.is-back { z-index: 0; overflow: hidden; }
+// .is-back { z-index: 0; overflow: hidden; }
+.is-back { z-index: 0; }
 .is-front { z-index: 1;}
 .is-front-important { z-index: 10; }
 .is-rounded { & > .col-inner { border-radius: @theme-radius; overflow: hidden; }}
 .is-absolute { position: absolute; }
-// .is-left:not([class*="tools"]) { left: 0; }
-// .is-right:not([class*="tools"]) { right: 0; }
-// .is-center:not([class*="tools"]) { left: 50%; transform: translateX(-50%); }
-// .is-bottom:not([class*="tools"]) { margin-top: 50%; bottom: 0%; transform: translateY(100%); }
+
 .is-capitalize {
 	span { text-transform: capitalize; margin: -@padding-small @padding-normal; }
 }
