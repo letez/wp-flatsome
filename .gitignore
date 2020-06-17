@@ -5,7 +5,6 @@
 !/flatsome-child/*.php
 !/flatsome-child/*.js
 !/flatsome-child/components/
-!/flatsome-child/components/*.vue
 
 !/less
 !/less/*.less

@@ -376,7 +376,7 @@ header, header.has-sticky, header.has-transparent {
 	// Active navigation icon color
 	li.has-icon.active a:first-of-type i, ul:not(.mobile-nav) li.cart-item:not(.has-dropdown) i { color: @primary!important; }
 
-	&[class='transparent'] { border: 2px solid red; }
+	&[class='transparent'] {  }
 }
 body[class*="header-light"] #wrapper header {
 	// border: 2px solid blue;
@@ -564,6 +564,41 @@ body .mfp-content #search-lightbox {
 //	************************************************************************************************
 //	LIGHTBOX Mobile Menu
 //	************************************************************************************************
+
+// Mobile Left Navigation
+.mfp-wrap.off-canvas-left {
+    div #main-menu.mobile-sidebar { }
+}
+// Mobile Center Navigation
+.mfp-wrap.off-canvas-center {
+    .mfp-close { opacity: .4; }
+    .mfp-content { height: 100%; padding-top: 0; }
+    div #main-menu.mobile-sidebar {
+        height: inherit;
+
+        .sidebar-menu  { height: 100%; display: flex; align-items: center; }
+
+        ul.nav > li:first-of-type { position: fixed; top: 0; padding: 3em 0; }
+        ul.nav li a { padding-top: @padding-small; padding-bottom: @padding-small; }
+        ul.nav > li:last-of-type {
+            padding: 2em 0;
+            position: fixed;
+            bottom: 0;
+        }
+        li.menu-item:hover { background: rgba(@primary, 5%); }
+
+        ul.nav li ul.sub-menu li {
+            & a { font-size: .9em;}
+        }
+
+        button.toggle { top: .25em; }
+    }
+}
+// Mobile Right Navigation
+.mfp-wrap.off-canvas-right {
+    div #main-menu.mobile-sidebar { }
+}
+
 body .mfp-content #main-menu.mobile-sidebar {
 
 	min-height: 100%;
@@ -619,7 +654,7 @@ body .mfp-content #main-menu.mobile-sidebar {
 			justify-content: space-evenly;
 		}
 	}
-	// Slidert and Content Column
+	// Slider and Content Column
 	li.slider-column, li.content-column {
 		&.slider-column { padding: @padding-normal @padding-small; }
 		&.content-column { padding-right: @padding-normal; }
@@ -759,6 +794,11 @@ div.banner {
 			border-color: @light;
 			&.is-selected { background: @light; }
 		}
+	}
+
+	&.slider-nav-outside {
+		margin-bottom: @padding-large * 2;
+		.flickity-page-dots { bottom: -@padding-large; }
 	}
 
 	&[data-flickity-options*='"pageDots": true'] {
@@ -941,7 +981,7 @@ div#reviews {
 //	************************************************************************************************
 //	CART & CHECKOUT
 //	************************************************************************************************
-#wrapper .woocommerce {
+#wrapper .woocommerce, #content, .woocommerce {
 
 	color: @dark!important;
 
@@ -1051,8 +1091,23 @@ div#reviews {
 			span { font-size: .6em; font-weight: bold; }
 		}
 	}
+
+	h3 { margin-bottom: @padding-normal; }
+
 	#customer_details .clear { padding-bottom: @padding-normal; }
 	#place_order, a.angelleye_cancel { width: 100%; }
+
+	// ORDER COMPLETE THANK YOU PAGE
+	section.woocommerce-order-details, section.woocommerce-customer-details {
+		h2 { font-size: 2em; }
+		table { margin-bottom: @padding-large; }
+		margin-bottom: @padding-large;
+	}
+	div.is-well {
+		padding: @padding-large;
+		p { margin-bottom: @padding-large;}
+		ul { margin: 0; }
+	}
 }
 //	************************************************************************************************
 //	MINI CART DROPDOWN
