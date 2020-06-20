@@ -7,6 +7,7 @@ body div:not(#wpadminbar) {
 	svg, svg > path { color: initial; transition: none; }
 	// a.button.show-title-form { display: none!important; }
 	// .absolute-footer { display: none; }
+	// border: 2px solid blue;
 }
 //	************************************************************************************************
 //	FONTS
@@ -578,7 +579,7 @@ body .mfp-content #search-lightbox {
 
         .sidebar-menu  { height: 100%; display: flex; align-items: center; }
 
-        ul.nav > li:first-of-type { position: fixed; top: 0; padding: 3em 0; }
+        ul.nav > li:first-of-type { position: fixed; top: 0; padding: 2em 0; }
         ul.nav li a { padding-top: @padding-small; padding-bottom: @padding-small; }
         ul.nav > li:last-of-type {
             padding: 2em 0;
@@ -1082,8 +1083,11 @@ div#reviews {
 	}
 	[class*="privacy"] { margin-top: @padding-normal * 1.5; }
 	a { transition: @ease @time; }
+	// form.checkout h3, div.coupon h3, section h2 {
 	form.checkout h3, div.coupon h3 {
-		font-size: 2em; font-weight: initial;
+		font-size: 1.5em!important; font-weight: initial; font-weight: bold;
+		margin-bottom: @padding-normal*1.5;
+		text-transform: none;
 		// margin-bottom: @padding-normal;
 		&[id*="different-address"] label {
 			display: flex;
@@ -1091,8 +1095,6 @@ div#reviews {
 			span { font-size: .6em; font-weight: bold; }
 		}
 	}
-
-	h3 { margin-bottom: @padding-normal; }
 
 	#customer_details .clear { padding-bottom: @padding-normal; }
 	#place_order, a.angelleye_cancel { width: 100%; }
@@ -1107,6 +1109,16 @@ div#reviews {
 		padding: @padding-large;
 		p { margin-bottom: @padding-large;}
 		ul { margin: 0; }
+	}
+}
+// Simple Layout
+#main.page-checkout-simple {
+	div.woocommerce-billing-fields {
+		border-top: initial; padding-top: 0;
+	}
+	div.col-inner.is-well {
+		box-shadow: none;
+		border: 1px solid rgba(@dark, 10%);
 	}
 }
 //	************************************************************************************************
