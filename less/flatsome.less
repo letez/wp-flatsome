@@ -90,11 +90,11 @@ html {
 //	BUTTONS, ICONS & LINKS
 //	************************************************************************************************
 a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"],
-input[type="submit"], button[type="submit"], input.button, input.icon, button  {
+input[type="submit"], button[type="submit"], input.button, input.icon, button {
 
 	&.button:not(.icon), &[type="submit"] {
 		// margin-bottom: 0;
-		padding: @padding-small @padding-normal;
+		padding: @padding-normal / 1.35  @padding-normal;
 		height: initial;
 		line-height: 0;
 
@@ -1721,4 +1721,69 @@ div.product-thumbnails.thumbnails {
 	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
 	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
 	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+//	************************************************************************************************
+//	BLOG
+//	************************************************************************************************
+body.blog, body.single, body.search, body.category {
+	// border: 2px solid blue;
+
+	div.col.post-item {
+		.badge { top: 3%; }
+		.post-title { padding: @padding-small 0; }
+		.is-divider {  margin-bottom: @padding-small; }
+	}
+
+	.post-sidebar {
+		aside {
+			margin-bottom: @padding-normal * 2.5;
+
+			.ux-search-submit { 
+				border-top-right-radius: @theme-radius;
+				border-bottom-right-radius: @theme-radius;
+			}			
+
+			ul > li { 
+				padding: @padding-small / 2 0;
+				font-size: 95%;
+				
+				a { 
+					color: lighten(@dark, 50%);
+					&:hover { color: @secondary; text-decoration: underline; }
+				}				
+			}
+
+			.tag-cloud-link { 
+				&:hover { background: none; color: @secondary; }
+			}
+		}
+	}
+}
+// main blog page
+body.blog {
+	
+}
+// single page
+body.single {
+	.entry-category {  padding-bottom: @padding-small; }
+	.badge { top: 3%; }
+	.is-divider { margin-top: @padding-large;}
+
+	.social-icons a { margin: 0 @padding-small / 2 @padding-large / 1.35  @padding-small; }
+	.entry-meta { 
+		padding: @padding-large / 1.35 0;
+		font-size: 100%; 
+		color: fade(@dark, 50%);  
+		border-bottom-width: 1px; 
+	}
+	.entry-author { }
+}
+// search page
+body.search {
+	
+}
+// category page
+body.category {
+	
 }

@@ -4,5 +4,5 @@
     "minified": true,
     "sourceMap": false,
     "watchFolder": "less",
-    "outputFolder": "flatsome-child"
+    "outputFolder": "flatsome-child" 
 }

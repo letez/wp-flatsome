@@ -1,6 +1,9 @@
 *
-
+/.vscod/*
 /flatsome-child/*
+
+!/.vscode/sftp.json
+
 !/flatsome-child/
 !/flatsome-child/*.php
 !/flatsome-child/*.js
@@ -14,3 +17,4 @@
 !package.json
 
 !.gitignore
+
