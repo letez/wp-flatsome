@@ -2,7 +2,7 @@
 //	************************************************************************************************
 //	RESETS & HIDDEN ELEMENTS
 //	************************************************************************************************
-body div:not(#wpadminbar) {
+body > div:not(#wpadminbar) {
 	.wishlist-popup, .absolute-footer, a.button.show-title-form, table.wishlist_table thead  { display: none!important; }
 	svg, svg > path { color: initial; transition: none; }
 	// a.button.show-title-form { display: none!important; }
@@ -13,15 +13,17 @@ body div:not(#wpadminbar) {
 //	FONTS
 //	************************************************************************************************
 body { overflow: hidden!important; }
-html {
-	h1 { font-size: 3.5em; line-height: 1em; margin-bottom: @padding-small;  }
-	h2, h3.woocommerce-Reviews-title { font-size: 3em; line-height: 1em;  margin-bottom: @padding-small;  }
-	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin-bottom: @padding-small; } }
-	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: @padding-small;  }
-	h5 { font-size: 1em; line-height: .9em; margin-bottom: @padding-small;  }
-	h6 { font-size: .6em; line-height: .5em; margin-bottom: 0; }
-	p:not(.lead) { font-size: 1em; line-height: 1.7em; &:last-of-type:not(:only-child) { margin-bottom: 0; } }
-	p.lead { font-size: 1.5em; line-height: 1.5em; margin-bottom: @padding-large; }
+body #wrapper {
+	h1 { font-size: 4em; line-height: 1em; margin-bottom: .25em;}
+	h2, h3.woocommerce-Reviews-title { font-size: 3em; line-height: 1em;  margin-bottom: 1em;  }
+	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin-bottom: .25em; } }
+	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: 1em; }
+	h5 { font-size: 1.25em; line-height: .9em; margin-bottom: .25em; }
+	h6 { font-size: .75em; line-height: .5em; margin-bottom: .25em; }
+	
+	p:not(.lead) { font-size: 1em; line-height: 1.6em; margin-bottom: 2em; }
+	p:not(.lead):last-of-type:not(:only-child) { margin-bottom: 0em;}
+	p.lead:not(:only-child) { font-size: 1.5em; line-height: 1.5em; margin-bottom: 2em; }
 	p > strong { font-weight: 600; }
 
 	.product-meta p { margin-bottom: 0!important; }
@@ -33,7 +35,7 @@ html {
 
 	// h1, h2, h3, { .strong { color: @primary; } }
 	h3#ship-to-different-address { font-size: 100%; font-size: 1em; margin: 0; padding: 0;}
-	div.col-inner p { margin-bottom: @padding-normal; }
+	// div.col-inner p { margin-bottom: @padding-normal; }
 
 	.dark {
 		h1, h2, h3, h4, h5, h6, p, span { color: @light; }
