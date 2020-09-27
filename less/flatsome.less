@@ -50,9 +50,9 @@ body #wrapper {
 //	COL AND TABLE PADDINGS
 //	************************************************************************************************
 & div.row {
-	&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-small;  } }
-	&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: @padding-normal;  } }
-	&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: @padding-large;  } }
+	&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: .5em;  } }
+	&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: 1em;  } }
+	&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: 2em;  } }
 }
 
 & table:not(.variations) {
@@ -91,46 +91,95 @@ body #wrapper {
 //	************************************************************************************************
 //	BUTTONS, ICONS & LINKS
 //	************************************************************************************************
+
+// ICONS
+body #wrapper {
+	// BUTTONS
+	a[class*="button"]:not(.icon) {
+
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;		
+		padding: .75em 2em;
+
+		&.primary.is-outline {
+			span { color: @primary; }
+			&:hover span { color: @light; }  
+		}
+		&.secondary.is-outline {
+			span { color: @secondary; }
+			&:hover span { color: @light; } 			
+		}
+		&.alert.is-outline {
+			span { color: @alert; }
+			&:hover { border-color: @alert; }			
+			&:hover span { color: @light; } 			
+		}
+		&.success.is-outline {
+			span { color: @success; }
+			&:hover { border-color: @success; }
+			&:hover span { color: @light; }
+		}			
+
+		&.primary.is-underline:not(:hover) span { color: @primary; }
+		&.secondary.is-underline:not(:hover) span { color: @secondary; }
+		&.alert.is-underline:not(:hover) span { color: @alert; }
+		&.success.is-underline:not(:hover) span { color: @success; }
+		&.plain { border-color: @dark; span { color: @dark; } &:hover { background-color: @dark; } }
+
+		// &.white.is-underline:hover span { color: rgba(@light, 80%); }
+		// &.white:hover span { color: @dark; }
+	}
+	// ICONS
+	a[class*="icon"] {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;		
+		i { font-size: 1em; top: 0;  margin: 0; padding: 0; }
+		// border: 2px solid red;
+	}
+}
+
 a, .a[class="button"], .a[class="icon"], div[class="button"], div[class="icon"], input[type="submit"],
 input[type="submit"], button[type="submit"], input.button, input.icon, button {
 
-	&.button:not(.icon), &[type="submit"] {
-		// margin-bottom: 0;
-		padding: @padding-normal / 1.35  @padding-normal;
-		height: initial;
-		line-height: 0;
+	// &.button:not(.icon), &[type="submit"] {
+	// 	// margin-bottom: 0;
+	// 	padding: @padding-normal / 1.35  @padding-normal;
+	// 	height: initial;
+	// 	line-height: 0;
 
-		&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
-			&:not(.is-outline) { border-width: 0; }
-			&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
-			line-height: inherit;
-			margin-bottom: 0;
-		}
-		&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
-			display: inline-flex;
-			justify-content: center;
-			align-items: center;
-			padding: @padding-small / 1.5 @padding-large / 1.25;
+	// 	&[type="submit"], &[class*="shopping"], &[class*="checkout"], &[class*="wc-forward"], &[class*="single"]  {
+	// 		&:not(.is-outline) { border-width: 0; }
+	// 		&[class*="shopping"] { padding-top: @padding-small / 1.25; padding-bottom: @padding-small / 1.25 }
+	// 		line-height: inherit;
+	// 		margin-bottom: 0;
+	// 	}
+	// 	&:not([type="submit"]):not([class*="shopping"]):not([class*="checkout"]):not([class*="minus"]):not([class*="plus"]):not([class*="wc-forward"]) {
+	// 		display: inline-flex;
+	// 		justify-content: center;
+	// 		align-items: center;
+	// 		padding: @padding-small / 1.5 @padding-large / 1.25;
 
-			&.is-large { padding: @padding-small @padding-large * 1.25; }
-			&.is-larger { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
-			&.is-xlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
-			&.is-xxlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+	// 		&.is-large { padding: @padding-small @padding-large * 1.25; }
+	// 		&.is-larger { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+	// 		&.is-xlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
+	// 		&.is-xxlarge { padding: @padding-small @padding-large * 1.25; span { font-size: 80%; } }
 
-			&.is-outline {
-				&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
-				&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
-				&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
-				&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
-				&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
-				&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
-			}
+	// 		&.is-outline {
+	// 			&.plain { border-color: @dark!important; span { color: @dark; } &:hover { background-color: @dark!important; } }
+	// 			&.primary { border-color: @primary!important; span { color: @primary; } &:hover { background-color: @primary!important; span { color: tint(@primary, 100%); } } }
+	// 			&.secondary { border-color: @secondary!important; span { color: @secondary; } &:hover { background-color: @secondary!important; span { color: tint(@secondary, 100%); } } }
+	// 			&.success { border-color: @success!important; span { color: @success; } &:hover { background-color: @success!important; span { color: tint(@success, 100%); } } }
+	// 			&.alert  { border-color: @alert!important; span { color: @alert; } &:hover { background-color: @alert!important; span { color: tint(@alert, 100%); } } }
+	// 			&.dark { border-color: rgba(@dark, 20%); span { color: rgba(@dark, 20%); } &:hover { border-color: rgba(@dark, 50%); span { color: rgba(@dark, 50%); }  } }
+	// 		}
 
-			&[class*="-icon"] {
-				i { margin-top: .35em; }
-			}
-		}
-	}
+	// 		&[class*="-icon"] {
+	// 			i { margin-top: .35em; }
+	// 		}
+	// 	}
+	// }
 	// &.icon, &.button.icon {
 	// 	&.is-outline { border-color: @dark; }
 	// }
