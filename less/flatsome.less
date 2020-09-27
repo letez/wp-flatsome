@@ -95,12 +95,15 @@ body #wrapper {
 // ICONS
 body #wrapper {
 	// BUTTONS
-	a[class*="button"]:not(.icon) {
+	a[class*="button"]:not(.icon), input[type="submit"]  {
 
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;		
-		padding: .75em 2em;
+		padding: .65em 2em;
+		margin: 0;
+
+		&[type="submit"] {padding: .25em 2em; }
 
 		&.primary.is-outline {
 			span { color: @primary; }
@@ -119,16 +122,22 @@ body #wrapper {
 			span { color: @success; }
 			&:hover { border-color: @success; }
 			&:hover span { color: @light; }
-		}			
+		}
+		&.dark.is-outline {
+			opacity: .25;
+			border-color: @dark;
+			span { color: @dark; }
+			&:hover { border-color: @dark; }
+			&:hover { opacity: 1; }
+		}					
 
 		&.primary.is-underline:not(:hover) span { color: @primary; }
 		&.secondary.is-underline:not(:hover) span { color: @secondary; }
 		&.alert.is-underline:not(:hover) span { color: @alert; }
 		&.success.is-underline:not(:hover) span { color: @success; }
-		&.plain { border-color: @dark; span { color: @dark; } &:hover { background-color: @dark; } }
-
-		// &.white.is-underline:hover span { color: rgba(@light, 80%); }
-		// &.white:hover span { color: @dark; }
+		&.dark.is-underline:not(:hover) span { color: @dark; }
+	
+		&.reveal-icon i { margin: 0 .25em;  }
 	}
 	// ICONS
 	a[class*="icon"] {
@@ -136,7 +145,8 @@ body #wrapper {
 		justify-content: center;
 		align-items: center;		
 		i { font-size: 1em; top: 0;  margin: 0; padding: 0; }
-		// border: 2px solid red;
+
+		&.back-to-top { min-width: 3em; min-height: 3em; }
 	}
 }
 
