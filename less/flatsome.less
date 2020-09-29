@@ -13,20 +13,39 @@ body > div:not(#wpadminbar) {
 //	FONTS
 //	************************************************************************************************
 body { overflow: hidden!important; }
-body #wrapper {
-	h1 { font-size: 4em; line-height: 1em; margin-bottom: .25em;}
-	h2, h3.woocommerce-Reviews-title { font-size: 3em; line-height: 1em;  margin-bottom: 1em; }
-	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin-bottom: .25em; } }
-	h4 { font-size: 1.5em; line-height: .9em; margin-bottom: 1em; }
-	h5 { font-size: 1.25em; line-height: .9em; margin-bottom: .25em; }
-	h6 { font-size: .75em; line-height: .5em; margin-bottom: .25em; }
-	
-	p:not(.lead) { font-size: 1em; line-height: 1.6em; margin-bottom: 2em; }
-	p:not(.lead):last-of-type:not(:only-child) { margin-bottom: 0em;}
+body #wrapper, html[ng-app="uxBuilder"] body #wrapper  {
+
+	h1 { font-size: 4em; line-height: 1em; margin: 0; margin-bottom: .25em;}
+	h2, h3.woocommerce-Reviews-title { font-size: 3em; line-height: 1em;  margin: 0; margin-bottom: 1em; }
+	h3, nav.checkout-breadcrumbs { font-size: 2em; line-height: 1em;  &:not(nav.checkout-breadcrumbs){ margin: 0; margin-bottom: .25em; } }
+	h4 { font-size: 1.5em; line-height: .9em; margin: 0; margin-bottom: 1em; }
+	h5 { font-size: 1.25em; line-height: .9em; margin: 0; margin-bottom: .25em;}
+	h6 { font-size: .75em; line-height: .5em; margin: 0; margin-bottom: .25em; }
+
+
+     p:not(.lead) { 
+		font-size: 1em; line-height: 1.9em;
+		// :first-of-type { margin-top: 2em; margin-bottom: 2em; }
+		:last-of-type { margin-top: 0; margin: 0; margin-bottom: 0em; }
+		// :only-of-type:last-child:first-of-type { margin: 0; }
+		// :only-of-type:first-of-type { margin-bottom: 0em; } 
+		// &:first-child { margin-bottom: 2em; border: 2px solid red; }
+	}
+
+	div.stack p:not(.lead) { margin-bottom: 0!important; }
+	// p:not(.lead):last-of-type:not(:only-child) { border: 3px solid pink; }
 	p.lead:not(:only-child) { font-size: 1.5em; line-height: 1.5em; margin-bottom: 2em; }
 	p > strong { font-weight: 600; }
 
+	del { opacity: .5; text-decoration-color: @secondary; }
+
 	.product-meta p { margin-bottom: 0!important; }
+
+	h1, h2, h3, h4, h5, h6, p {
+		span {
+			text-decoration-color: @secondary!important;
+		}
+	}
 
 	// -webkit-hyphens: auto;
     // -moz-hyphens: auto;
@@ -49,10 +68,14 @@ body #wrapper {
 //	************************************************************************************************
 //	COL AND TABLE PADDINGS
 //	************************************************************************************************
-& div.row {
-	&.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: .5em;  } }
-	&.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: 1em;  } }
-	&.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: 2em;  } }
+body #wrapper, html[ng-app="uxBuilder"] body #wrapper {
+	// section div.row:only-child > div.col:only-child  { margin-bottom: 0; padding-bottom: 0; .col-inner { margin-bottom: 0; } }
+	// div.row-small:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: .5em; } }
+	// div.row:not(.row-collapse):not(.row-xsmall) { & > div.col {padding-bottom: 1em;  } }
+	// div.row-large:not(.row-collapse):not(.row-xsmall) { & > div.col { padding-bottom: 2em;  } }	
+
+	div.row:not(.align-bottom) > div.col:only-child, div.row:not(.align-bottom) > div.col:last-of-type { padding-bottom: 0; }
+	
 }
 
 & table:not(.variations) {
@@ -143,10 +166,11 @@ body #wrapper {
 	a[class*="icon"] {
 		display: inline-flex;
 		justify-content: center;
-		align-items: center;		
-		i { font-size: 1em; top: 0;  margin: 0; padding: 0; }
+		align-items: center;
+		i { font-size: 1em; position: initial; }
 
-		&.back-to-top { min-width: 3em; min-height: 3em; }
+		&.back-to-top { min-width: 3em; min-height: 3em; i { padding-bottom: .25em; font-size: 1em;  };}
+		// .social i { top: 0; }
 	}
 }
 
@@ -453,6 +477,14 @@ footer#footer, section.footer-bottom {
 //	FLATSOME GAP ELEMENT
 //	************************************************************************************************
 .gap-element { min-height: inherit; }
+
+//	************************************************************************************************
+//	FLATSOME STACK ELEMENT
+//	************************************************************************************************
+body #wrapper div.stack, html[ng-app="uxBuilder"] body #wrapper div.stack {
+	.is-divider { margin: .75em 0!important; }
+	// .is-divider { padding-top: inherit;}
+}
 //	************************************************************************************************
 //	FLATSOME SOCIAL ICONS
 //	************************************************************************************************
@@ -791,17 +823,21 @@ div.accordion {
 //	************************************************************************************************
 //	FLATSOME BANNERS
 //	************************************************************************************************
-div.banner {
-	// & * { pointer-events: none; }
-	// & a, button { pointer-events: all; }
-	&.is-full-height { height: 100%; }
-	div.text-box {
-		font-size: 100%;
-		.text {
-			p { color: @dark; }
-			&.dark p { color: @light; }
+body #wrapper, html[ng-app="uxBuilder"] body #wrapper {
+	div.banner {
+		// & * { pointer-events: none; }
+		// & a, button { pointer-events: all; }
+		&.is-full-height { height: 100%; }
+		div.text-box {	
+			font-size: 100%;
+			.text {
+				p { color: @dark; }
+				&.dark p { color: @light; }
+			}
+			div.img { left: 0; transform: translate(0, 0);}
+			// div.is-divider { font-size: 1em!important; border: 1px solid blue; padding: 0; margin: initial; }
+			p:only-child { margin: 0; }
 		}
-		div.img { left: 0; transform: translate(0, 0);}
 	}
 }
 //	************************************************************************************************
@@ -1298,7 +1334,7 @@ button.wishlist-button.icon:hover { background: @primary; border-color: @primary
 
 
 //	************************************************************************************************
-// 	CONTACT FORM 7, MAILERLITE
+// 	CONTACT FORM 7 & CAPTCHA, MAILERLITE
 //	************************************************************************************************
 div.wpcf7, div.mailerlite-form, div[class*="ml-form"] {
 	&.wpcf7 {
@@ -1308,7 +1344,8 @@ div.wpcf7, div.mailerlite-form, div[class*="ml-form"] {
 		}
 
 		form { margin: 0; margin-bottom: -2em; }
-		div.row, div.col { padding-bottom: 0; }
+		// div.row, div.col { padding-bottom: 1.25em; }
+		// label { margin-top: 0em; }
 		p { margin-bottom: 0; }
 		textarea { min-height: 70px; }
 	}
@@ -1328,6 +1365,7 @@ div.wpcf7, div.mailerlite-form, div[class*="ml-form"] {
 			color: @success;
 		}
 	}
+	img.wpcf7-captchac { background-color: @light; border-radius: @theme-radius; }
 
 	&[class*="ml-form"] {
 		form { line-height: 0; margin: 0; }
